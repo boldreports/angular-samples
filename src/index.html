@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Reports for Angular | Syncfusion</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    function validateBrowser() {
+      var uaValidate = navigator.userAgent.match(/(MSIE |Trident.*rv[ :])([0-9]+)/);
+      if (uaValidate != null)
+        return uaValidate[2];
+      return null;
+    }
+    var ieVer = validateBrowser();
+    if (ieVer != null && ieVer < 11) {
+      if (!location.origin) {
+        location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+        location.href = location.origin + '/error.html';
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <style>
+    .splash {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+    }
+
+    .message {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .loader {
+      margin: auto;
+      width: 70px;
+      text-align: center;
+    }
+
+    .loader>div {
+      width: 18px;
+      height: 18px;
+      background-color: black;
+      border-radius: 100%;
+      display: inline-block;
+      -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    }
+
+    .loader .bounce1 {
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .loader .bounce2 {
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+
+    ej-reportviewer.e-reportviewer .e-reportviewer-toolbarcontainer ul.e-ul:nth-child(4) {
+      border-style: none;
+      float: right;
+    }
+
+    .e-reportviewer-toolbarcontainer.e-toolbar {
+      padding-right: 0px;
+    }
+
+    .e-reportviewer-custom-toolbar.e-horizontal.e-ul {
+      float: right;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .e-reportviewer-toolbar-listitem {
+      padding: 7px;
+    }
+
+    .e-reportviewer-icon.e-reportviewer-edit {
+      padding: 9px;
+    }
+
+    .e-reportviewer-icon.e-reportviewer-edit:hover {
+      background: #e0e0e0;
+    }
+
+    @-webkit-keyframes sk-bouncedelay {
+
+      0%,
+      80%,
+      100% {
+        -webkit-transform: scale(0);
+      }
+
+      40% {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes sk-bouncedelay {
+
+      0%,
+      80%,
+      100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+
+      40% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+      }
+    }
+  </style>
+  <app-root>
+    <div class="splash">
+      <div class="message">Angular Reports</div>
+      <div class="loader">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+  </app-root>
+</body>
+
+</html>

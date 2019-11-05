@@ -1,0 +1,140 @@
+.ej-main-body-content {
+  background-color: #FAFAFA;
+  border: 1px solid #D7D7D7;
+
+  .ej-nav-header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-bottom: 1px solid #D7D7D7;
+
+    .ej-nav-item {
+      height: 38px;
+      line-height: 38px;
+      display: flex;
+      align-items: center;
+
+      &.e-hidden {
+        display: none;
+      }
+
+      a {
+        font-weight: 600;
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+          color: #0278d7;
+          text-decoration: none;
+        }
+
+        &.active {
+          color: #0278d7;
+          border-color: #0278d7;
+        }
+      }
+    }
+  }
+
+  .ej-tab-content {
+    .tab-pane {
+      animation: slideleft 0.4s;
+      position: relative;
+    }
+
+    @keyframes slideleft {
+      from {
+        left: -500px;
+        opacity: 0
+      }
+
+      to {
+        left: 0;
+        opacity: 1
+      }
+    }
+  }
+
+
+  #parentTab {
+    .ej-demo-icon {
+      margin-bottom: -2px;
+
+      &:before {
+        content: '\e92e';
+        margin-right: 5px;
+        font-size: 20px;
+      }
+    }
+
+    .ej-source-icon {
+      margin-bottom: -2px;
+
+      &:before {
+        content: '\e92d';
+        margin-right: 5px;
+        font-size: 20px;
+      }
+    }
+
+
+    .ej-nav {
+      position: absolute;
+      right: 0;
+      opacity: .87;
+
+      .new-tab {
+        display: flex;
+      }
+
+      @media only screen and (max-width: 550px) {
+        .new-tab {
+          display: none;
+        }
+      }
+
+      div {
+        font-size: 25px;
+        padding: 0 10px;
+        cursor: pointer;
+
+        &.ej-nav-new {
+          border-left: 1px solid rgb(196, 196, 196);
+
+          &:before {
+            content: '\e91d';
+          }
+        }
+
+        &.ej-nav-prev {
+          border-left: 1px solid rgb(196, 196, 196);
+
+          &:before {
+            content: '\e91f';
+          }
+        }
+
+        &.ej-nav-next {
+          &:before {
+            content: '\e91b';
+          }
+        }
+      }
+    }
+  }
+
+  #childTabContainer {
+    .tab-pane {
+      white-space: pre;
+      padding: 10px;
+      font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif", "-apple-system", "BlinkMacSystemFont";
+      overflow-x: auto;
+      min-height: 320px;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
