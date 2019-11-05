@@ -1,0 +1,11 @@
+ <!--Header component-->
+ <ej-header (hamBurgerClick)="onHamBurgerClick()"></ej-header>
+ <div class="mobile-overlay" *ngIf="tocMobileSlideLeft" (click)="onMobileOverlayClick()"></div>
+ <div class="ej-main-parent-content" [ngClass]="tocSlideLeft ? 'ej-toc-slide-left' : '' ">
+   <!--Sidebar component-->
+   <ej-sidebar #sidebar [ngClass]="tocMobileSlideLeft ? 'ej-toc-mobile-slide-left' : '' "></ej-sidebar>
+   <div class="ej-main-child-content">
+     <!--Body component-->
+     <ej-main-content #body></ej-main-content>
+   </div>
+ </div>

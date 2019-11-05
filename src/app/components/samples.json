@@ -1,0 +1,239 @@
+{
+  "customNames": [
+    "app",
+    "barcode",
+    "northwind",
+    "qrbarcode"
+  ],
+  "otherPlatforms": {
+    "JavaScript": "/demos/javascript/#/report-viewer/",
+    "ASP.NET Core": "/demos/aspnet-core/ReportViewer/",
+    "ASP.NET MVC": "/demos/aspnet-mvc/ReportViewer/",
+    "ASP.NET WebForms": "/demos/aspnet-web-forms/ReportViewer/"
+  },
+  "platform": "Angular",
+  "samples": [
+    {
+      "routerPath": "product-line-sales",
+      "className": "ProductLineSalesComponent",
+      "sampleName": "Product Line Sales",
+      "directoryName": "product-line-sales",
+      "imageDetails": {
+        "imageName": "product-line-sales.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the cascading parameters support by listing the sub category products, based on product category in Angular platform."
+      }
+    },
+    {
+      "routerPath": "company-sales",
+      "className": "CompanySalesComponent",
+      "sampleName": "Company Sales",
+      "directoryName": "company-sales",
+      "imageDetails": {
+        "imageName": "company-sales.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This sample demonstrates the overview of company sales by year with grouping feature in Angular platform."
+      }
+    },
+    {
+      "routerPath": "mail-merge",
+      "className": "MailMergeComponent",
+      "sampleName": "Mail Merge",
+      "directoryName": "mail-merge",
+      "imageDetails": {
+        "imageName": "mail-merge.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the employee details such as employee image, name, address and phone number by using the Angular List report item."
+      }
+    },
+    {
+      "routerPath": "sales-report",
+      "className": "SalesReportComponent",
+      "sampleName": "Sales Report",
+      "directoryName": "sales-report",
+      "imageDetails": {
+        "imageName": "sales-report.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the complete details of sales orders by using Adventure Works data in Angular platform."
+      }
+    },
+    {
+      "routerPath": "territory-sales",
+      "className": "TerritorySalesComponent",
+      "sampleName": "Territory Sales",
+      "directoryName": "territory-sales",
+      "imageDetails": {
+        "imageName": "territory-sales.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This sample demonstrates the Angular Tablix with Row Grouping by sales region and drill down (expand/collapse) the group details."
+      }
+    },
+    {
+      "routerPath": "conditional-row-formatting",
+      "className": "ConditionalRowFormattingComponent",
+      "sampleName": "Conditional Row Formatting",
+      "directoryName": "conditional-row-formatting",
+      "imageDetails": {
+        "imageName": "conditional-row-formatting.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates to view shared dataset and Tablix rows with conditional formatting in Angular platform."
+      }
+    },
+    {
+      "routerPath": "barcode",
+      "className": "BarcodeComponent",
+      "sampleName": "Barcode Types",
+      "directoryName": "barcode",
+      "imageDetails": {
+        "imageName": "barcode.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This sample demonstrates the most frequently used types of barcodes and qrcodes in Angular platform."
+      }
+    },
+    {
+      "routerPath": "customer-support-analysis",
+      "className": "CustomerSupportAnalysisComponent",
+      "sampleName": "Customer Support Analysis",
+      "directoryName": "customer-support-analysis",
+      "imageDetails": {
+        "imageName": "customer-support-analysis.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the overview of all the customer support to keep track of service trend in Angular platform."
+      }
+    },
+    {
+      "routerPath": "tickets-sales-analysis",
+      "className": "TicketsSalesComponent",
+      "sampleName": "Tickets Sales Analysis",
+      "directoryName": "tickets-sales-analysis",
+      "imageDetails": {
+        "imageName": "tickets-sales-analysis.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the overview of theater tickets sold details by shows and date in Angular platform."
+      }
+    },
+    {
+      "routerPath": "website-visitor-analysis",
+      "className": "WebsiteVisitorAnalysisComponent",
+      "sampleName": "Website Visitor Analysis",
+      "directoryName": "website-visitor-analysis",
+      "imageDetails": {
+        "imageName": "website-visitor-analysis.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the customer behavior and conversion trend for a fictitious e-commerce website in Angular platform."
+      }
+    },
+    {
+      "routerPath": "patient-experience-analysis",
+      "className": "PatientExperienceAnalysisComponent",
+      "sampleName": "Patient Experience Analysis",
+      "directoryName": "patient-experience-analysis",
+      "imageDetails": {
+        "imageName": "patient-experience-analysis.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This sample demonstrates the patient satisfaction trends during hospital visits in Angular platform."
+      }
+    },
+    {
+      "routerPath": "personal-expense-analysis",
+      "className": "PersonalExpenseAnalysisComponent",
+      "sampleName": "Personal Expense Analysis",
+      "directoryName": "personal-expense-analysis",
+      "imageDetails": {
+        "imageName": "personal-expense-analysis.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "The sample demonstrates the spending/expense patterns of an individual against the budget in Angular platform."
+      }
+    },
+    {
+      "routerPath": "northwind-products-suppliers-report",
+      "className": "NorthwindProductsSuppliersReportComponent",
+      "sampleName": "Northwind Products Suppliers Report",
+      "directoryName": "northwind-products-suppliers-report",
+      "imageDetails": {
+        "imageName": "northwind-products-suppliers-report.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the sales performance of different products and suppliers in Angular platform.",
+        "title": "Northwind Product Supplier Report"
+      }
+    },
+    {
+      "routerPath": "sales-order-detail",
+      "className": "SalesOrderDetailComponent",
+      "sampleName": "Sales Order Detail",
+      "directoryName": "sales-order-detail",
+      "imageDetails": {
+        "imageName": "sales-order-detail.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This sample demonstrates the sales order information based on sale order number in Angular platform."
+      }
+    },
+    {
+      "routerPath": "invoice",
+      "className": "InvoiceComponent",
+      "sampleName": "Invoice Report",
+      "directoryName": "invoice",
+      "imageDetails": {
+        "imageName": "invoice.png",
+        "isLandscape": true
+      },
+      "metaData": {
+        "description": "This report demonstrates sales invoice using Report Parameters, Expressions and Tablix report item capabilities of the Angular Report Viewer."
+      }
+    },
+    {
+      "routerPath": "grouping-aggregate",
+      "className": "GroupingAggregateComponent",
+      "sampleName": "Grouping Aggregate",
+      "directoryName": "grouping-aggregate",
+      "imageDetails": {
+        "imageName": "grouping-aggregate.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "This sample demonstrates the sorting and group total capabilities of Angular Report Viewer using Tablix report item."
+      }
+    },
+    {
+      "routerPath": "product-details",
+      "className": "ProductDetailsComponent",
+      "sampleName": "Product Details",
+      "directoryName": "product-details",
+      "imageDetails": {
+        "imageName": "product-details.png",
+        "isLandscape": false
+      },
+      "metaData": {
+        "description": "The sample demonstrates the product details information based on Angular custom barcode report item."
+      }
+    }
+  ]
+}
