@@ -15,8 +15,9 @@ export class NorthwindProductsSuppliersReportComponent {
   public reportPath: string;
   public toolbarSettings = Globals.TOOLBAR_OPTIONS;
   public onToolbarItemClick = Globals.EDIT_REPORT;
+  public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'northwind-products-suppliers-report';
+    this.reportPath = 'northwind-products-suppliers-report.rdl';
   }
 }

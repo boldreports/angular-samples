@@ -15,8 +15,9 @@ export class TicketsSalesComponent {
   public reportPath: string;
   public toolbarSettings = Globals.TOOLBAR_OPTIONS;
   public onToolbarItemClick = Globals.EDIT_REPORT;
+  public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'tickets-sales-analysis';
+    this.reportPath = 'tickets-sales-analysis.rdl';
   }
 }

@@ -1,6 +1,6 @@
 export const Globals = {
-    SERVICE_URL: 'https://reports.syncfusion.com/demos/services/api/SamplesReportViewer',
-    DESIGNER_SERVICE_URL: 'https://reports.syncfusion.com/demos/services/api/SamplesReportDesigner',
+    SERVICE_URL: '/demos/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: '/demos/services/api/ReportDesignerWebApi',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
         customGroups: [{
@@ -15,13 +15,20 @@ export const Globals = {
                 }
             }],
             // Need to remove the css (e-reportviewer-toolbarcontainer ul.e-ul:nth-child(4)) once the group index issue resolved
-            groupIndex: 3
+            groupIndex: 3,
+            cssClass: 'e-show'
         }]
+    },
+    DESTROY_REPORT: true,
+    EXPORT_ITEM_CLICK: () => {
+        Globals.DESTROY_REPORT = false;
     },
     EDIT_REPORT: (args) => {
         if (args.value === 'edit-report') {
             const path = location.href.split('#');
-            window.open(`${path[0]}#/report-designer?report-name=${args.model.reportPath}`,
+            const reportPath = args.model.reportPath;
+            const ReportDesignerPath = reportPath.indexOf('.rdlc') !== -1 ? 'report-designer/rdlc' : 'report-designer';
+            window.open(`${path[0]}#/${ReportDesignerPath}?report-name=${reportPath}`,
                 path[1].indexOf('/preview') === -1 ? '_blank' : '_self');
 
         }

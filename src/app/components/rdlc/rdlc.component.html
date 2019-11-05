@@ -1,0 +1,4 @@
+<bold-reportdesigner id="default_designer" #designer [serviceUrl]="serviceUrl" (ajaxBeforeLoad)="onAjaxBeforeLoad($event)"  (reportOpened)="onReportOpened($event)" [toolbarSettings]="toolbarSettings"
+    [reportItemExtensions]="itemExtensions" (toolbarRendering)="toolbarRendering($event)"
+    (toolbarClick)="toolbarClick({event: $event, designerInst:designer})">
+</bold-reportdesigner>
