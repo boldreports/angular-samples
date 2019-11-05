@@ -15,8 +15,9 @@ export class PatientExperienceAnalysisComponent {
   public reportPath: string;
   public toolbarSettings = Globals.TOOLBAR_OPTIONS;
   public onToolbarItemClick = Globals.EDIT_REPORT;
+  public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'patient-experience-analysis';
+    this.reportPath = 'patient-experience-analysis.rdl';
   }
 }

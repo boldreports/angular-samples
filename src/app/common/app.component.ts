@@ -17,19 +17,19 @@ type sampleInfo = typeof data;
 export class AppComponent implements OnInit {
   tocSlideLeft = false;
   tocMobileSlideLeft = false;
-  prepandHash = 'report-viewer/';
   private subscriptions = new Subscription();
   @ViewChild('body') body: MainContentComponent;
   @ViewChild('sidebar') sidebar: SidebarComponent;
   constructor(private routerService: RouterService, private titleService: Title, private meta: Meta) { }
   ngOnInit(): void {
+    let sampleData: sampleInfo['samples'][0];
     this.subscriptions.add(this.routerService.sampleUrl.subscribe((url) => {
-      url = url.replace(this.prepandHash, '').trim();
-      let sampleData: sampleInfo['samples'][0];
       if (url === '/') {
         sampleData = data.samples[0];
       } else {
-        sampleData = data.samples.filter((sample) => '/' + sample.routerPath === url)[0];
+        const routerData = this.routerService.getRouterData(url);
+        sampleData = data.samples.filter((sample) =>
+          sample.routerPath === routerData.reportRouterPath && sample.basePath === routerData.reportBasePath)[0];
       }
       if (!sampleData) {
         sampleData = data.samples[0];
@@ -37,6 +37,9 @@ export class AppComponent implements OnInit {
       this.sidebar.selectedPath = sampleData.routerPath;
       this.body.loadSourceCode(sampleData);
       this.updateMetaData(sampleData);
+    }));
+    this.subscriptions.add(this.routerService.navEnd.subscribe(() => {
+      this.body.updateSampleDetails(sampleData);
       this.setReportsHeight();
     }));
   }
@@ -47,7 +50,7 @@ export class AppComponent implements OnInit {
       title = sampleData.sampleName;
     }
     if (title.length <= 20) {
-      this.titleService.setTitle(`${title} | Angular Report Viewer | Syncfusion`);
+      this.titleService.setTitle(`${title} | Angular Report Viewer | Bold Reports`);
     } else {
       this.titleService.setTitle(`${title} | Angular Report Viewer`);
     }

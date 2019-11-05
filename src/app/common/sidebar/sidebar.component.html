@@ -4,9 +4,11 @@
 
   </div>
   <div class="ej-sb-toc" #toc>
-    <div *ngFor="let sample of samples; let i = index" #toc class="ej-sb-toc-card" tabindex="-1" [attr.data-mode]="sample.imageDetails.isLandscape ? 'ej-landscape' : 'ej-portrait'"
+    <div *ngFor="let sample of samples; let i = index" #toc class="ej-sb-toc-card" tabindex="-1"
       [ngClass]="(sample.routerPath === selectedPath) ? tocSelection(toc) : ''" (mousedown)="onSampleClick(sample)">
-      <img src="assets/sidebar/{{sample.imageDetails.imageName}}" />
+      <div [ngClass]="sample.imageDetails.isLandscape ? 'ej-landscape-img' : 'ej-portrait-img'"
+        [style.background-position-y]="getVerticalPosition(sample)">
+      </div>
       <div class="ej-sb-toc-title">{{sample.sampleName}}</div>
     </div>
   </div>

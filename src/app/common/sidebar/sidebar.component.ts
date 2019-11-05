@@ -9,7 +9,6 @@ type sampleInfo = typeof data;
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  prepandHash = 'report-viewer/';
   samples: sampleInfo['samples'] = data.samples;
   selectedPath: string = undefined;
   @ViewChild('toc') toc;
@@ -21,7 +20,8 @@ export class SidebarComponent {
   }
 
   public onSampleClick(sample: sampleInfo['samples'][0]): void {
-    this.router.navigate([this.prepandHash + sample.routerPath]);
+    const reportPath = sample.routerPath ? (sample.basePath + '/' + sample.routerPath) : sample.basePath;
+    this.router.navigate([reportPath]);
   }
 
   public tocSelection(toc: HTMLElement): string {
@@ -29,6 +29,12 @@ export class SidebarComponent {
       toc.focus();
     }
     return 'toc-selected';
+  }
+
+  public getVerticalPosition(sample: sampleInfo['samples'][0]): string {
+    const isLandscape = sample.imageDetails.isLandscape;
+    const index = sample.imageDetails.index;
+    return -(isLandscape ? index * 70 : index * 120) + 'px';
   }
 
 }

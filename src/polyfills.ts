@@ -1,7 +1,25 @@
 import * as $ from 'jquery';
+import { Globals } from './app/components/globals';
+
 const jq = ['jQuery', '$'];
 window[jq[0]] = $;
 window[jq[1]] = $;
+
+window.addEventListener('beforeunload', () => {
+    if (Globals.DESTROY_REPORT) {
+        destroyReportControls();
+    } else {
+        Globals.DESTROY_REPORT = true;
+    }
+});
+
+function destroyReportControls() {
+    const reportViewerElement = document.querySelector('.e-reportviewer.e-js');
+    if (reportViewerElement) {
+        ($(reportViewerElement).data('boldReportViewer') as any)._ajaxCallMethod('ClearCache', '_clearCurrentServerCache', false);
+    }
+}
+
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.

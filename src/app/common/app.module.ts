@@ -7,11 +7,11 @@ import { AppRouterModule } from './app.routing.module';
 import { RouterService } from './router.service';
 
 // data-visualization
-import '@syncfusion/reporting-javascript/Scripts/reports/data-visualization/ej.bulletgraph.min';
-import '@syncfusion/reporting-javascript/Scripts/reports/data-visualization/ej.chart.min';
-import '@syncfusion/reporting-javascript/Scripts/reports/data-visualization/ej.circulargauge.min';
-import '@syncfusion/reporting-javascript/Scripts/reports/data-visualization/ej.lineargauge.min';
-import '@syncfusion/reporting-javascript/Scripts/reports/data-visualization/ej.map.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.circulargauge.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.lineargauge.min';
+import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.map.min';
 
 // code-mirror
 import 'codemirror/lib/codemirror';

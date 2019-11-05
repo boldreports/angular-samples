@@ -15,8 +15,9 @@ export class WebsiteVisitorAnalysisComponent {
   public reportPath: string;
   public toolbarSettings = Globals.TOOLBAR_OPTIONS;
   public onToolbarItemClick = Globals.EDIT_REPORT;
+  public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'website-visitor-analysis';
+    this.reportPath = 'website-visitor-analysis.rdl';
   }
 }

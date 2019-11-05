@@ -1,12 +1,9 @@
 {
   "name": "reports-angular-samples",
-  "version": "4.1.16",
-  "description": "Explore and learn Syncfusion Reporting Angular components using large collection of reports, example applications and tutorial samples.",
-  "author": "Syncfusion Inc.",
-  "license": "SEE LICENSE IN license",
+  "version": "0.0.1",
   "scripts": {
-    "serve": "gulp serve",
-    "build": "gulp build"
+    "test": "gulp test",
+    "build": "gulp production-build"
   },
   "dependencies": {
     "@angular/animations": "7.2.0",
@@ -18,12 +15,13 @@
     "@angular/platform-browser": "7.2.0",
     "@angular/platform-browser-dynamic": "7.2.0",
     "@angular/router": "7.2.0",
-    "@syncfusion/reporting-angular": "*",
-    "@syncfusion/reporting-javascript": "*",
+    "@boldreports/angular-reporting-components": "*",
+    "@boldreports/javascript-reporting-controls": "*",
+    "@boldreports/types": "*",
     "bootstrap": "4.3.1",
     "codemirror": "5.45.0",
     "core-js": "2.5.4",
-    "jquery": "3.3.1",
+    "jquery": "3.4.1",
     "prismjs": "1.15.0",
     "rxjs": "6.3.3",
     "tslib": "1.9.0",
@@ -34,13 +32,14 @@
     "@angular/cli": "7.3.2",
     "@angular/compiler-cli": "7.2.0",
     "@angular/language-service": "7.2.0",
-    "@types/ej.web.all": "16.4.2",
     "@types/jasmine": "2.8.8",
     "@types/jasminewd2": "2.0.3",
     "@types/jquery": "3.3.29",
     "@types/node": "8.9.4",
     "codelyzer": "4.5.0",
     "gulp": "3.9.1",
+    "gulp-gzip": "1.4.2",
+    "gulp-s3-upload": "1.7.3",
     "jasmine-core": "2.99.1",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "3.1.1",
@@ -53,6 +52,7 @@
     "require-dir": "1.2.0",
     "ts-node": "7.0.0",
     "tslint": "5.11.0",
-    "typescript": "3.2.2"
+    "typescript": "3.2.2",
+    "typo-js": "1.0.3"
   }
 }

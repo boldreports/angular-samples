@@ -1,4 +1,6 @@
 <div class="ej-main-body-content">
+  <h1 class="ej-title" #title></h1>
+  <p class="ej-meta-description" #metaDescription></p>
   <div id="parentTabContainer">
     <ul class="nav ej-nav-header" id="parentTab" role="tablist">
       <li class="ej-nav-item">
@@ -11,12 +13,17 @@
           <Span class="ej-sb-icons ej-source-icon"></Span><Span>SOURCE</Span>
         </a>
       </li>
+      <li class="ej-nav-item" #descTab>
+        <a href="#ej-description" data-toggle="tab" role="tab" aria-selected="false">
+          <Span class="ej-sb-icons ej-description-icon"></Span><Span>Description</Span>
+        </a>
+      </li>
       <li class="ej-nav ej-nav-item ej-sb-icons">
-        <div class="new-tab">
+        <div class="new-tab ej-nav-sub-item">
           <div class="ej-nav-new" title="Open in New Window" (click)="onTabBtnClick()" tabindex="0"></div>
         </div>
-        <div class="ej-nav-prev" title="Previous Sample" (click)="onTabPrev()" tabindex="0"></div>
-        <div class="ej-nav-next" title="Next Sample" (click)="onTabNext()" tabindex="0"></div>
+        <div class="ej-nav-prev ej-nav-sub-item" title="Previous Sample" (click)="onTabPrev()" tabindex="0"></div>
+        <div class="ej-nav-next ej-nav-sub-item" title="Next Sample" (click)="onTabNext()" tabindex="0"></div>
       </li>
     </ul>
     <div class="tab-content ej-tab-content" #tabContent id="parentTabContent">
@@ -26,15 +33,18 @@
       <div class="tab-pane" id="source" role="tabpanel">
         <div id="childTabContainer">
           <div class="tab-content ej-tab-content" id="childTabContent">
-            <div *ngFor="let data of sourceData; let first = first;" class="tab-pane ej-tab-pane" [ngClass]="first ? 'show active' : ''"
-              id={{data.id}} role="tabpanel" [innerHtml]="data.body"></div>
+            <div *ngFor="let data of sourceData; let first = first;" class="tab-pane ej-tab-pane"
+              [ngClass]="first ? 'show active' : ''" id={{data.id}} role="tabpanel" [innerHtml]="data.body"></div>
           </div>
           <ul class="nav ej-nav-header" id="childtTab" role="tablist">
             <li *ngFor="let data of sourceData; let first = first;" class="ej-nav-item">
-              <a [ngClass]="first ? 'active' : ''" href="#{{data.id}}" data-toggle="tab" role="tab" aria-selected="first">{{data.name}}</a>
+              <a [ngClass]="first ? 'active' : ''" href="#{{data.id}}" data-toggle="tab" role="tab"
+                aria-selected="first">{{data.name}}</a>
             </li>
           </ul>
         </div>
+      </div>
+      <div class="tab-pane ej-tab-pane" id="ej-description" role="tabpanel" #description>
       </div>
     </div>
   </div>

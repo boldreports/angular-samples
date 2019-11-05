@@ -4,8 +4,8 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
-import { EJBarcode } from './extensions/report-item-extensions/barcode';
-import { EJQRBarcode } from './extensions/report-item-extensions/qrbarcode';
+import { EJBarcode } from './../extensions/report-item-extensions/barcode';
+import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode';
 
 const barcode = 'EJBarcode';
 const qrBarcode = 'EJQRBarcode';
@@ -45,6 +45,11 @@ export class DesignerComponent implements AfterViewInit {
       category: 'Barcodes'
     }];
   }
+
+  public onAjaxBeforeLoad(args) {
+    args.data = JSON.stringify({ reportType: 'RDL' });
+  }
+
 
   public toolbarRendering(args): void {
     if ($(args.target).hasClass('e-rptdesigner-toolbarcontainer')) {

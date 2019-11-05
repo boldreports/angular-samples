@@ -35,16 +35,22 @@
         border-color: #1783FF;
       }
 
-      &[data-mode="ej-portrait"] img {
-        height: 120px;
-        width: 90px;
-        margin: 8px;
-      }
-
-      &[data-mode="ej-landscape"] img {
+      .ej-landscape-img {
+        display: inline-flex;
         height: 70px;
         width: 120px;
         margin: 8px;
+        background-image: url('src/assets/sidebar/landscape.png');
+        background-size: 100% 800%;
+      }
+
+      .ej-portrait-img {
+        display: inline-flex;
+        height: 120px;
+        width: 90px;
+        margin: 8px;
+        background-image: url('src/assets/sidebar/portrait.png');
+        background-size: 100% 1100%;
       }
 
       .ej-sb-toc-title {

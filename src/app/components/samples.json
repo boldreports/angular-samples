@@ -3,13 +3,15 @@
     "app",
     "barcode",
     "northwind",
-    "qrbarcode"
+    "qrbarcode",
+    "rdlc",
+    "rdlcData"
   ],
   "otherPlatforms": {
-    "JavaScript": "/demos/javascript/#/report-viewer/",
-    "ASP.NET Core": "/demos/aspnet-core/ReportViewer/",
-    "ASP.NET MVC": "/demos/aspnet-mvc/ReportViewer/",
-    "ASP.NET WebForms": "/demos/aspnet-web-forms/ReportViewer/"
+    "JavaScript": "/demos/javascript/#/",
+    "ASP.NET Core": "/demos/aspnet-core/",
+    "ASP.NET MVC": "/demos/aspnet-mvc/",
+    "ASP.NET WebForms": "/demos/aspnet-web-forms/"
   },
   "platform": "Angular",
   "samples": [
@@ -17,222 +19,253 @@
       "routerPath": "product-line-sales",
       "className": "ProductLineSalesComponent",
       "sampleName": "Product Line Sales",
+      "basePath": "report-viewer",
       "directoryName": "product-line-sales",
       "imageDetails": {
-        "imageName": "product-line-sales.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 7
       },
       "metaData": {
-        "description": "This sample demonstrates the cascading parameters support by listing the sub category products, based on product category in Angular platform."
+        "description": "The Product Line Sales report displays sales details organized by category and subcategory of products using cascading parameters in bold report viewer."
       }
     },
     {
       "routerPath": "company-sales",
       "className": "CompanySalesComponent",
       "sampleName": "Company Sales",
+      "basePath": "report-viewer",
       "directoryName": "company-sales",
       "imageDetails": {
-        "imageName": "company-sales.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 1
       },
       "metaData": {
-        "description": "This sample demonstrates the overview of company sales by year with grouping feature in Angular platform."
+        "description": "Company Sales report shows product sales against year in matrix format using SSRS Tablix report item in  bold report viewer."
       }
     },
     {
       "routerPath": "mail-merge",
       "className": "MailMergeComponent",
       "sampleName": "Mail Merge",
+      "basePath": "report-viewer",
       "directoryName": "mail-merge",
       "imageDetails": {
-        "imageName": "mail-merge.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 3
       },
       "metaData": {
-        "description": "This sample demonstrates the employee details such as employee image, name, address and phone number by using the Angular List report item."
+        "description": "Mail merge shows to envelope the employee details using SRSS List report item in bold report viewer."
       }
     },
     {
       "routerPath": "sales-report",
       "className": "SalesReportComponent",
       "sampleName": "Sales Report",
+      "basePath": "report-viewer",
       "directoryName": "sales-report",
       "imageDetails": {
-        "imageName": "sales-report.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 8
       },
       "metaData": {
-        "description": "This sample demonstrates the complete details of sales orders by using Adventure Works data in Angular platform."
+        "description": "This demo shows the sales order details using RDL basic table with currency formatting in price textbox fields in bold report viewer."
       }
     },
     {
       "routerPath": "territory-sales",
       "className": "TerritorySalesComponent",
       "sampleName": "Territory Sales",
+      "basePath": "report-viewer",
       "directoryName": "territory-sales",
       "imageDetails": {
-        "imageName": "territory-sales.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 5
       },
       "metaData": {
-        "description": "This sample demonstrates the Angular Tablix with Row Grouping by sales region and drill down (expand/collapse) the group details."
+        "description": "This demo shows the sales territory and its total sales using drilldown with  SSRS matrix report in bold report viewer."
       }
     },
     {
       "routerPath": "conditional-row-formatting",
       "className": "ConditionalRowFormattingComponent",
       "sampleName": "Conditional Row Formatting",
+      "basePath": "report-viewer",
       "directoryName": "conditional-row-formatting",
       "imageDetails": {
-        "imageName": "conditional-row-formatting.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 0
       },
       "metaData": {
-        "description": "This sample demonstrates to view shared dataset and Tablix rows with conditional formatting in Angular platform."
+        "description": "This demo shows the customer details in SSRS table report item and details are highlighted based on conditional row formatting in bold report viewer. "
       }
     },
     {
       "routerPath": "barcode",
       "className": "BarcodeComponent",
-      "sampleName": "Barcode Types",
+      "sampleName": "Barcode",
+      "basePath": "report-viewer",
       "directoryName": "barcode",
       "imageDetails": {
-        "imageName": "barcode.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 0
       },
       "metaData": {
-        "description": "This sample demonstrates the most frequently used types of barcodes and qrcodes in Angular platform."
+        "description": "The barcode demo shows the available 1D, 2D and QR barcode types rendered in bold report viewer through RDL Custom Report Item."
       }
     },
     {
       "routerPath": "customer-support-analysis",
       "className": "CustomerSupportAnalysisComponent",
       "sampleName": "Customer Support Analysis",
+      "basePath": "report-viewer",
       "directoryName": "customer-support-analysis",
       "imageDetails": {
-        "imageName": "customer-support-analysis.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 1
       },
       "metaData": {
-        "description": "This sample demonstrates the overview of all the customer support to keep track of service trend in Angular platform."
+        "description": "This demo shows customer support analysis with SSRS drill through to explore details in another report based on user click action in bold report viewer."
       }
     },
     {
       "routerPath": "tickets-sales-analysis",
       "className": "TicketsSalesComponent",
       "sampleName": "Tickets Sales Analysis",
+      "basePath": "report-viewer",
       "directoryName": "tickets-sales-analysis",
       "imageDetails": {
-        "imageName": "tickets-sales-analysis.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 9
       },
       "metaData": {
-        "description": "This sample demonstrates the overview of theater tickets sold details by shows and date in Angular platform."
+        "description": "This RDL template shows the ticket sales analysis details of movie tickets using SSRS data region report items like chart and table in bold report viewer."
       }
     },
     {
       "routerPath": "website-visitor-analysis",
       "className": "WebsiteVisitorAnalysisComponent",
       "sampleName": "Website Visitor Analysis",
+      "basePath": "report-viewer",
       "directoryName": "website-visitor-analysis",
       "imageDetails": {
-        "imageName": "website-visitor-analysis.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 10
       },
       "metaData": {
-        "description": "This sample demonstrates the customer behavior and conversion trend for a fictitious e-commerce website in Angular platform."
+        "description": "This RDL report template shows website visitor analysis details using SSRS column chart, pie chart, line chart and table data item in bold report viewer."
       }
     },
     {
       "routerPath": "patient-experience-analysis",
       "className": "PatientExperienceAnalysisComponent",
       "sampleName": "Patient Experience Analysis",
+      "basePath": "report-viewer",
       "directoryName": "patient-experience-analysis",
       "imageDetails": {
-        "imageName": "patient-experience-analysis.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 3
       },
       "metaData": {
-        "description": "This sample demonstrates the patient satisfaction trends during hospital visits in Angular platform."
+        "description": "This demo shows the patient analysis report of a health care using SSRS doughnut chart, line chart and basic table data regions in bold report viewer."
       }
     },
     {
       "routerPath": "personal-expense-analysis",
       "className": "PersonalExpenseAnalysisComponent",
       "sampleName": "Personal Expense Analysis",
+      "basePath": "report-viewer",
       "directoryName": "personal-expense-analysis",
       "imageDetails": {
-        "imageName": "personal-expense-analysis.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 5
       },
       "metaData": {
-        "description": "The sample demonstrates the spending/expense patterns of an individual against the budget in Angular platform."
+        "description": "This report shows personal expense analysis details using SSRS image, text box, line, rectangle, chart and table report items in bold report viewer."
       }
     },
     {
       "routerPath": "northwind-products-suppliers-report",
       "className": "NorthwindProductsSuppliersReportComponent",
       "sampleName": "Northwind Products Suppliers Report",
+      "basePath": "report-viewer",
       "directoryName": "northwind-products-suppliers-report",
       "imageDetails": {
-        "imageName": "northwind-products-suppliers-report.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 4
       },
       "metaData": {
-        "description": "This sample demonstrates the sales performance of different products and suppliers in Angular platform.",
-        "title": "Northwind Product Supplier Report"
+        "description": "This demo shows the product and suppliers details using SSRS pyramid, bar, column charts and table widget in bold report viewer.",
+        "title": "Northwind Products Report"
       }
     },
     {
       "routerPath": "sales-order-detail",
       "className": "SalesOrderDetailComponent",
       "sampleName": "Sales Order Detail",
+      "basePath": "report-viewer",
       "directoryName": "sales-order-detail",
       "imageDetails": {
-        "imageName": "sales-order-detail.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 4
       },
       "metaData": {
-        "description": "This sample demonstrates the sales order information based on sale order number in Angular platform."
+        "description": "This report template shows the sales order details based on order number using the RDL report parameters, rectangle, line and table in bold report viewer."
       }
     },
     {
       "routerPath": "invoice",
       "className": "InvoiceComponent",
-      "sampleName": "Invoice Report",
+      "sampleName": "Invoice",
+      "basePath": "report-viewer",
       "directoryName": "invoice",
       "imageDetails": {
-        "imageName": "invoice.png",
-        "isLandscape": true
+        "isLandscape": true,
+        "index": 2
       },
       "metaData": {
-        "description": "This report demonstrates sales invoice using Report Parameters, Expressions and Tablix report item capabilities of the Angular Report Viewer."
+        "description": "This demo shows the sales invoice details and the usage of report viewer parameters, expressions, and calculated fields in SSRS Tablix report item."
+      }
+    },
+    {
+      "routerPath": "product-catalog",
+      "className": "ProductCatalogComponent",
+      "sampleName": "Product Catalog",
+      "basePath": "report-viewer",
+      "directoryName": "product-catalog",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 6
+      },
+      "metaData": {
+        "description": "This demos allows you to view the product catalog RDLC that exist on the local file system with JSON array and custom business object data collection."
       }
     },
     {
       "routerPath": "grouping-aggregate",
       "className": "GroupingAggregateComponent",
       "sampleName": "Grouping Aggregate",
+      "basePath": "report-viewer",
       "directoryName": "grouping-aggregate",
       "imageDetails": {
-        "imageName": "grouping-aggregate.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 2
       },
       "metaData": {
-        "description": "This sample demonstrates the sorting and group total capabilities of Angular Report Viewer using Tablix report item."
+        "description": "This demo shows product sales total based on  quarterly wise RDL tablix grouping in bold report viewer."
       }
     },
     {
       "routerPath": "product-details",
       "className": "ProductDetailsComponent",
       "sampleName": "Product Details",
+      "basePath": "report-viewer",
       "directoryName": "product-details",
       "imageDetails": {
-        "imageName": "product-details.png",
-        "isLandscape": false
+        "isLandscape": false,
+        "index": 6
       },
       "metaData": {
-        "description": "The sample demonstrates the product details information based on Angular custom barcode report item."
+        "description": "This demo shows the product details using the SSRS table report item with barcodes rendered in bold report viewer through RDL Custom Report Item."
       }
     }
   ]

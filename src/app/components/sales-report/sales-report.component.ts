@@ -15,8 +15,9 @@ export class SalesReportComponent {
   public reportPath: string;
   public toolbarSettings = Globals.TOOLBAR_OPTIONS;
   public onToolbarItemClick = Globals.EDIT_REPORT;
+  public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'sales-report';
+    this.reportPath = 'sales-report.rdl';
   }
 }

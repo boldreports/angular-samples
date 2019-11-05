@@ -13,11 +13,11 @@ let routerTempalte = `{
 
 let importStatements = [`import { BrowserModule } from '@angular/platform-browser';
 import { Type, ModuleWithProviders, NgModule } from '@angular/core';
-import { EJ_REPORTVIEWER_COMPONENTS } from '@syncfusion/reporting-angular/src/ej/reportviewer.component';
-import { EJ_REPORTDESIGNER_COMPONENTS } from '@syncfusion/reporting-angular/src/ej/reportdesigner.component';
+import { BOLD_REPORTVIEWER_COMPONENTS } from '@boldreports/angular-reporting-components/src/reportviewer.component';
+import { BOLD_REPORTDESIGNER_COMPONENTS } from '@boldreports/angular-reporting-components/src/reportdesigner.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { PreviewComponent } from './preview.component';
+import { PreviewComponent } from './preview/preview.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';`];
@@ -32,28 +32,44 @@ let moduleTemplate = `@NgModule({
 
 export class AppRouterModule { }
 `
-let components = ['EJ_REPORTVIEWER_COMPONENTS', 'EJ_REPORTDESIGNER_COMPONENTS', 'AppComponent', 'PreviewComponent', 'HeaderComponent', 'SidebarComponent', 'MainContentComponent'];
+let components = ['BOLD_REPORTVIEWER_COMPONENTS', 'BOLD_REPORTDESIGNER_COMPONENTS', 'AppComponent', 'PreviewComponent', 'HeaderComponent', 'SidebarComponent', 'MainContentComponent'];
 let routes = [];
 let childRoutes = [];
 let previewChildRoutes = [];
-let prepandHash = 'report-viewer/';
 
 gulp.task('generate-router', () => {
   let samples = JSON.parse(fs.readFileSync('./src/app/components/samples.json', 'utf8')).samples;
-  routes.push(`{ path: '', redirectTo: '${prepandHash + samples[0].routerPath}', pathMatch: 'full' }`);
+  let defaultSampleData = samples[0];
+  let initilaReportRouterPath=  defaultSampleData.routerPath ? defaultSampleData.basePath + '/' + defaultSampleData.routerPath : defaultSampleData.basePath;
+
+  //Initila routing
+  routes.push(`{ path: '', redirectTo: '${initilaReportRouterPath}', pathMatch: 'full' }`);
+
   for (let i = 0; i < samples.length; i++) {
     let sampleData = samples[i];
-    childRoutes.push(childRouterTemplate.replace('{{path}}', prepandHash + sampleData.routerPath).replace('{{component}}', sampleData.className));
-    previewChildRoutes.push(childRouterTemplate.replace('{{path}}', `${prepandHash + sampleData.routerPath}/preview`).replace('{{component}}', sampleData.className));
-    importStatements.push(importTemplate.replace('{{component}}', sampleData.className).replace('{{path}}', `../components/${sampleData.directoryName}/${sampleData.routerPath}.component`));
+    let reportRouterPath = sampleData.routerPath ? sampleData.basePath + '/' + sampleData.routerPath : sampleData.basePath;
+    let reportComponentPath = sampleData.routerPath ? sampleData.directoryName + '/' + sampleData.routerPath : sampleData.directoryName + '/' + sampleData.basePath;
+    childRoutes.push(childRouterTemplate.replace('{{path}}', reportRouterPath).replace('{{component}}', sampleData.className));
+    previewChildRoutes.push(childRouterTemplate.replace('{{path}}', `${reportRouterPath}/preview`).replace('{{component}}', sampleData.className));
+    importStatements.push(importTemplate.replace('{{component}}', sampleData.className).replace('{{path}}', `../components/${reportComponentPath}.component`));
     components.push(sampleData.className);
   }
+
+  //Designer
   importStatements.push(importTemplate.replace('{{component}}', `DesignerComponent`).replace('{{path}}', `../components/designer/designer.component`));
   components.push('DesignerComponent');
   previewChildRoutes.push(childRouterTemplate.replace('{{path}}', `report-designer`).replace('{{component}}', 'DesignerComponent'));
+
+  //RDLC Designer
+  importStatements.push(importTemplate.replace('{{component}}', `RDLCComponent`).replace('{{path}}', `../components/rdlc/rdlc.component`));
+  components.push('RDLCComponent');
+  previewChildRoutes.push(childRouterTemplate.replace('{{path}}', `report-designer/rdlc`).replace('{{component}}', 'RDLCComponent'));
+
   routes.push(routerTempalte.replace('{{component}}', `AppComponent`).replace('{{childRoute}}', childRoutes.join(',\n\  ')));
   routes.push(routerTempalte.replace('{{component}}', `PreviewComponent`).replace('{{childRoute}}', previewChildRoutes.join(',\n\  ')));
-  routes.push(`{ path: '**', redirectTo: '${prepandHash + samples[0].routerPath}' }`);
+
+  //re-routing
+  routes.push(`{ path: '**', redirectTo: '${initilaReportRouterPath}' }`);
   let importContent = importStatements.join('\n');
   let componentContent = `const components: any[] | Type<any> | ModuleWithProviders<{}> = [
   ${components.join(',\n  ')}
