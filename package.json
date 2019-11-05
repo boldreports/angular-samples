@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "test": "gulp test",
-    "build": "gulp production-build"
+    "build": "gulp production-build",
+	"serve": "gulp serve"
   },
   "dependencies": {
     "@angular/animations": "7.2.0",
