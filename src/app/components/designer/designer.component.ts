@@ -68,6 +68,11 @@ export class DesignerComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.designerInst.widget.setModel({
+      previewOptions: {
+        exportItemClick: Globals.EXPORT_ITEM_CLICK
+      }
+    });
     if (this.reportPath) {
       this.designerInst.widget.openReport(this.reportPath);
     }
