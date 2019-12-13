@@ -1,5 +1,5 @@
 {
-  "name": "reports-angular-samples",
+  "name": "angular-samples",
   "version": "2.1.14",
   "scripts": {
     "build": "gulp build",
