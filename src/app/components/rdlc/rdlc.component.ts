@@ -86,7 +86,10 @@ export class RDLCComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.designerInst.widget.setModel({
       reportType: 'RDLC',
-      previewReport: this.previewReport.bind(this)
+      previewReport: this.previewReport.bind(this),
+      previewOptions: {
+        exportItemClick: Globals.EXPORT_ITEM_CLICK
+      }
     });
     if (this.reportPath) {
       this.designerInst.widget.openReport(this.reportPath);
