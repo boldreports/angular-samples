@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+
+#ej2 scripts
+/src/scripts
+
 # Only exists if Bazel was run
 /bazel-out
 
