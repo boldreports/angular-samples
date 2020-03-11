@@ -30,7 +30,8 @@
                 "glob": "**/*",
                 "input": "src/demos/",
                 "output": "/"
-              }
+              },
+              "src/scripts/"
             ],
             "styles": [
               "src/styles.scss"

@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+
+#ej2 scripts
+/src/scripts
+
 # Only exists if Bazel was run
 /bazel-out
 
@@ -47,3 +51,6 @@ testem.log
 Thumbs.db
 
 src/app/common/app.routing.module.ts
+src/demos/*
+!src/demos/common/
+!src/demos/designer/
