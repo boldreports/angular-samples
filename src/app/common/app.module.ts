@@ -6,6 +6,10 @@ import { MainComponent } from './main.component';
 import { AppRouterModule } from './app.routing.module';
 import { RouterService } from './router.service';
 
+// bold-reports
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
+import '@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.min';
+
 // data-visualization
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';

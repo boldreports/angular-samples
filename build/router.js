@@ -13,8 +13,7 @@ let routerTempalte = `{
 
 let importStatements = [`import { BrowserModule } from '@angular/platform-browser';
 import { Type, ModuleWithProviders, NgModule } from '@angular/core';
-import { BOLD_REPORTVIEWER_COMPONENTS } from '@boldreports/angular-reporting-components/src/reportviewer.component';
-import { BOLD_REPORTDESIGNER_COMPONENTS } from '@boldreports/angular-reporting-components/src/reportdesigner.component';
+import { BoldReportsModule } from '@boldreports/angular-reporting-components';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PreviewComponent } from './preview/preview.component';
@@ -25,6 +24,7 @@ let moduleTemplate = `@NgModule({
   declarations: components,
   imports: [
     BrowserModule,
+    BoldReportsModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [RouterModule],
@@ -32,7 +32,7 @@ let moduleTemplate = `@NgModule({
 
 export class AppRouterModule { }
 `
-let components = ['BOLD_REPORTVIEWER_COMPONENTS', 'BOLD_REPORTDESIGNER_COMPONENTS', 'AppComponent', 'PreviewComponent', 'HeaderComponent', 'SidebarComponent', 'MainContentComponent'];
+let components = ['AppComponent', 'PreviewComponent', 'HeaderComponent', 'SidebarComponent', 'MainContentComponent'];
 let routes = [];
 let childRoutes = [];
 let previewChildRoutes = [];

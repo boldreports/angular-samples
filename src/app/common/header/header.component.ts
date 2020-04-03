@@ -37,7 +37,8 @@ export class HeaderComponent {
     }
     platformSamplePath = this.getRouterPath(this.platformName, platform, sampleName);
     const reportPath = routerData.reportRouterPath ? (platformBasePath + '/' + platformSamplePath) : platformSamplePath;
-    window.open(this.document.location.origin + data.otherPlatforms[platform] + reportPath, '_self');
+    const url: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/' : '/demos/';
+    window.open(this.document.location.origin + url + data.otherPlatforms[platform] + reportPath, '_self');
   }
 
   private getRouterPath(curPlatform: string, targetplatform: string, sampleName: string): string {
