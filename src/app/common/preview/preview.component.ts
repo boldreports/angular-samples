@@ -14,8 +14,11 @@ import { RouterService } from '../router.service';
 })
 export class PreviewComponent implements OnInit {
   private subscriptions = new Subscription();
+  public homePageUrl = '/';
   constructor(private routerService: RouterService, private router: Router, private titleService: Title, private meta: Meta) { }
   ngOnInit(): void {
+    const baseUrl: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/' : '/demos/';
+    this.homePageUrl = baseUrl + 'angular/#/';
     this.subscriptions.add(this.routerService.previewUrl.subscribe((url) => {
       let sampleData;
       const isReportDesigner = url.indexOf('/report-designer') !== -1;
@@ -48,7 +51,7 @@ export class PreviewComponent implements OnInit {
   public updateMetaData(sampleData, reportBasePath): void {
     let title: string = sampleData.metaData.title;
     if (!title) {
-        title = sampleData.sampleName;
+      title = sampleData.sampleName;
     }
     let metaContent: string;
     switch (reportBasePath) {
