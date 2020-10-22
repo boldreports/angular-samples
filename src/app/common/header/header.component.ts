@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Inject } from '@angular/core';
 import * as data from '../../components/samples.json';
 import { Router } from '@angular/router';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { RouterService } from '../router.service';
 
 @Component({

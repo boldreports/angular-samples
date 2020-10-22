@@ -1,8 +1,8 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import Prism from 'prismjs';
 import { RouterService } from '../router.service';
 import 'prismjs/components/prism-typescript';
@@ -29,15 +29,17 @@ interface CurData {
 })
 
 export class MainContentComponent implements AfterViewInit {
-
+  @Input() enableOverlay: boolean;
+  @Output() enableOverlayChange = new EventEmitter<boolean>();
   sourceData: SourceDataCollection[] = [];
-  @ViewChild('title') title;
-  @ViewChild('metaDescription') metaDescription;
-  @ViewChild('tabContent') tabContent;
-  @ViewChild('sourceTab') sourceTab;
-  @ViewChild('descTab') descTab;
-  @ViewChild('description') description;
-  constructor(private routerService: RouterService, private http: Http, private router: Router, private location: Location) { }
+  @ViewChild('title', { static: true }) title;
+  @ViewChild('metaDescription', { static: true }) metaDescription;
+  @ViewChild('tabContent', { static: true }) tabContent;
+  @ViewChild('demoTab', { static: true }) demoTab;
+  @ViewChild('sourceTab', { static: true }) sourceTab;
+  @ViewChild('descTab', { static: true }) descTab;
+  @ViewChild('description', { static: true }) description;
+  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location) { }
 
   public loadSourceCode(sampleData: sampleInfo['samples'][0]): void {
     (jQuery('#parentTab li:first-child a') as any).tab('show');
@@ -46,6 +48,7 @@ export class MainContentComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.updateTab();
+    jQuery(this.demoTab.nativeElement.firstElementChild).on('shown.bs.tab', this.resizeReportViewer);
   }
 
   updateSampleDetails(sampleData): void {
@@ -59,24 +62,19 @@ export class MainContentComponent implements AfterViewInit {
     const reportComponentPath = sampleData.routerPath ? sampleData.directoryName + '/' +
       sampleData.routerPath : sampleData.directoryName + '/' + sampleData.basePath;
     const basePath = `app/components/${reportComponentPath}`;
-    const observableCollection: Observable<Response>[] = [this.http.get(basePath + '.component.html'),
-    this.http.get(basePath + '.component.ts')];
+    const observableCollection: Observable<string>[] = [this.http.get(basePath + '.component.html', { responseType: 'text' }),
+    this.http.get(basePath + '.component.ts', { responseType: 'text' })];
     forkJoin(observableCollection).subscribe(
-      (resultCollection: any) => {
+      (resultCollection: string[]) => {
         this.sourceData = [];
-        for (const res of resultCollection) {
-          if (res.url.indexOf('.component.html') !== -1) {
-            this.sourceData.push({
-              name: `${sampleData.routerPath}.component.html`,
-              body: Prism.highlight(this.getStringWithOutDescription(res._body, /(\'|\")description/g), Prism.languages.html), id: 'html'
-            });
-          } else {
-            this.sourceData.push({
-              name: `${sampleData.routerPath}.component.ts`,
-              body: Prism.highlight(res._body, Prism.languages.ts), id: 'ts'
-            });
-          }
-        }
+        this.sourceData.push({
+          name: `${sampleData.routerPath}.component.ts`,
+          body: Prism.highlight(resultCollection[1], Prism.languages.ts), id: 'ts'
+        });
+        this.sourceData.push({
+          name: `${sampleData.routerPath}.component.html`,
+          body: Prism.highlight(this.getStringWithOutDescription(resultCollection[0], /(\'|\")description/g), Prism.languages.html), id: 'html'
+        });
       });
   }
 
@@ -114,6 +112,7 @@ export class MainContentComponent implements AfterViewInit {
   }
 
   onTabNext(): void {
+    this.togglePopup();
     const curRouterData: CurData = this.getCurRouterData();
     const curRouterIndex: number = curRouterData.curIndex;
     const sampleData: sampleInfo['samples'][0] = curRouterData.isLast ? data.samples[0] : data.samples[curRouterIndex + 1];
@@ -134,6 +133,7 @@ export class MainContentComponent implements AfterViewInit {
     }
   }
   onTabPrev(): void {
+    this.togglePopup();
     const curRouterData: CurData = this.getCurRouterData();
     const curRouterIndex: number = curRouterData.curIndex;
     const sampleData: sampleInfo['samples'][0] = curRouterData.isFirst ?
@@ -160,5 +160,19 @@ export class MainContentComponent implements AfterViewInit {
     curData.isFirst = curData.curIndex === 0 ? true : false;
     curData.isLast = curData.curIndex === (data.samples.length - 1) ? true : false;
     return curData;
+  }
+
+  togglePopup(): void {
+    this.enableOverlayChange.emit(true);
+    setTimeout(() => {
+      this.enableOverlayChange.emit(false);
+    });
+  }
+
+  resizeReportViewer(): void {
+    const reportViewerElement = document.querySelector('.e-reportviewer.e-js');
+    if (reportViewerElement) {
+      jQuery(reportViewerElement).trigger('resize');
+    }
   }
 }

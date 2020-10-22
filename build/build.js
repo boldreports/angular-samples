@@ -1,7 +1,9 @@
 const gulp = require('gulp');
-const shelljs = require('shelljs');
+const { exec } = require('shelljs');
 const argv = require('yargs').argv;
 
+const ngCli = "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng";
+
 gulp.task('build', ['generate-router'], function () {
-  shelljs.exec(`node_modules\\.bin\\ng build`);
+  exec(`${ngCli} build`);
 });

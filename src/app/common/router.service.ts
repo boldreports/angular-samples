@@ -7,8 +7,8 @@ export class RouterService {
     public previewUrl: BehaviorSubject<string> = new BehaviorSubject('');
     public navEnd: BehaviorSubject<string> = new BehaviorSubject('');
 
-    public getRouterData(path, basePathIndex = 1, routerPathIndex = 2) {
-        const routerData = { reportBasePath: '', reportRouterPath: '', spilttedUrl: [] };
+    public getRouterData(path, basePathIndex = 1, routerPathIndex = 2): RouterData {
+        const routerData: RouterData = { reportBasePath: '', reportRouterPath: '', spilttedUrl: [] };
         const modifiedUrl = path.indexOf('?') !== -1 ? path.substring(0, path.indexOf('?')) : path;
         const spilttedUrl = modifiedUrl.split('/');
         routerData.reportBasePath = spilttedUrl[basePathIndex];
@@ -16,5 +16,10 @@ export class RouterService {
         routerData.spilttedUrl = spilttedUrl;
         return routerData;
     }
+}
 
+interface RouterData {
+    reportBasePath: string;
+    reportRouterPath: string;
+    spilttedUrl: string[];
 }

@@ -37,14 +37,26 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "allowedCommonJsDependencies": [
+              "bootstrap",
+              "@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min",
+              "@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min",
+              "@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min",
+              "@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.min",
+              "codemirror/addon/hint/show-hint",
+              "codemirror/addon/hint/sql-hint",
+              "codemirror/mode/sql/sql",
+              "codemirror/mode/vb/vb"
+            ]
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "src/environments/environment.ts",
-                "with": "src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -54,11 +66,13 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [{
-                "type": "initial",
-                "maximumWarning": "10mb",
-                "maximumError": "12mb"
-              }]
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "12mb"
+                }
+              ]
             }
           }
         },

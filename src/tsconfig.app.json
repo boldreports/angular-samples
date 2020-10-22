@@ -11,5 +11,12 @@
     "test.ts",
     "**/*.spec.ts",
     "demos"
+  ],
+  "files": [
+    "./main.ts",
+    "./polyfills.ts"
+  ],
+  "include": [
+    "./**/*.d.ts"
   ]
 }

@@ -38,6 +38,14 @@ export class PreviewComponent implements OnInit {
             sample.routerPath === routerData.reportRouterPath && sample.basePath === routerData.reportBasePath)[0];
         }
         this.updateMetaData(sampleData, routerData.reportBasePath);
+      } else if (isReportDesigner) {
+        const rdlcType = url.indexOf('/report-designer/rdlc') !== -1 ? 'RDLC' : 'RDL';
+        sampleData = {
+          metaData: {
+            title: rdlcType + ' sample'
+          }
+        };
+        this.updateMetaData(sampleData, 'report-designer');
       }
       this.setReportsHeight();
     }));
@@ -56,12 +64,12 @@ export class PreviewComponent implements OnInit {
     let metaContent: string;
     switch (reportBasePath) {
       case 'report-designer':
-        metaContent = 'The HTML5 web report designer allows the end-users to arrange/customize the reports appearance in browsers.' +
+        metaContent = 'The Angular Bold Report Designer allows the end-users to arrange/customize the reports appearance in browsers.' +
           'It helps to edit the ' + title + ' for customer\'s application needs.';
         title = title + ' | Angular Report Designer';
         break;
       case 'report-viewer':
-        metaContent = 'The HTML5 web report viewer allows the end-users to visualize the ' + title + ' report in browsers.';
+        metaContent = 'The Angular Bold Report Viewer allows the end-users to visualize the ' + title + ' report in browsers.';
         title = title + ' | Preview | Angular Report Viewer';
         break;
       default:

@@ -13,7 +13,7 @@ window.addEventListener('beforeunload', () => {
     }
 });
 
-function destroyReportControls() {
+function destroyReportControls(): void {
     const reportViewerElement = document.querySelector('.e-reportviewer.e-js');
     if (reportViewerElement) {
         ($(reportViewerElement).data('boldReportViewer') as any)._ajaxCallMethod('ClearCache', '_clearCurrentServerCache', false);

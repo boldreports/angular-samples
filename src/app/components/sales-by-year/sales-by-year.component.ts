@@ -1,15 +1,15 @@
 /**
- * Product Catalog - This RDLC report demonstrates the list of products rendered in Bold Report Viewer.
+ * Sales By Year - This RDLC report demonstrates the Sales record rendered in Bold Report Viewer.
  */
 import { Component, ViewChild } from '@angular/core';
 import { Globals } from '../globals';
 import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
-  templateUrl: './product-catalog.component.html',
-  styleUrls: ['./product-catalog.component.css']
+  templateUrl: './sales-by-year.component.html',
+  styleUrls: ['./sales-by-year.component.css']
 })
-export class ProductCatalogComponent {
+export class SalesByYearComponent {
   @ViewChild('viewer') viewerInst;
   // Specifies the report Web API service URL. It is used to process the reports.
   public serviceUrl = Globals.SERVICE_URL;
@@ -20,12 +20,12 @@ export class ProductCatalogComponent {
   public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'product-catalog.rdlc';
+    this.reportPath = 'sales-by-year.rdlc';
   }
 
   public onReportLoaded(args): void {
     const reportNameWithoutExt = args.model.reportPath.split('.')[0];
     this.viewerInst.widget.model.dataSources = rdlcData[reportNameWithoutExt];
-  }
+}
 
 }
