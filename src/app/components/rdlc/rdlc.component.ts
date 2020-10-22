@@ -64,33 +64,48 @@ export class RDLCComponent implements AfterViewInit {
     }
   }
 
-  public onAjaxBeforeLoad(args) {
+  public onAjaxBeforeLoad(args): void {
     args.data = JSON.stringify({ reportType: 'RDLC' });
   }
 
-  public onReportOpened(args) {
+  public onReportOpened(args): void {
     this.isServerReport = args.isServerReport;
   }
 
-  public previewReport(args) {
+  public previewReport(args): void {
     if (this.isServerReport) {
       let reportPath = args.model.reportPath;
       reportPath = reportPath.indexOf('//') !== -1 ? reportPath.substring(2) : reportPath;
       const reportNameWithoutExt = reportPath.split('.rdlc')[0];
-      const datasource = rdlcData[reportNameWithoutExt];
+      if (reportNameWithoutExt !== 'load-large-data') {
+        const datasource = rdlcData[reportNameWithoutExt];
+        args.dataSets = datasource;
+      }
       args.cancelDataInputDialog = true;
-      args.dataSets = datasource;
     }
   }
 
   ngAfterViewInit(): void {
-    this.designerInst.widget.setModel({
-      reportType: 'RDLC',
-      previewReport: this.previewReport.bind(this),
-      previewOptions: {
-        exportItemClick: Globals.EXPORT_ITEM_CLICK
-      }
-    });
+    if (this.reportPath === 'load-large-data.rdlc') {
+      this.designerInst.widget.setModel({
+        reportType: 'RDLC',
+        previewReport: this.previewReport.bind(this),
+        previewOptions: {
+          exportItemClick: Globals.EXPORT_ITEM_CLICK,
+          toolbarSettings: {
+            items: ~ej.ReportViewer.ToolbarItems.Export & ~ej.ReportViewer.ToolbarItems.Print
+          }
+        }
+      });
+    } else {
+      this.designerInst.widget.setModel({
+        reportType: 'RDLC',
+        previewReport: this.previewReport.bind(this),
+        previewOptions: {
+          exportItemClick: Globals.EXPORT_ITEM_CLICK
+        }
+      });
+    }
     if (this.reportPath) {
       this.designerInst.widget.openReport(this.reportPath);
     }

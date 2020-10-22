@@ -46,7 +46,7 @@ export class DesignerComponent implements AfterViewInit {
     }];
   }
 
-  public onAjaxBeforeLoad(args) {
+  public onAjaxBeforeLoad(args): void {
     args.data = JSON.stringify({ reportType: 'RDL' });
   }
 
