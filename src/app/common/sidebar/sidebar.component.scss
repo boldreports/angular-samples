@@ -40,7 +40,7 @@
         height: 70px;
         width: 120px;
         margin: 8px;
-        background-image: url('src/assets/sidebar/landscape.png');
+        background-image: url('./../../../assets/sidebar/landscape.png');
         background-size: 100% 800%;
       }
 
@@ -49,13 +49,36 @@
         height: 120px;
         width: 90px;
         margin: 8px;
-        background-image: url('src/assets/sidebar/portrait.png');
-        background-size: 100% 1100%;
+        background-image: url('./../../../assets/sidebar/portrait.png');
+        background-size: 100% 1300%;
       }
 
       .ej-sb-toc-title {
         font-size: 12px;
         font-weight: 600;
+      }
+      .ej-status-label {
+        border-radius: 2px;
+        color: #fff;
+        font-size: 8px;
+        align-items: center;
+        padding: 4px 6px;
+        text-transform: capitalize;
+        font-weight: 600;
+        position: relative;
+        right: -48px;
+      }
+      .ej-status-label.ej-updated {
+        background-color: #fbaa33;
+      }
+      .ej-status-label.ej-new {
+        background-color: #29bc4f;
+      }
+      .ej-portrait {
+        top: -163px;
+      }
+      .ej-landscape{
+        top: -113px;
       }
     }
   }

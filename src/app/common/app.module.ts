@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './main.component';
 import { AppRouterModule } from './app.routing.module';
@@ -13,9 +13,6 @@ import '@boldreports/javascript-reporting-controls/Scripts/bold.report-designer.
 // data-visualization
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.chart.min';
-import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.circulargauge.min';
-import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.lineargauge.min';
-import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.map.min';
 
 // code-mirror
 import 'codemirror/lib/codemirror';
@@ -36,7 +33,7 @@ window[codemirror] = CodeMirror;
   imports: [
     AppRouterModule,
     BrowserModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [RouterService],
   exports: [RouterModule],

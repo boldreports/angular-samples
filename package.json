@@ -1,6 +1,6 @@
 {
   "name": "angular-samples",
-  "version": "2.2.28",
+  "version": "2.4.10",
   "scripts": {
     "build": "gulp build",
     "serve": "gulp serve",

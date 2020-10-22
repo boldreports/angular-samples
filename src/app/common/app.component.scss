@@ -25,6 +25,18 @@
   z-index: 1000005;
 }
 
+.ej-overlay {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000006 !important;
+}
+
+.e-reportviewer-waitingpopup {
+  z-index: 1000004 !important;
+}
+
 ej-header {
   display: block;
 }

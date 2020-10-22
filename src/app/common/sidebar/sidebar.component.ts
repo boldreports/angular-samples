@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as data from '../../components/samples.json';
 type sampleInfo = typeof data;
@@ -11,12 +11,13 @@ type sampleInfo = typeof data;
 export class SidebarComponent {
   samples: sampleInfo['samples'] = data.samples;
   selectedPath: string = undefined;
-  @ViewChild('toc') toc;
+  @ViewChild('toc', { static: true }) toc;
 
   constructor(private router: Router) { }
 
   public onHomeClick(): void {
-    this.router.navigate(['']);
+    const homePageUrl: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/home/' : '/';
+    location.href = location.origin + homePageUrl + 'angular.html';
   }
 
   public onSampleClick(sample: sampleInfo['samples'][0]): void {

@@ -16,10 +16,11 @@ type sampleInfo = typeof data;
 })
 export class AppComponent implements OnInit {
   tocSlideLeft = false;
+  enableOverlay = false;
   tocMobileSlideLeft = false;
   private subscriptions = new Subscription();
-  @ViewChild('body') body: MainContentComponent;
-  @ViewChild('sidebar') sidebar: SidebarComponent;
+  @ViewChild('body', { static: true }) body: MainContentComponent;
+  @ViewChild('sidebar', { static: true }) sidebar: SidebarComponent;
   constructor(private routerService: RouterService, private titleService: Title, private meta: Meta) { }
   ngOnInit(): void {
     let sampleData: sampleInfo['samples'][0];
