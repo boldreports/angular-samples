@@ -97,5 +97,35 @@ export const rdlcData = {
             { Assests: 'Equity', Asset_Type: 'Retained Earnings', Qtr1: '0', Qtr2: '0', Qtr3: '0', Qtr4: '0' }
         ],
         name: 'Liabilities'
+    }],
+    paystub: [{
+        value: [
+            {
+                Company_Number: 32,
+                Company_Name: 'Mountain Bikes',
+                Last_Name: 'Anne',
+                First_Name: 'Dodsworth',
+                Employment_Date: '2020-04-19',
+                Period_Start_Date: '2020-01-30',
+                Period_End_Date: '2020-07-02',
+                Monthly_Rate: '0.26',
+                Daily_Rate: '6.20',
+                Housing_Allowance: '3.84',
+                Car_Loan: '1.13',
+                Phil_Health: '7.47',
+                SSS: '4.96',
+                Pag_Ibig_Loan: '3.17',
+                BIR: '3.83',
+                Negative_A: '7.05',
+                Employee_Number: 47,
+                Payable_Date: '2020-07-15',
+                Position: 'VP Quality Control',
+                Regular_Worked_Hours: 24,
+                Regular_OT_Hours: 10,
+                Regular_Rest_Day_Worked_Hours: 24,
+                Regular_Rest_Day_OT_Hours: 65
+            }
+        ],
+        name: 'Paystub'
     }]
 };

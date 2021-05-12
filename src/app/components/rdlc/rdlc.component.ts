@@ -40,10 +40,10 @@ export class RDLCComponent implements AfterViewInit {
       displayName: '1D Barcode',
       category: 'Barcodes'
     }, {
-      name: 'qrbarcode',
+      name: 'matrixbarcode',
       className: 'EJQRBarcode',
       imageClass: 'customitem-qrbarcode',
-      displayName: 'QR Barcode',
+      displayName: '2D Barcode',
       category: 'Barcodes'
     }];
   }
