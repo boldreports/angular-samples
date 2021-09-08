@@ -10,6 +10,7 @@
   ],
   "otherPlatforms": {
     "JavaScript": "javascript/#/",
+    "React" : "react/#/",
     "ASP.NET Core": "aspnet-core/",
     "ASP.NET MVC": "aspnet-mvc/",
     "ASP.NET WebForms": "aspnet-web-forms/"
@@ -323,9 +324,23 @@
         "isLandscape": true,
         "index": 7
       },
-      "status": "New",
       "metaData": {
         "description": "This demos shows the Paystub report represents the payslip of a company in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "dynamic-chart-series",
+      "className": "DynamicChartSeriesComponent",
+      "sampleName": "Dynamic Chart Series",
+      "basePath": "report-viewer",
+      "directoryName": "dynamic-chart-series",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 8
+      },
+      "status": "New",
+      "metaData": {
+        "description": "This demos allows you to choose the chart series dynamically in Angular Bold Report Viewer."
       }
     }
   ]
