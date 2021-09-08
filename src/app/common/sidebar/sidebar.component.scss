@@ -33,7 +33,11 @@
 
       &:hover,
       &.toc-selected {
-        border-color: #1783FF;
+        border-color: #ff5f23;
+
+        .ej-sb-toc-title {
+          color: #ff5f23;
+        }
       }
 
       .ej-landscape-img {
@@ -42,7 +46,7 @@
         width: 120px;
         margin: 8px;
         background-image: url('./../../../assets/sidebar/landscape.png');
-        background-size: 100% 900%;
+        background-size: 100% 1000%;
       }
 
       .ej-portrait-img {
@@ -57,6 +61,7 @@
       .ej-sb-toc-title {
         font-size: 12px;
         font-weight: 600;
+        color: #2b3a5c;
       }
 
       .ej-status-label {
@@ -108,3 +113,4 @@
     }
   }
 }
+
