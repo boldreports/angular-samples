@@ -38,17 +38,17 @@
         padding: 0 12px;
         display: flex;
         align-items: center;
-        color: #2b3a5c;
+        color: #000000;
         border-bottom: 2px solid transparent;
 
         &:hover {
-          color: #2b3a5c;
+          color: #0278d7;
           text-decoration: none;
         }
 
         &.active {
-          color: #ff5f23;
-          border-color: #ff5f23;
+          color: #0278d7;
+          border-color: #0278d7;
         }
       }
     }
@@ -80,10 +80,6 @@
 
 
   #parentTab {
-    .ej-sb-icons{
-      color: #333;
-    }
-
     .ej-demo-icon {
       margin-bottom: -2px;
 

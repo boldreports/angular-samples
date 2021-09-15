@@ -10,12 +10,7 @@
         [style.background-position-y]="getVerticalPosition(sample)">
       </div>
       <div class="ej-sb-toc-title">{{sample.sampleName}}</div>
-      <span
-        *ngIf="(sample.status && (sample.status.toUpperCase() == 'UPDATED' || sample.status.toUpperCase() == 'NEW') ) ? true : false"
-        [ngClass]="[sample.imageDetails.isLandscape ? 'ej-landscape' : 'ej-portrait']"
-        class="ej-status-label ej-{{sample.status.toLowerCase()}}">
-        {{sample.status}}
-      </span>
+      <span *ngIf="(sample.status && (sample.status.toUpperCase() == 'UPDATED' || sample.status.toUpperCase() == 'NEW') ) ? true : false" [ngClass]="[sample.imageDetails.isLandscape ? 'ej-landscape' : 'ej-portrait']" class="ej-status-label ej-{{sample.status.toLowerCase()}}">{{sample.status.toUpperCase()}}</span>
     </div>
   </div>
 </div>

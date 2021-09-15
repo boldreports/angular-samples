@@ -74,10 +74,6 @@ var EJQRBarcode = (function () {
             args[_i - 3] = arguments[_i];
         }
         switch (name) {
-            case 'BarcodeType':
-                newValue = this.setBarcodeType(newValue);
-                this.updatePropertyVal(name, newValue);
-                break;
             case 'BarcodeValue':
                 this.updatePropertyVal(name, newValue);
                 break;
@@ -109,34 +105,13 @@ var EJQRBarcode = (function () {
         var propertyItems = {
             'HeaderText': this.customJSON.Name,
             'PropertyType': 'qrbarcode',
-            'SubType': 'qrbarcode',
             'IsEditHeader': true,
+            'SubType': 'qrbarcode',
             'Items': [{
                     'CategoryId': 'basicsettings',
                     'DisplayName': this.getLocale('categoryBasicSettings'),
                     'IsExpand': true,
                     'Items': [
-                        {
-                            'ItemId': 'barcodetype',
-                            'Name': 'BarcodeType',
-                            'DisplayName': this.getLocale('BarcodeType'),
-                            'Value': this.getBarcodeType(this.getPropertyVal('BarcodeType')),
-                            'ItemType': 'DropDown',
-                            'EnableExpression': false,
-                            'ValueList': ['QR Barcode', 'Data Matrix', 'PDF417'],
-                            'DependentItems': [
-                                {
-                                    EnableItems: ['basicsettings_displaybarcodetext'],
-                                    DisableItems: [],
-                                    Value: ['QR Barcode']
-                                },
-                                {
-                                    EnableItems: [],
-                                    DisableItems: ['basicsettings_displaybarcodetext'],
-                                    Value: ['Data Matrix', 'PDF417']
-                                }
-                            ]
-                        },
                         {
                             'ItemId': 'barcodevalue',
                             'Name': 'BarcodeValue',
@@ -151,8 +126,7 @@ var EJQRBarcode = (function () {
                             'DisplayName': this.getLocale('displayText'),
                             'Value': this.isDisplayText() ? true : false,
                             'ItemType': 'Bool',
-                            'EnableExpression': false,
-                            'ParentId': 'basicsettings_barcodetype'
+                            'EnableExpression': false
                         }
                     ]
                 }
@@ -169,22 +143,6 @@ var EJQRBarcode = (function () {
             }
         }
         return null;
-    };
-    EJQRBarcode.prototype.getBarcodeType = function (type) {
-        switch (type.toLowerCase()) {
-            case 'qrbarcode': return 'QR Barcode';
-            case 'datamatrix': return 'Data Matrix';
-            case 'pdf417': return 'PDF417';
-        }
-        return type;
-    };
-    EJQRBarcode.prototype.setBarcodeType = function (type) {
-        switch (type.toLowerCase()) {
-            case 'qr barcode': return 'QRBarcode';
-            case 'data matrix': return 'DataMatrix';
-            case 'pdf417': return 'PDF417';
-        }
-        return type;
     };
     EJQRBarcode.prototype.setPropertyVal = function (name, val) {
         if (this.customJSON.CustomProperties === null) {
@@ -205,7 +163,7 @@ var EJQRBarcode = (function () {
         if (this.customJSON === null) {
             this.customJSON = new ej.ReportModel.CustomReportItem().getModel();
             this.setPropertyVal('BarcodeValue', '00000');
-            this.setPropertyVal('BarcodeType', 'QRBarcode');
+            this.setPropertyVal('BarcodeType', 'qrbarcode');
             this.setPropertyVal('DisplayBarcodeText', 'true');
         }
         return this.customJSON;
@@ -229,11 +187,6 @@ var EJQRBarcode = (function () {
             barcodeLocale = defaultLocale;
         }
         switch (text.toLowerCase()) {
-            case 'barcodetype':
-                if (barcodeLocale && barcodeLocale.barcodeType) {
-                    return barcodeLocale.barcodeType;
-                }
-                return defaultLocale.barcodeType;
             case 'barcodevalue':
                 if (barcodeLocale && barcodeLocale.barcodeValue) {
                     return barcodeLocale.barcodeValue;
@@ -280,7 +233,6 @@ var EJQRBarcode = (function () {
 export { EJQRBarcode };
 EJQRBarcode.Locale = {};
 EJQRBarcode.Locale['en-US'] = {
-    barcodeType: 'Symbology Type',
     barcodeValue: 'Text',
     textVisibility: 'Text Visibility',
     categoryBasicSettings: 'Basic Settings',
@@ -291,7 +243,6 @@ EJQRBarcode.Locale['en-US'] = {
     }
 };
 EJQRBarcode.Locale['fr-FR'] = {
-    barcodeType: 'Type de symbologie',
     barcodeValue: 'Texte',
     textVisibility: 'Visibilite du texte',
     categoryBasicSettings: 'Paramètres de base',

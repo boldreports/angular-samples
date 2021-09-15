@@ -28,7 +28,7 @@
 
       &::before {
         content: "\e914";
-        color:#333;
+        color: #3C78EF;
       }
     }
 
@@ -36,14 +36,13 @@
       font-size: 15px;
       opacity: 0.87;
       font-weight: 600;
-      color: #2b3a5c;
     }
 
     .dropdown {
 
       button.btn-secondary {
         background: transparent;
-        color: #2b3a5c;
+        color: #000000;
         opacity: .87;
         border: none;
         box-shadow: none;
@@ -54,7 +53,7 @@
         &:active,
         &:active:focus {
           background: transparent;
-          color: #2b3a5c;
+          color: #000000;
           border: none;
           box-shadow: none;
 
@@ -68,14 +67,14 @@
 
           &.active {
             background: transparent;
-            color: #ff5f23;
+            color: #3C78EF;
             cursor: default;
             pointer-events: none;
           }
 
           &:active {
             background: transparent;
-            color: #2b3a5c;
+            color: #000000;
           }
         }
       }
@@ -119,12 +118,12 @@
         text-decoration: none;
         padding: 5.5px 13px;
         cursor: pointer;
-        background-color: #ff5f23;
+        background-color: #3C78EF;
         color: #ffffff;
         border-radius: 2px;
   
         &:hover {
-          background: #ff4801;
+          background: #006CE6;
         }
       }
   

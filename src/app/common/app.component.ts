@@ -51,13 +51,11 @@ export class AppComponent implements OnInit {
       title = sampleData.sampleName;
     }
     if (title.length <= 20) {
-      title = `${title} | Angular Report Viewer | Bold Reports`;
+      this.titleService.setTitle(`${title} | Angular Report Viewer | Bold Reports`);
     } else {
-      title = `${title} | Angular Report Viewer`;
+      this.titleService.setTitle(`${title} | Angular Report Viewer`);
     }
-    this.titleService.setTitle(title);
-    this.meta.updateTag({ property: 'og:title', content: title });
-    this.meta.updateTag({ name: 'description', property: 'og:description', content: sampleData.metaData.description });
+    this.meta.updateTag({ name: 'description', content: sampleData.metaData.description });
   }
 
   @HostListener('window:resize', ['$event'])
