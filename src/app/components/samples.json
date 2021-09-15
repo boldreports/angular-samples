@@ -1,0 +1,347 @@
+{
+  "customNames": [
+    "app",
+    "barcode",
+    "northwind",
+    "qrbarcode",
+    "rdlc",
+    "rdlcData",
+    "paystub"
+  ],
+  "otherPlatforms": {
+    "JavaScript": "javascript/#/",
+    "React" : "react/#/",
+    "ASP.NET Core": "aspnet-core/",
+    "ASP.NET MVC": "aspnet-mvc/",
+    "ASP.NET WebForms": "aspnet-web-forms/"
+  },
+  "platform": "Angular",
+  "samples": [
+    {
+      "routerPath": "product-line-sales",
+      "className": "ProductLineSalesComponent",
+      "sampleName": "Product Line Sales",
+      "basePath": "report-viewer",
+      "directoryName": "product-line-sales",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 7
+      },
+      "status" : "",
+      "metaData": {
+        "description": "The Product Line Sales report displays sales details organized by category and subcategory of products using cascading parameters in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "company-sales",
+      "className": "CompanySalesComponent",
+      "sampleName": "Company Sales",
+      "basePath": "report-viewer",
+      "directoryName": "company-sales",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 1
+      },
+      "status" : "",
+      "metaData": {
+        "description": "Company Sales report shows product sales against year in matrix format using SSRS Tablix report item in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "mail-merge",
+      "className": "MailMergeComponent",
+      "sampleName": "Mail Merge",
+      "basePath": "report-viewer",
+      "directoryName": "mail-merge",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 3
+      },
+      "metaData": {
+        "description": "Mail merge shows to envelope the employee details using SRSS List report item in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "sales-report",
+      "className": "SalesReportComponent",
+      "sampleName": "Sales Report",
+      "basePath": "report-viewer",
+      "directoryName": "sales-report",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 9
+      },
+      "metaData": {
+        "description": "This demo shows the sales order details using RDL basic table with currency formatting in price textbox fields in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "territory-sales",
+      "className": "TerritorySalesComponent",
+      "sampleName": "Territory Sales",
+      "basePath": "report-viewer",
+      "directoryName": "territory-sales",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 5
+      },
+      "metaData": {
+        "description": "This demo shows the sales territory and its total sales using drilldown with  SSRS matrix report in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "conditional-row-formatting",
+      "className": "ConditionalRowFormattingComponent",
+      "sampleName": "Conditional Row Formatting",
+      "basePath": "report-viewer",
+      "directoryName": "conditional-row-formatting",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 0
+      },
+      "metaData": {
+        "description": "This demo shows the customer details in SSRS table report item and details are highlighted based on conditional row formatting in Angular Bold Report Viewer. "
+      }
+    },
+    {
+      "routerPath": "barcode",
+      "className": "BarcodeComponent",
+      "sampleName": "Barcode",
+      "basePath": "report-viewer",
+      "directoryName": "barcode",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 0
+      },
+      "metaData": {
+        "description": "The barcode demo shows the available 1D, 2D and QR barcode types rendered in Angular Bold Report Viewer through RDL Custom Report Item."
+      }
+    },
+    {
+      "routerPath": "customer-support-analysis",
+      "className": "CustomerSupportAnalysisComponent",
+      "sampleName": "Customer Support Analysis",
+      "basePath": "report-viewer",
+      "directoryName": "customer-support-analysis",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 1
+      },
+      "metaData": {
+        "description": "This demo shows customer support analysis with SSRS drill through to explore details in another report based on user click action in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "tickets-sales-analysis",
+      "className": "TicketsSalesComponent",
+      "sampleName": "Tickets Sales Analysis",
+      "basePath": "report-viewer",
+      "directoryName": "tickets-sales-analysis",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 10
+      },
+      "metaData": {
+        "description": "This RDL template shows the ticket sales analysis details of movie tickets using SSRS data region report items like chart and table in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "website-visitor-analysis",
+      "className": "WebsiteVisitorAnalysisComponent",
+      "sampleName": "Website Visitor Analysis",
+      "basePath": "report-viewer",
+      "directoryName": "website-visitor-analysis",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 11
+      },
+      "metaData": {
+        "description": "This RDL report template shows website visitor analysis details using SSRS column chart, pie chart, line chart and table data item in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "patient-experience-analysis",
+      "className": "PatientExperienceAnalysisComponent",
+      "sampleName": "Patient Experience Analysis",
+      "basePath": "report-viewer",
+      "directoryName": "patient-experience-analysis",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 3
+      },
+      "metaData": {
+        "description": "This demo shows the patient analysis report of a health care using SSRS doughnut chart, line chart and basic table data regions in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "personal-expense-analysis",
+      "className": "PersonalExpenseAnalysisComponent",
+      "sampleName": "Personal Expense Analysis",
+      "basePath": "report-viewer",
+      "directoryName": "personal-expense-analysis",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 5
+      },
+      "metaData": {
+        "description": "This report shows personal expense analysis details using SSRS image, text box, line, rectangle, chart and table report items in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "northwind-products-suppliers-report",
+      "className": "NorthwindProductsSuppliersReportComponent",
+      "sampleName": "Northwind Products Suppliers Report",
+      "basePath": "report-viewer",
+      "directoryName": "northwind-products-suppliers-report",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 4
+      },
+      "metaData": {
+        "description": "This demo shows the product and suppliers details using SSRS pyramid, bar, column charts and table widget in Angular Bold Report Viewer.",
+        "title": "Northwind Products Report"
+      }
+    },
+    {
+      "routerPath": "sales-order-detail",
+      "className": "SalesOrderDetailComponent",
+      "sampleName": "Sales Order Detail",
+      "basePath": "report-viewer",
+      "directoryName": "sales-order-detail",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 4
+      },
+      "metaData": {
+        "description": "This report template shows the sales order details based on order number using the RDL report parameters, rectangle, line and table in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "invoice",
+      "className": "InvoiceComponent",
+      "sampleName": "Invoice",
+      "basePath": "report-viewer",
+      "directoryName": "invoice",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 2
+      },
+      "metaData": {
+        "description": "This demo shows the sales invoice details and the usage of report viewer parameters, expressions, and calculated fields using SSRS Tablix report item in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "product-catalog",
+      "className": "ProductCatalogComponent",
+      "sampleName": "Product Catalog",
+      "basePath": "report-viewer",
+      "directoryName": "product-catalog",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 6
+      },
+      "metaData": {
+        "description": "This demos allows you to view the product catalog RDLC that exist on the local file system with JSON array and custom business object data collection in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "sales-by-year",
+      "className": "SalesByYearComponent",
+      "sampleName": "Sales By Year",
+      "basePath": "report-viewer",
+      "directoryName": "sales-by-year",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 8
+      },
+      "metaData": {
+        "description": "This demos allows you to view the sales by year RDLC that exist on the local file system with JSON array and custom business object data collection in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "grouping-aggregate",
+      "className": "GroupingAggregateComponent",
+      "sampleName": "Grouping Aggregate",
+      "basePath": "report-viewer",
+      "directoryName": "grouping-aggregate",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 2
+      },
+      "metaData": {
+        "description": "This demo shows product sales total based on  quarterly wise RDL tablix grouping in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "product-details",
+      "className": "ProductDetailsComponent",
+      "sampleName": "Product Details",
+      "basePath": "report-viewer",
+      "directoryName": "product-details",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 6
+      },
+      "metaData": {
+        "description": "This demo shows the product details using the SSRS table report item with barcodes rendered in Angular Bold Report Viewer through RDL Custom Report Item."
+      }
+    },
+    {
+      "routerPath": "load-large-data",
+      "className": "LoadLargeDataComponent",
+      "sampleName": "Load Large Data",
+      "basePath": "report-viewer",
+      "directoryName": "load-large-data",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 9
+      },
+      "metaData": {
+        "description": "This demo shows the sales order details using RDLC basic table with currency formatting in price textbox fields in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "consolidated-balance-sheet",
+      "className": "ConsolidatedBalanceSheetComponent",
+      "sampleName": "Consolidated Balance Sheet",
+      "basePath": "report-viewer",
+      "directoryName": "consolidated-balance-sheet",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 12
+      },
+      "metaData": {
+        "description": "This demos allows shows the consolidated balance sheet RDLC report represents the assets and liabilities of a company in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "paystub",
+      "className": "PaystubComponent",
+      "sampleName": "Paystub",
+      "basePath": "report-viewer",
+      "directoryName": "paystub",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 7
+      },
+      "metaData": {
+        "description": "This demos shows the Paystub report represents the payslip of a company in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "dynamic-chart-series",
+      "className": "DynamicChartSeriesComponent",
+      "sampleName": "Dynamic Chart Series",
+      "basePath": "report-viewer",
+      "directoryName": "dynamic-chart-series",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 8
+      },
+      "status": "New",
+      "metaData": {
+        "description": "This demos allows you to choose the chart series dynamically in Angular Bold Report Viewer."
+      }
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+.ej-main-parent-content {
+  position: absolute;
+  left: 0;
+  top: 48px;
+  bottom: 0;
+  right: 0;
+  transition: left 400ms ease;
+}
+
+.ej-main-child-content {
+  position: absolute;
+  left: 170px;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  transition: left 400ms ease;
+  overflow: hidden;
+}
+
+.mobile-overlay{
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000005;
+}
+
+.ej-overlay {
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000006 !important;
+}
+
+.e-reportviewer-waitingpopup {
+  z-index: 1000004 !important;
+}
+
+ej-header {
+  display: block;
+}
+
+ej-sidebar {
+  position: absolute;
+  background-color: #FFFFFF;
+  width: 170px;
+  display: block;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  overflow-y: auto;
+  transition: left 400ms ease;
+}
+
+.ej-toc-slide-left {
+  left: -170px;
+}
+
+@media only screen and (max-width: 550px) {
+  ej-sidebar {
+    position: fixed;
+    z-index: 1000005;
+    left: -170px;
+    background-color: #f8f8f8;
+
+    &.ej-toc-mobile-slide-left {
+      left: 0;
+    }
+  }
+
+  .ej-main-child-content {
+    left: 0;
+  }
+
+}
+
+#description a{
+  color: #ff5f23 
+}
