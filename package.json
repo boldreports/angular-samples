@@ -1,10 +1,10 @@
 {
-  "name": "angular-samples",
-  "version": "3.2.22",
+  "name": "@boldreports/angular-samples",
+  "version": "0.0.1",
   "scripts": {
     "build": "gulp build",
     "serve": "gulp serve",
-	"postinstall": "gulp copy"
+    "postinstall": "gulp copy"
   },
   "dependencies": {
     "@angular/animations": "10.1.4",
@@ -21,10 +21,11 @@
     "bootstrap": "4.3.1",
     "codemirror": "5.45.0",
     "core-js": "2.5.4",
-    "jquery": "3.4.1",
+    "gulp4-run-sequence": "^1.0.1",
+    "jquery": "3.6.0",
     "prismjs": "1.15.0",
-	"rxjs": "6.6.0",
-	"shelljs": "0.8.4",
+    "rxjs": "6.6.0",
+    "shelljs": "0.8.4",
     "tslib": "2.0.0",
     "zone.js": "0.10.2"
   },
@@ -38,7 +39,7 @@
     "@types/jquery": "3.3.29",
     "@types/node": "8.9.4",
     "codelyzer": "6.0.0",
-    "gulp": "3.9.1",
+    "gulp": "^4.0.2",
     "gulp-gzip": "1.4.2",
     "gulp-s3-upload": "1.7.3",
     "jasmine-core": "3.6.0",

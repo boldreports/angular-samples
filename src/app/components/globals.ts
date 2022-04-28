@@ -1,6 +1,6 @@
 export const Globals = {
-    SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportViewerWebApi',
-    DESIGNER_SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportDesignerWebApi',
+    SERVICE_URL: '/demos/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: '/demos/services/api/ReportDesignerWebApi',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
         customGroups: [{
@@ -26,7 +26,8 @@ export const Globals = {
     EDIT_REPORT: (args) => {
         if (args.value === 'edit-report') {
             const path = location.href.split('#');
-            const reportPath = args.model.reportPath;
+            const reportName = 'external-parameter-report';
+            const reportPath = location.href.lastIndexOf('external-parameter-report') !== -1 ? reportName : args.model.reportPath;
             const ReportDesignerPath = reportPath.indexOf('.rdlc') !== -1 ? 'report-designer/rdlc' : 'report-designer';
             window.open(`${path[0]}#/${ReportDesignerPath}?report-name=${reportPath}`,
                 path[1].indexOf('/preview') === -1 ? '_blank' : '_self');

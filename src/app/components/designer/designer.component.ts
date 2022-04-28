@@ -74,7 +74,7 @@ export class DesignerComponent implements AfterViewInit {
       }
     });
     if (this.reportPath) {
-      this.designerInst.widget.openReport(this.reportPath);
+      this.designerInst.widget.openReport(this.reportPath.indexOf("external-parameter-report") !== -1 ? "product-line-sales.rdl" : this.reportPath);
     }
   }
 }
