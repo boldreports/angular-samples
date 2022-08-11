@@ -11,11 +11,21 @@
   "otherPlatforms": {
     "JavaScript": "javascript/#/",
     "React" : "react/#/",
+    "Blazor":  "blazor/",
     "ASP.NET Core": "aspnet-core/",
     "ASP.NET MVC": "aspnet-mvc/",
     "ASP.NET WebForms": "aspnet-web-forms/"
   },
   "platform": "Angular",
+  "banner": {
+    "text": "Start embedding powerful business intelligence reporting inside your modern web apps today",
+    "features" : [
+      "User-friendly Report Server",
+      "Intuitive drag-and-drop widgets",
+      "Hassle-free licensing"
+    ],
+    "freeTrialUrl": "https://www.boldreports.com/pricing"
+  },
   "samples": [
     {
       "routerPath": "product-line-sales",
@@ -340,6 +350,77 @@
       },
       "metaData": {
         "description": "This demos allows you to choose the chart series dynamically in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "data-bar",
+      "className": "DataBar",
+      "sampleName": "Data Bar",
+      "basePath": "report-viewer",
+      "directoryName": "data-bar",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 9
+      },
+      "metaData": {
+        "description": "This demo represents company sales against year in table format with data bar report item in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "spark-line",
+      "className": "SparkLine",
+      "sampleName": "Spark Line",
+      "basePath": "report-viewer",
+      "directoryName": "spark-line",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 10
+      },
+      "metaData": {
+        "description": "This demo shows the company sales data with sparkline report item to represents the sales trend in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "dynamic-columns",
+      "className": "DynamicColumnsComponent",
+      "sampleName": "Dynamic Columns",
+      "basePath": "report-viewer",
+      "directoryName": "dynamic-columns",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 13
+      },
+      "metaData": {
+        "description": "This demos allows you to choose the column of the table dynamically in Angular  Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "external-parameter-report",
+      "className": "ExternalParameterReportComponent",
+      "sampleName": "External Parameter Report",
+      "basePath": "report-viewer",
+      "directoryName": "external-parameter-report",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 7
+      },
+      "metaData": {
+        "description": "The Product Line Sales report displays sales details organized by category and subcategory of products using external cascading parameters in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "parameter-customization",
+      "className": "ParameterCustomizationComponent",
+      "sampleName": "Parameter Customization",
+      "basePath": "report-viewer",
+      "directoryName": "parameter-customization",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 7
+      },
+      "status": "New",
+      "metaData": {
+        "description": "The Product Line Sales report displays sales details organized by category and subcategory of products using cascading parameters and date time picker non cascading parameters in Angular Bold Report Viewer."
       }
     }
   ]

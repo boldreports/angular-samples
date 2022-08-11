@@ -1,6 +1,6 @@
 {
   "name": "angular-samples",
-  "version": "3.2.22",
+  "version": "4.2.52",
   "scripts": {
     "build": "gulp build",
     "serve": "gulp serve",
@@ -38,7 +38,7 @@
     "@types/jquery": "3.3.29",
     "@types/node": "8.9.4",
     "codelyzer": "6.0.0",
-    "gulp": "3.9.1",
+    "gulp": "^4.0.2",
     "gulp-gzip": "1.4.2",
     "gulp-s3-upload": "1.7.3",
     "jasmine-core": "3.6.0",

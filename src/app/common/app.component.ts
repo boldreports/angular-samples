@@ -39,9 +39,11 @@ export class AppComponent implements OnInit {
       this.body.loadSourceCode(sampleData);
       this.updateMetaData(sampleData);
     }));
+    let bannerData = data.banner;
     this.subscriptions.add(this.routerService.navEnd.subscribe(() => {
       this.body.updateSampleDetails(sampleData);
-      this.setReportsHeight();
+      this.body.updateBannerDetails(bannerData);
+      this.setReportsHeight(sampleData);
     }));
   }
 
@@ -62,7 +64,20 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.setReportsHeight();
+    let sampleData: sampleInfo['samples'][0];
+    this.subscriptions.add(this.routerService.sampleUrl.subscribe((url) => {
+      if (url === '/') {
+        sampleData = data.samples[0];
+      } else {
+        const routerData = this.routerService.getRouterData(url);
+        sampleData = data.samples.filter((sample) =>
+          sample.routerPath === routerData.reportRouterPath && sample.basePath === routerData.reportBasePath)[0];
+      }
+      if (!sampleData) {
+        sampleData = data.samples[0];
+      }
+    }));
+    this.setReportsHeight(sampleData);
     this.body.updateTab();
     this.updateOverlay();
   }
@@ -73,7 +88,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private setReportsHeight(): void {
+  private setReportsHeight(sampleData: sampleInfo['samples'][0]): void {
     let style: HTMLElement = document.getElementById('reports-style');
     if (!style) {
       style = document.createElement('style');
@@ -81,10 +96,32 @@ export class AppComponent implements OnInit {
       document.body.appendChild(style);
     }
     style.textContent = `ej-sample{
-      display:block;
+      display: flex;
       overflow: hidden;
-      height: ${window.innerHeight -
-      (this.body.tabContent.nativeElement.getBoundingClientRect().top - document.body.getBoundingClientRect().top)}px
+      min-height: 600px;
+    }
+
+    #${sampleData.directoryName}_viewerContainer{
+      overflow-y: hidden;
+      min-height: 600px;
+      height: auto !important;
+    }
+
+    #${sampleData.directoryName}_loadingIndicator_WaitingPopup {
+      min-height: 600px !important;
+    }
+
+    #load-large-data_loadingIndicator_WaitingPopup .e-text, .e-image {
+      top: 230px !important;
+    }
+
+    #${sampleData.directoryName}{
+      height: auto !important;
+      width: 100% !important;
+    }
+
+    #external-parameter-report{
+      height: auto !important;
     }`;
   }
 
