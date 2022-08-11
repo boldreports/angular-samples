@@ -1,14 +1,14 @@
 /**
- * Product Line Sales - This sample demonstrates the product sales details information based on category and sub category of products report parameters.
+ * Data Bar - This sample demonstrates the Data Bar.
  */
 import { Component } from '@angular/core';
 import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
-  templateUrl: './product-line-sales.component.html',
-  styleUrls: ['./product-line-sales.component.css']
+  templateUrl: './data-bar.component.html',
+  styleUrls: ['./data-bar.component.css']
 })
-export class ProductLineSalesComponent {
+export class DataBar {
   // Specifies the report Web API service URL. It is used to process the reports.
   public serviceUrl = Globals.SERVICE_URL;
   // Specifies the path of the RDL report file
@@ -18,6 +18,6 @@ export class ProductLineSalesComponent {
   public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
 
   constructor() {
-    this.reportPath = 'product-line-sales.rdl';
+    this.reportPath = 'data-bar.rdl';
   }
 }

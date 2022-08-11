@@ -26,7 +26,8 @@ export const Globals = {
     EDIT_REPORT: (args) => {
         if (args.value === 'edit-report') {
             const path = location.href.split('#');
-            const reportPath = args.model.reportPath;
+            const reportPath = location.href.lastIndexOf('external-parameter-report') !== -1 ? 'external-parameter-report' :
+                location.href.lastIndexOf('parameter-customization') !== -1 ? 'parameter-customization' : args.model.reportPath;
             const ReportDesignerPath = reportPath.indexOf('.rdlc') !== -1 ? 'report-designer/rdlc' : 'report-designer';
             window.open(`${path[0]}#/${ReportDesignerPath}?report-name=${reportPath}`,
                 path[1].indexOf('/preview') === -1 ? '_blank' : '_self');

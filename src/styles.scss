@@ -4,11 +4,14 @@
 // Reports
 @import './../node_modules/@boldreports/javascript-reporting-controls/Content/material/bold.reports.all.min.css';
 @import './../node_modules/@boldreports/javascript-reporting-controls/Content/material/bold.reportdesigner.min.css';
-@import './app/components/extensions/report-item-extensions/barcode.css';
+@import './app/components/extensions/report-item-extensions/barcode.reportitem.css';
 
 // code-mirror
 @import './../node_modules/codemirror/lib/codemirror.css';
 @import './../node_modules/codemirror/addon/hint/show-hint.css';
+
+//ej2
+@import './ej2-buttons.min.css';
 
 body {
   color: #2b3a5c;
@@ -19,6 +22,19 @@ body {
 
 :focus {
   outline: none;
+}
+
+#ejcheckall.e-chkbox-wrap .e-text {
+  vertical-align: middle;
+  font-size: 14px;
+  padding-left: 24px;
+}
+
+#checkall_wrap{
+  height: 35px;
+  padding: 15px 0 15px 18px;
+  padding-top: 5px;
+  border-bottom: 1px solid #c8c8c8;
 }
 
 @font-face {
@@ -120,4 +136,22 @@ bold-reportviewer {
 
 #description a{
   color: #ff5f23;
+}
+
+#parameter-customization_param_block_table .switchstyle {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#parameter-customization_param_block_table .e-reportviewer-viewerblockcellcontent {
+  padding-right: 10px;
+}
+
+#parameter-customization_param_block_table .e-chkbox-wrap {
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+#parameter-customization_param_block_table .e-reportviewer-label {
+  padding-top: 5px;
 }

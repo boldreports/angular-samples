@@ -28,7 +28,7 @@
 
       &::before {
         content: "\e914";
-        color:#333;
+        color: #333;
       }
     }
 
@@ -97,7 +97,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    .ej-sb-divider{
+    .ej-sb-divider {
       border-left: 1px solid rgb(196, 196, 196);
       height: 32px;
     }
@@ -106,28 +106,47 @@
       font-size: 20px;
       cursor: pointer;
       text-decoration: none;
-      margin: 0 20px 0px 10px;
+      margin: 0 10px 0px 10px;
       color: #333;
       opacity: .87;
 
       &.ej-sb-button {
-        height: 32px;
-        font-size: 14px;
+        height: 40px;
+        font-size: 16px;
         font-weight: 500;
         opacity: 1;
-        margin-left: 20px;
         text-decoration: none;
-        padding: 5.5px 13px;
         cursor: pointer;
-        background-color: #ff5f23;
-        color: #ffffff;
-        border-radius: 2px;
-  
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      &.nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        width: 200px;
+        border-radius: 5px;
+
+      }
+
+      &.bold-schedule-demo {
+        border-color: #ff4800;
+        border-style: solid;
+        border-width: 1px;
+        background-color: #ffffff;
+        color: #ff4800 !important;
+
         &:hover {
-          background: #ff4801;
+          background-color: #ff4800;
+          color: #ffffff !important;
         }
       }
-  
+
+      &.try-it-free {
+        background-color: #ff4800;
+        color: #ffffff !important;
+      }
+
     }
 
     .sb-icon-product:before {
@@ -142,6 +161,7 @@
       content: '\e704';
     }
   }
+
   @media only screen and (max-width: 850px) {
     .ej-sb-right-side {
       display: none;
