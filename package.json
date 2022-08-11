@@ -21,6 +21,7 @@
     "bootstrap": "4.3.1",
     "codemirror": "5.45.0",
     "core-js": "2.5.4",
+    "gulp4-run-sequence": "^1.0.1",
     "jquery": "3.4.1",
     "prismjs": "1.15.0",
 	"rxjs": "6.6.0",
