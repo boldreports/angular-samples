@@ -9,9 +9,10 @@ const scripts = {
 const srcDir = 'node_modules/@boldreports/javascript-reporting-controls/Scripts/';
 const destDir = 'src/scripts/';
 
-gulp.task('copy', function () {
+gulp.task('copy', function (done) {
     copyFiles(scripts.common, destDir + 'common');
     copyFiles(scripts.control, destDir + 'data-visualization');
+    done();
 });
 
 function copyFiles(fileArray, dest) {
