@@ -37,7 +37,7 @@ let routes = [];
 let childRoutes = [];
 let previewChildRoutes = [];
 
-gulp.task('generate-router', () => {
+gulp.task('generate-router', (done) => {
   let samples = JSON.parse(fs.readFileSync('./src/app/components/samples.json', 'utf8')).samples;
   let defaultSampleData = samples[0];
   let initilaReportRouterPath=  defaultSampleData.routerPath ? defaultSampleData.basePath + '/' + defaultSampleData.routerPath : defaultSampleData.basePath;
@@ -79,4 +79,5 @@ gulp.task('generate-router', () => {
 ];`;
   let Content = importContent + '\n\r' + componentContent + '\n\r' + routerContent + '\n\r' + moduleTemplate;
   fs.writeFileSync('./src/app/common/app.routing.module.ts', Content, 'utf8');
+  done();
 });
