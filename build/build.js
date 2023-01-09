@@ -5,7 +5,9 @@ const argv = require('yargs').argv;
 
 const ngCli = "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng";
 
-gulp.task('build', function () {
-  runSequence('generate-router');
-  exec(`${ngCli} build`);
+gulp.task('build', (done) => {
+  runSequence('generate-router', () => {
+    exec(`${ngCli} build`);
+    done();
+  });
 });
