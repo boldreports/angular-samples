@@ -21,12 +21,13 @@
     "bootstrap": "4.3.1",
     "codemirror": "5.45.0",
     "core-js": "2.5.4",
-    "jquery": "3.4.1",
+    "gulp4-run-sequence": "1.0.1",
+    "jquery": "3.6.0",
     "prismjs": "1.15.0",
     "rxjs": "6.6.0",
     "shelljs": "0.8.4",
     "tslib": "2.0.0",
-    "zone.js": "0.10.3"
+    "zone.js": "0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.1001.4",
@@ -39,7 +40,6 @@
     "@types/node": "8.9.4",
     "codelyzer": "6.0.0",
     "gulp": "4.0.2",
-    "gulp4-run-sequence": "^1.0.1",
     "gulp-gzip": "1.4.2",
     "gulp-s3-upload": "1.7.3",
     "jasmine-core": "3.6.0",
