@@ -15,6 +15,7 @@ import { RouterService } from '../router.service';
 export class PreviewComponent implements OnInit {
   private subscriptions = new Subscription();
   public homePageUrl = '/';
+  public productDetailURL = '';
   constructor(private routerService: RouterService, private router: Router, private titleService: Title, private meta: Meta) { }
   ngOnInit(): void {
     const baseUrl: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/' : '/demos/';
@@ -67,10 +68,12 @@ export class PreviewComponent implements OnInit {
         metaContent = 'The Angular Bold Report Designer allows the end-users to arrange/customize the reports appearance in browsers.' +
           'It helps to edit the ' + title + ' for customer\'s application needs.';
         title = title + ' | Angular Report Designer';
+        this.productDetailURL = 'https://www.boldreports.com/embedded-reporting/angular-report-designer';
         break;
       case 'report-viewer':
         metaContent = 'The Angular Bold Report Viewer allows the end-users to visualize the ' + title + ' report in browsers.';
         title = title + ' | Preview | Angular Report Viewer';
+        this.productDetailURL ='https://www.boldreports.com/embedded-reporting/angular-report-viewer';
         break;
       default:
         title = '';

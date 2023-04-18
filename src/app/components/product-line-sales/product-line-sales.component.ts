@@ -1,5 +1,5 @@
 /**
- * Product Line Sales - The sample demonstrates the product details information based on barcode report item.
+ * Product Line Sales - This sample demonstrates the product sales details information based on category and sub category of products report parameters.
  */
 import { Component } from '@angular/core';
 import { Globals } from '../globals';

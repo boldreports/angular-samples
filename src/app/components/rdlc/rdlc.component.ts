@@ -4,8 +4,8 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
-import { EJBarcode } from './../extensions/report-item-extensions/barcode';
-import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode';
+import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
+import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.reportitem';
 import { rdlcData } from '../rdlcData';
 
 const barcode = 'EJBarcode';
