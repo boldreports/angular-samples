@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -39,7 +39,12 @@ export class MainContentComponent implements AfterViewInit {
   @ViewChild('sourceTab', { static: true }) sourceTab;
   @ViewChild('descTab', { static: true }) descTab;
   @ViewChild('description', { static: true }) description;
-  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location) { }
+  @ViewChild('text', { static: true }) text;
+  @ViewChild('features[0]', { static: true }) feature1;
+  @ViewChild('features[1]', { static: true }) feature2;
+  @ViewChild('features[2]', { static: true }) feature3;
+  @ViewChild('freeTrialUrl', { static: true }) freeTrialUrl;
+  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2) { }
 
   public loadSourceCode(sampleData: sampleInfo['samples'][0]): void {
     (jQuery('#parentTab li:first-child a') as any).tab('show');
@@ -56,6 +61,14 @@ export class MainContentComponent implements AfterViewInit {
     this.metaDescription.nativeElement.innerText = sampleData.metaData.description;
     this.description.nativeElement.innerHTML = '';
     this.description.nativeElement.appendChild(this.tabContent.nativeElement.querySelector('#description'));
+  }
+
+  updateBannerDetails(bannerData): void {
+    this.text.nativeElement.innerText = bannerData.text;
+    this.feature1.nativeElement.innerText = bannerData.features[0];
+    this.feature2.nativeElement.innerText = bannerData.features[1];
+    this.feature3.nativeElement.innerText = bannerData.features[2];
+    this.renderer.setProperty(this.freeTrialUrl.nativeElement, 'href', bannerData.freeTrialUrl)
   }
 
   getFiles(sampleData: sampleInfo['samples'][0]): void {
@@ -124,11 +137,11 @@ export class MainContentComponent implements AfterViewInit {
     if (window.matchMedia('(max-width:850px)').matches) {
       (jQuery('#parentTab li:first-child a') as any).tab('show');
       this.sourceTab.nativeElement.classList.add('e-hidden');
-      this.descTab.nativeElement.classList.add('e-hidden');
+      //this.descTab.nativeElement.classList.add('e-hidden');
     } else {
       if (this.sourceTab.nativeElement.classList.contains('e-hidden')) {
         this.sourceTab.nativeElement.classList.remove('e-hidden');
-        this.descTab.nativeElement.classList.remove('e-hidden');
+        // this.descTab.nativeElement.classList.remove('e-hidden');
       }
     }
   }

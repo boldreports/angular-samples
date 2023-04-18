@@ -4,8 +4,8 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
-import { EJBarcode } from './../extensions/report-item-extensions/barcode';
-import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode';
+import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
+import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.reportitem';
 
 const barcode = 'EJBarcode';
 const qrBarcode = 'EJQRBarcode';
@@ -74,7 +74,7 @@ export class DesignerComponent implements AfterViewInit {
       }
     });
     if (this.reportPath) {
-      this.designerInst.widget.openReport(this.reportPath);
+      this.designerInst.widget.openReport(this.reportPath.indexOf("external-parameter-report") !== -1 ? "product-line-sales.rdl" : this.reportPath.indexOf("parameter-customization") !== -1 ? "product-line-sales.rdl" : this.reportPath);
     }
   }
 }
