@@ -4,7 +4,7 @@ const runSequence = require('gulp4-run-sequence');
 const ngCli = "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng";
 
 gulp.task('serve', function (done) {
-  runSequence('generate-router', () => {
+  runSequence('update-barcode', 'generate-router', () => {
     exec(`${ngCli} serve --open`);
     done();
   });
