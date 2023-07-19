@@ -2,11 +2,12 @@ import { Component, ViewChild, OnInit, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import 'bootstrap';
 import { RouterService } from './router.service';
-import * as data from '../components/samples.json';
+import samples from '../components/samples.json';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { Title, Meta } from '@angular/platform-browser';
 
+const data = samples;
 type sampleInfo = typeof data;
 
 @Component({

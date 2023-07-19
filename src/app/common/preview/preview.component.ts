@@ -1,10 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import * as data from '../../components/samples.json';
+import samples from '../../components/samples.json';
 import { Router, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RouterService } from '../router.service';
 
+const data = samples;
 
 @Component({
   selector: 'ej-preview',

@@ -1,9 +1,9 @@
-import * as $ from 'jquery';
+import * as jquery from 'jquery';
 import { Globals } from './app/components/globals';
 
-const jq = ['jQuery', '$'];
-window[jq[0]] = $;
-window[jq[1]] = $;
+let windowInstance = (window as { [key: string]: any });
+windowInstance['jQuery'] = jquery;
+windowInstance['$'] = jquery;
 
 window.addEventListener('beforeunload', () => {
     if (Globals.DESTROY_REPORT) {

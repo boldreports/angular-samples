@@ -6,8 +6,9 @@ import { HttpClient } from '@angular/common/http';
 import Prism from 'prismjs';
 import { RouterService } from '../router.service';
 import 'prismjs/components/prism-typescript';
-import * as data from '../../components/samples.json';
+import samples from '../../components/samples.json';
 
+const data = samples;
 type sampleInfo = typeof data;
 
 interface SourceDataCollection {
@@ -60,7 +61,9 @@ export class MainContentComponent implements AfterViewInit {
     this.title.nativeElement.innerText = sampleData.sampleName;
     this.metaDescription.nativeElement.innerText = sampleData.metaData.description;
     this.description.nativeElement.innerHTML = '';
+    setTimeout(() => {
     this.description.nativeElement.appendChild(this.tabContent.nativeElement.querySelector('#description'));
+    }, 0)
   }
 
   updateBannerDetails(bannerData): void {
