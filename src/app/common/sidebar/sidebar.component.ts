@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import * as data from '../../components/samples.json';
+import samples from '../../components/samples.json';
 type sampleInfo = typeof data;
+
+const data = samples;
 
 @Component({
   selector: 'ej-sidebar',
