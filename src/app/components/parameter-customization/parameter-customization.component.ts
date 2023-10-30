@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 import { Globals } from '../globals';
 import { Switch } from '@syncfusion/ej2-buttons';
+import { DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 @Component({
     selector: 'ej-sample',
     templateUrl: './parameter-customization.component.html',
@@ -28,27 +29,24 @@ export class ParameterCustomizationComponent {
         args.parameterSettings.timeDisplayFormat = "HH:mm";
         args.parameterSettings.timeInterval = 60;
         if (args.parameterModel.Name === "EndDate") {
-            var $targetTag = $('#' + args.containerId);
-            var $dateTime = ej.buildTag("input", "", "", { 'id': args.parameterModel.ControlId, 'type': 'text', 'style': 'width: 100%' });
-            $targetTag.append($dateTime);
             var name = args.parameterModel.Name;
-            (<any>jQuery($dateTime)).ejDateTimePicker({
-                timePopupWidth: 150,
-                value: args.parameterModel._dateTimeValue,
+            var $targetTag = $('#' + args.containerId);
+            var $dateTime = ej.buildTag("input", "", "", { 'id': args.parameterModel.ControlId, 'name': 'EndDate', 'type': 'text', 'style': 'width: 100%' });
+            $targetTag.append($dateTime);
+            var datetimepicker: DateTimePicker = new DateTimePicker({
+                value: args.parameterModel._dateValue,
                 open: function (args) {
-                    var picker = this;
-                    var container = $('#' + this._id + '_popup');
-                    if ($(container).find('#null-btn').length == 0) {
-                        var btn = ej.buildTag("div.e-dt-button e-btn e-dt-button e-btn e-select e-flate-flat", "NULL", "", { id: "null-btn", style: "margin-left:4px;margin-right:4px;display:inline" });
-                        btn.click(function (args) {
-                            picker._doneClick();
-                            picker.setModel({ 'value': null, 'watermarkText': 'Null' });
-                        });
-                        $(container).find('.e-button-container').append(btn);
+                    var btn = ej.buildTag("div.e-dt-button e-btn e-dt-button e-btn e-select e-flate-flat mr-1", "NULL", "", { id: "null-btn-v2" });
+                    if (args.popup.element.className.includes('null')) {
+                        args.popup.element.firstChild.lastChild.prepend(btn[0]);
                     }
+                    btn[0].addEventListener('click', function () {
+                        datetimepicker.value = null;
+                        datetimepicker.placeholder = 'Null';
+                    });
                 },
                 change: function (args) {
-                    var data = this.getValue();
+                    var data = datetimepicker.value;
                     var updateParam = {
                         name: name,
                         labels: [data],
@@ -57,20 +55,17 @@ export class ParameterCustomizationComponent {
                     (<any>jQuery('#parameter-customization')).data('boldReportViewer').updateParameter(updateParam);
                 }
             });
-            var parameterNull = ej.buildTag("input", null, null, { 'id': args.parameterModel.ControlId + '_chk', 'type': 'checkbox', 'name': 'chkDateTime', 'value': args.parameterModel.ControlId + '_chk', 'style': 'margin-top:8px' });
-            $targetTag.append(parameterNull);
-            // Initialize EJ2 Switch
-            let switchObj: Switch = new Switch({ cssClass: "switchstyle" });
-            switchObj.appendTo($('#' + args.parameterModel.ControlId + '_chk')[0]);
-            switchObj.addEventListener('change', function (args) {
-                var id = this.element.id.replace("_chk", "");
-                if (this.element.name === "chkDateTime") {
-                    var dateTime = $('#' + id).data("ejDateTimePicker");
-                } else {
-                    dateTime = $('#' + id).data("ejDatePicker");
-                }
-                dateTime.option("enabled", !this.checked);
-            });
+            datetimepicker.appendTo($dateTime[0])
+            var endDateInst = (<any>document.querySelector('[name="EndDate"]')).ej2_instances[0];
+            var switchBaseTag = ej.buildTag("input", null, null, { 'id': endDateInst.element.id + '_parameter_disable_switch', 'type': 'checkbox', 'name': 'chkDateTime', 'value': args.parameterModel.ControlId, 'style': 'margin-top:8px' });
+            if (document.querySelectorAll("#" + endDateInst.element.id + '_parameter_disable_switch').length == 0) {
+                $("#" + endDateInst.element.id + "_div").append(switchBaseTag);
+                var switchObj: Switch = new Switch({ checked: false, cssClass: "switchstyle" });
+                switchObj.appendTo($('#' + endDateInst.element.id + '_parameter_disable_switch')[0]);
+                switchObj.addEventListener('change', function (args) {
+                    endDateInst.enabled = !switchObj.checked;
+                })
+            }
             args.handled = true;
         }
     }

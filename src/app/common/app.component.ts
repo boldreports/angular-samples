@@ -106,6 +106,7 @@ export class AppComponent implements OnInit {
       overflow-y: hidden;
       min-height: 600px;
       height: auto !important;
+      min-width: 100%;
     }
 
     #${sampleData.directoryName}_loadingIndicator_WaitingPopup {

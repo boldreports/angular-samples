@@ -23,8 +23,9 @@ export class DesignerComponent implements AfterViewInit {
   public serviceUrl = Globals.DESIGNER_SERVICE_URL;
   public reportPath: string;
   public toolbarSettings: ej.ReportDesigner.ToolbarSettings = {
-    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.Save
+    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.Save & ~ej.ReportDesigner.ToolbarItems.Open
   };
+  public permissionSettings: ej.ReportDesigner.PermissionSettings = { dataSource: ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create};
   public itemExtensions: any;
 
   constructor(private router: Router) {
@@ -70,9 +71,22 @@ export class DesignerComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.designerInst.widget.setModel({
       previewOptions: {
-        exportItemClick: Globals.EXPORT_ITEM_CLICK
+        exportItemClick: Globals.EXPORT_ITEM_CLICK,
+        toolbarSettings: {
+          items: ej.ReportViewer.ToolbarItems.All & ~ej.ReportViewer.ToolbarItems.Find
+        }
       }
     });
+    if (this.reportPath === 'load-large-data.rdl') {
+      this.designerInst.widget.setModel({
+        previewOptions: {
+          toolbarSettings: {
+            items: ~ej.ReportViewer.ToolbarItems.Export & ~ej.ReportViewer.ToolbarItems.Print,
+            toolbars: ej.ReportViewer.Toolbars.All & ~ej.ReportViewer.Toolbars.Vertical
+          }
+        }
+      });
+    }
     if (this.reportPath) {
       this.designerInst.widget.openReport(this.reportPath.indexOf("external-parameter-report") !== -1 ? "product-line-sales.rdl" : this.reportPath.indexOf("parameter-customization") !== -1 ? "product-line-sales.rdl" : this.reportPath);
     }

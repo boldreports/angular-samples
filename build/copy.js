@@ -4,11 +4,13 @@ const fs = require('fs');
 
 const scripts = {
     common: ['common/ej2-base.min.js', 'common/ej2-data.min.js', 'common/ej2-pdf-export.min.js', 'common/ej2-svg-base.min.js'],
-    control: ['data-visualization/ej2-circulargauge.min.js', 'data-visualization/ej2-lineargauge.min.js', 'data-visualization/ej2-maps.min.js']
+    control: ['data-visualization/ej2-circulargauge.min.js', 'data-visualization/ej2-lineargauge.min.js', 'data-visualization/ej2-maps.min.js'],
+    barcode: ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js']
 };
 
 const srcDir = 'node_modules/@boldreports/javascript-reporting-controls/Scripts/';
 const destDir = 'src/scripts/';
+const barCodeSrcDir = 'node_modules/@boldreports/javascript-reporting-extensions/';
 const barcodeDir = './src/app/components/extensions/report-item-extensions/';
 const barcodeTeml = {
     '1D': 'export { EJBarcode };',
@@ -16,15 +18,16 @@ const barcodeTeml = {
 }
 
 gulp.task('copy', (done) => {
-    copyFiles(scripts.common, destDir + 'common');
-    copyFiles(scripts.control, destDir + 'data-visualization');
+    copyFiles(scripts.common, srcDir, destDir + 'common');
+    copyFiles(scripts.control, srcDir, destDir + 'data-visualization');
+    copyFiles(scripts.barcode, barCodeSrcDir, barcodeDir);
     done();
 });
 
-function copyFiles(fileArray, dest) {
+function copyFiles(fileArray, src, dest) {
     fileArray.forEach(file => {
         mkdir('-p', dest);
-        cp('-r', srcDir + file, dest);
+        cp('-r', src + file, dest);
     });
 };
 

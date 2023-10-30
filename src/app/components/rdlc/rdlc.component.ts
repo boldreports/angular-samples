@@ -25,8 +25,9 @@ export class RDLCComponent implements AfterViewInit {
   public reportPath: string;
   public isServerReport = false;
   public toolbarSettings: ej.ReportDesigner.ToolbarSettings = {
-    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.Save
+    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.Save & ~ej.ReportDesigner.ToolbarItems.Open
   };
+  public permissionSettings: ej.ReportDesigner.PermissionSettings = { dataSource: ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create};
   public itemExtensions: any;
 
   constructor(private router: Router) {
@@ -77,35 +78,23 @@ export class RDLCComponent implements AfterViewInit {
       let reportPath = args.model.reportPath;
       reportPath = reportPath.indexOf('//') !== -1 ? reportPath.substring(2) : reportPath;
       const reportNameWithoutExt = reportPath.split('.rdlc')[0];
-      if (reportNameWithoutExt !== 'load-large-data') {
-        const datasource = rdlcData[reportNameWithoutExt];
-        args.dataSets = datasource;
-      }
+      const datasource = rdlcData[reportNameWithoutExt];
+      args.dataSets = datasource;
       args.cancelDataInputDialog = true;
     }
   }
 
   ngAfterViewInit(): void {
-    if (this.reportPath === 'load-large-data.rdlc') {
-      this.designerInst.widget.setModel({
-        reportType: 'RDLC',
-        previewReport: this.previewReport.bind(this),
-        previewOptions: {
-          exportItemClick: Globals.EXPORT_ITEM_CLICK,
-          toolbarSettings: {
-            items: ~ej.ReportViewer.ToolbarItems.Export & ~ej.ReportViewer.ToolbarItems.Print
-          }
+    this.designerInst.widget.setModel({
+      reportType: 'RDLC',
+      previewReport: this.previewReport.bind(this),
+      previewOptions: {
+        exportItemClick: Globals.EXPORT_ITEM_CLICK,
+        toolbarSettings: {
+          items: ej.ReportViewer.ToolbarItems.All & ~ej.ReportViewer.ToolbarItems.Find
         }
-      });
-    } else {
-      this.designerInst.widget.setModel({
-        reportType: 'RDLC',
-        previewReport: this.previewReport.bind(this),
-        previewOptions: {
-          exportItemClick: Globals.EXPORT_ITEM_CLICK
-        }
-      });
-    }
+      }
+    });
     if (this.reportPath) {
       this.designerInst.widget.openReport(this.reportPath);
     }
