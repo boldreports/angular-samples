@@ -1,24 +1,8 @@
 import * as jquery from 'jquery';
-import { Globals } from './app/components/globals';
 
 let windowInstance = (window as { [key: string]: any });
 windowInstance['jQuery'] = jquery;
 windowInstance['$'] = jquery;
-
-window.addEventListener('beforeunload', () => {
-    if (Globals.DESTROY_REPORT) {
-        destroyReportControls();
-    } else {
-        Globals.DESTROY_REPORT = true;
-    }
-});
-
-function destroyReportControls(): void {
-    const reportViewerElement = document.querySelector('.e-reportviewer.e-js');
-    if (reportViewerElement) {
-        ($(reportViewerElement).data('boldReportViewer') as any)._ajaxCallMethod('ClearCache', '_clearCurrentServerCache', false);
-    }
-}
 
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.

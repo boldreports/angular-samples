@@ -2,16 +2,14 @@
 @import 'prismjs/themes/prism.css';
 
 // Reports
-@import './../node_modules/@boldreports/javascript-reporting-controls/Content/material/bold.reports.all.min.css';
-@import './../node_modules/@boldreports/javascript-reporting-controls/Content/material/bold.reportdesigner.min.css';
+@import './../node_modules/@boldreports/javascript-reporting-controls/Content/v2.0/tailwind-light/bold.report-viewer.min.css';
+@import './../node_modules/@boldreports/javascript-reporting-controls/Content/v2.0/tailwind-light/bold.report-designer.min.css';
 @import './app/components/extensions/report-item-extensions/barcode.reportitem.css';
 
 // code-mirror
 @import './../node_modules/codemirror/lib/codemirror.css';
 @import './../node_modules/codemirror/addon/hint/show-hint.css';
 
-//ej2
-@import './ej2-buttons.min.css';
 
 body {
   color: #2b3a5c;
@@ -154,4 +152,8 @@ bold-reportviewer {
 
 #parameter-customization_param_block_table .e-reportviewer-label {
   padding-top: 5px;
+}
+
+#reportdesigner_reportName {
+  visibility: hidden;
 }

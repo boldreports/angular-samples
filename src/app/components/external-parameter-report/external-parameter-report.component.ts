@@ -4,12 +4,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-
+import { DatePicker } from '@syncfusion/ej2-angular-calendars';
+import { DropDownList, MultiSelect, CheckBoxSelection } from '@syncfusion/ej2-angular-dropdowns';
+MultiSelect.Inject(CheckBoxSelection)
 import { Globals } from '../globals';
+
 @Component({
   selector: 'ej-sample',
   templateUrl: './external-parameter-report.component.html',
-  styleUrls: ['./external-parameter-report.component.css'],
+  styleUrls: ['./external-parameter-report.component.css']
 })
 export class ExternalParameterReportComponent {
   @ViewChild('externalparameterreport', { static: false }) externalParameterReport;
@@ -17,7 +20,10 @@ export class ExternalParameterReportComponent {
   public serviceUrl = Globals.SERVICE_URL;
   // Specifies the path of the RDL report file
   public reportPath: string;
-  public toolbarSettings = Globals.TOOLBAR_OPTIONS;
+  public toolbarSettings: ej.ReportViewer.ToolbarSettings = {
+    customGroups: Globals.TOOLBAR_OPTIONS.customGroups,
+    toolbars: ej.ReportViewer.Toolbars.All & ~ej.ReportViewer.Toolbars.Vertical 
+  };
   public onToolbarItemClick = Globals.EDIT_REPORT;
   public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
   public parameterSettings: any;
@@ -28,13 +34,13 @@ export class ExternalParameterReportComponent {
   }
 
   public loadReport(): void {
-    let reportViewer=this.externalParameterReport;
-    let productCategory = (<any>jQuery("#category")).ejDropDownList("getSelectedValue");
-    let productSubcategory = (<any>jQuery("#subcategory")).ejDropDownList("getSelectedValue").split(",");
-    let startDate = jQuery("#startdate").data("ejDatePicker").getValue();
-    let endDate = jQuery("#enddate").data("ejDatePicker").getValue();
+    let reportViewer = this.externalParameterReport;
+    let productCategory = (<any>jQuery("#category"))[0].ej2_instances[0].value;
+    let productSubcategory = (<any>jQuery("#subcategory"))[0].ej2_instances[0].value;
+    let startDate = (<any>jQuery("#startdate"))[0].value;
+    let endDate = (<any>jQuery("#enddate"))[0].value;
     let parameters = [{ name: 'ProductCategory', labels: [productCategory], values: [productCategory] }, { name: 'ProductSubcategory', labels: productSubcategory, values: productSubcategory }, { name: 'StartDate', labels: [startDate], values: [startDate] }, { name: 'EndDate', labels: [endDate], values: [endDate] }];
-    reportViewer.widget.model.parameters=parameters;
+    reportViewer.widget.model.parameters = parameters;
     reportViewer.widget.reload()
   }
 
@@ -43,65 +49,50 @@ export class ExternalParameterReportComponent {
     var isMobile = /mobile/i.test(userAgent);
     var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
     if (wheelEvent && !isMobile) {
-        window.addEventListener(wheelEvent, function () { }, { passive: false });
+      window.addEventListener(wheelEvent, function () { }, { passive: false });
     }
     const observableCollection = this.http.get(Globals.SERVICE_URL + '/GetExternalParameterData', { responseType: 'json' });
     forkJoin(observableCollection).subscribe(
       (parameterDataCollection: object) => {
-        (<any>jQuery("#startdate")).ejDatePicker({ value: new Date("1/1/2003"), width: '180px' });
-        (<any>jQuery("#enddate")).ejDatePicker({ value: new Date("12/31/2003"), width: '180px' });
+        var startDate: DatePicker = new DatePicker({ value: new Date("1/1/2003"), width: "180px" });
+        var endDate: DatePicker = new DatePicker({ value: new Date("12/31/2003"), width: "180px" });
         let catogoryList = JSON.parse(parameterDataCollection[0].ProductCategoryDetail);
         let subCategoryList = JSON.parse(parameterDataCollection[0].ProductSubCategoryDetail);
         var subCategoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == 1);
-        (<any>jQuery("#category")).ejDropDownList({
+        var category: DropDownList = new DropDownList({
           dataSource: catogoryList,
           fields: {
             text: "Name",
             value: "ProductCategoryID",
           },
-          selectedIndex: 1,
+          index: 1,
           width: "180px",
-          change: function (args) {
-            (<any>jQuery("#checkall")).ejCheckBox({ checked: false });
-            var categoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == (<any>jQuery("#category")).ejDropDownList("getSelectedValue"));
-            var subCategoryObj = $('#subcategory').data("ejDropDownList");
-            subCategoryObj.option("dataSource", categoryDropDownList);
-          },
+          change: function (e) {
+            var categoryID = e.value;
+            var categoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == categoryID);
+            if (subCategory.value != null)
+              subCategory.clear();
+            subCategory.dataSource = categoryDropDownList;
+          }
         });
-        (<any>jQuery("#subcategory")).ejDropDownList({
+        var subCategory: MultiSelect = new MultiSelect({
           dataSource: subCategoryDropDownList,
           fields: {
             text: "Name",
             value: "ProductSubcategoryID",
           },
-          showCheckbox: true,
-          change: dropDownCheckAll,
-          headerTemplate: "<div id='checkall_wrap' ><input id ='checkall' type='checkbox'/ ></div>",
-          selectedIndex: 1,
+          mode: 'CheckBox',
+          showClearButton: true,
+          showDropDownIcon: true,
+          showSelectAll: true,
           width: "180px",
-          watermarkText: "Select Option"
+          value: [2],
+          placeholder: "Select Option"
         });
-        var flag;
-        (<any>jQuery("#checkall")).ejCheckBox({ text: "Select All", change: selectAllSubCategory });
-        function selectAllSubCategory(args) {
-          if (!flag) {
-            var subCategoryObj = (<any>jQuery("#subcategory")).ejDropDownList("instance");
-            if (args.isChecked) subCategoryObj.checkAll();
-            else subCategoryObj.uncheckAll();
-          }
-        }
-        function dropDownCheckAll(args) {
-          var subCategoryObj = (<any>jQuery("#subcategory")).ejDropDownList("instance");
-          var instance = $("#checkall").data("ejCheckBox");
-          if (!args.isChecked) {
-              flag = true;
-              instance.setModel({ checked: false });
-              flag = false;
-          }
-          if (subCategoryObj.getSelectedItem().length == subCategoryObj.getListData().length) {
-            (<any>jQuery("#checkall")).ejCheckBox({ checked: true });
-          }
-        }
+        startDate.appendTo('#startdate');
+        endDate.appendTo('#enddate');
+        category.appendTo('#category');
+        subCategory.appendTo('#subcategory');
       });
   }
 }

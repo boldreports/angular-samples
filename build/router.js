@@ -40,7 +40,7 @@ let previewChildRoutes = [];
 gulp.task('generate-router', (done) => {
   let samples = JSON.parse(fs.readFileSync('./src/app/components/samples.json', 'utf8')).samples;
   let defaultSampleData = samples[0];
-  let initilaReportRouterPath = defaultSampleData.routerPath ? defaultSampleData.basePath + '/' + defaultSampleData.routerPath : defaultSampleData.basePath;
+  let initilaReportRouterPath =  defaultSampleData.routerPath ? defaultSampleData.basePath + '/' + defaultSampleData.routerPath : defaultSampleData.basePath;
 
   //Initila routing
   routes.push(`{ path: '', redirectTo: '${initilaReportRouterPath}', pathMatch: 'full' }`);

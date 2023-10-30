@@ -1,12 +1,14 @@
 export const Globals = {
-    SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportViewerWebApi',
-    DESIGNER_SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportDesignerWebApi',
+    SERVICE_URL: '/demos/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: '/demos/services/api/ReportDesignerWebApi',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
+        items: ej.ReportViewer.ToolbarItems.All & ~ej.ReportViewer.ToolbarItems.Find,
         customGroups: [{
             items: [{
                 type: 'Default',
                 cssClass: 'e-icon e-edit e-reportviewer-icon ej-webicon CustomGroup',
+                prefixIcon: "e-viewer-icons edit",
                 id: 'edit-report',
                 // Need to add the proper header and content once, the tool tip issue resolved.
                 tooltip: {
@@ -15,7 +17,6 @@ export const Globals = {
                 }
             }],
             // Need to remove the css (e-reportviewer-toolbarcontainer ul.e-ul:nth-child(4)) once the group index issue resolved
-            groupIndex: 3,
             cssClass: 'e-show'
         }]
     },
