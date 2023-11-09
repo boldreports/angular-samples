@@ -1,6 +1,6 @@
 export const Globals = {
-    SERVICE_URL: '/demos/services/api/ReportViewerWebApi',
-    DESIGNER_SERVICE_URL: '/demos/services/api/ReportDesignerWebApi',
+    SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportDesignerWebApi',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
         items: ej.ReportViewer.ToolbarItems.All & ~ej.ReportViewer.ToolbarItems.Find,
