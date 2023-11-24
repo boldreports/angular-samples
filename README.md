@@ -1,6 +1,6 @@
 # Bold Reports Angular samples
 
-Bold Reports Angular samples repository contains the [Report Viewer](https://www.boldreports.com/embedded-reporting/angular-report-viewer/?utm_source=github&utm_medium=backlinks) and [Report Designer](https://www.boldreports.com/embedded-reporting/angular-report-designer/?utm_source=github&utm_medium=backlinks) samples. It empower your web application with feature-rich report preview, edit, and customization capabilities that allow you to explore data easily and make real-time decisions. Effortlessly print and export reports.
+Bold Reports Angular samples repository contains the [Report Viewer](https://www.boldreports.com/embedded-reporting/angular-report-viewer?utm_source=github&utm_medium=backlinks) and [Report Designer](https://www.boldreports.com/embedded-reporting/angular-report-designer?utm_source=github&utm_medium=backlinks) samples. It empower your web application with feature-rich report preview, edit, and customization capabilities that allow you to explore data easily and make real-time decisions. Effortlessly print and export reports.
 
 This section guides you to use the Bold Reports Angular samples in your applications.
 
