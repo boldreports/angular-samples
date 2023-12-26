@@ -23,7 +23,7 @@
       "Intuitive drag-and-drop widgets",
       "Hassle-free licensing"
     ],
-    "freeTrialUrl": "https://app.boldid.net/reporting/embedded/register?plan=120&evaluation=v2&leadsource=demos.boldreports.com&gclid=&referrerroriginurl=https://demos.boldreports.com/pricing&secondaryreferraloriginurl=https://demos.boldreports.com/"
+    "freeTrialUrl": "https://app.boldid.net/reporting/embedded/register?plan=128&evaluation=v2&leadsource=demos.boldreports.com&gclid=&referrerroriginurl=https://demos.boldreports.com/pricing&secondaryreferraloriginurl=https://demos.boldreports.com/"
   },
   "samples": [
     {
@@ -297,7 +297,6 @@
       "routerPath": "load-large-data",
       "className": "LoadLargeDataComponent",
       "sampleName": "Load Large Data",
-      "status": "Updated",
       "basePath": "report-viewer",
       "directoryName": "load-large-data",
       "imageDetails": {
@@ -426,7 +425,6 @@
       "sampleName": "Sub Report",
       "basePath": "report-viewer",
       "directoryName": "sub-report",
-      "status": "New",
       "imageDetails": {
         "isLandscape": false,
         "index": 14

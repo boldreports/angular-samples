@@ -70,6 +70,7 @@
 #r-w-property-category,#r-w-property-subcategory,#r-w-property-startdate,#r-w-property-enddate {
   display: inline-flex;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 #r-w-property-name-category, #r-w-property-name {

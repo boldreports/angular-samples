@@ -56,8 +56,8 @@ export class ExternalParameterReportComponent {
       (parameterDataCollection: object) => {
         var startDate: DatePicker = new DatePicker({ value: new Date("1/1/2003"), width: "180px" });
         var endDate: DatePicker = new DatePicker({ value: new Date("12/31/2003"), width: "180px" });
-        let catogoryList = JSON.parse(parameterDataCollection[0].ProductCategoryDetail);
-        let subCategoryList = JSON.parse(parameterDataCollection[0].ProductSubCategoryDetail);
+        let catogoryList = JSON.parse(parameterDataCollection[0].productCategoryDetail);
+        let subCategoryList = JSON.parse(parameterDataCollection[0].productSubCategoryDetail);
         var subCategoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == 1);
         var category: DropDownList = new DropDownList({
           dataSource: catogoryList,
