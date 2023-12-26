@@ -124,7 +124,7 @@ export class MainContentComponent implements AfterViewInit {
 
   onTabBtnClick(): void {
     const modifiedUrl = this.router.url.indexOf('?') !== -1 ? this.router.url.substring(0, this.router.url.indexOf('?')) : this.router.url;
-    window.open(this.location.prepareExternalUrl(modifiedUrl) + '/preview', '_blank"');
+    window.open(this.location.prepareExternalUrl(modifiedUrl) + '/preview', '_blank', 'noreferrer');
   }
 
   onTabNext(): void {
