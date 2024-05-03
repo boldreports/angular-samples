@@ -39,8 +39,7 @@ export class HeaderComponent {
     }
     platformSamplePath = this.getRouterPath(this.platformName, platform, sampleName);
     const reportPath = routerData.reportRouterPath ? (platformBasePath + '/' + platformSamplePath) : platformSamplePath;
-    const url: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/' : '/demos/';
-    window.open(this.document.location.origin + url + data.otherPlatforms[platform] + reportPath, '_self');
+    window.open(this.document.location.origin + "/" + data.otherPlatforms[platform] + reportPath, '_self');
   }
 
   private getRouterPath(curPlatform: string, targetplatform: string, sampleName: string): string {
@@ -51,17 +50,9 @@ export class HeaderComponent {
     if (samePath) {
       return sampleName;
     } else {
-      if (curPlatform.indexOf('asp') !== -1) {
         return sampleName.split(/(?=[A-Z])/).map((name) => {
           return name.toLowerCase();
         }).join('-');
-
-      } else {
-        return sampleName.split(/-/).map((name) => {
-          return name.charAt(0).toUpperCase() + name.slice(1);
-        }).join('');
-
-      }
     }
   }
 }

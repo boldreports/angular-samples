@@ -6,14 +6,14 @@
     "qrbarcode",
     "rdlc",
     "rdlcData",
-    "paystub"
+    "paystub",
+    "powerpoint"
   ],
   "otherPlatforms": {
     "JavaScript": "javascript/#/",
     "React" : "react/#/",
     "Blazor":  "blazor/",
-    "ASP.NET Core": "aspnet-core/",
-    "ASP.NET MVC": "aspnet-mvc/"
+    "ASP.NET Core": "aspnet-core/"
   },
   "platform": "Angular",
   "banner": {
@@ -23,8 +23,9 @@
       "Intuitive drag-and-drop widgets",
       "Hassle-free licensing"
     ],
-    "freeTrialUrl": "https://app.boldid.net/reporting/embedded/register?plan=128&evaluation=v2&leadsource=demos.boldreports.com&gclid=&referrerroriginurl=https://demos.boldreports.com/pricing&secondaryreferraloriginurl=https://demos.boldreports.com/"
+    "freeTrialUrl": "https://app.boldid.net/reporting/embedded/register?plan=174&evaluation=v2&leadsource=demos.boldreports.com&gclid=&referrerroriginurl=https://demos.boldreports.com/pricing&secondaryreferraloriginurl=https://demos.boldreports.com/&host=server&quantity=1"
   },
+  "copyrightPath": "./src/app/common/main-content/main-content.component.html",
   "samples": [
     {
       "routerPath": "product-line-sales",
@@ -61,8 +62,8 @@
       "basePath": "report-viewer",
       "directoryName": "mail-merge",
       "imageDetails": {
-        "isLandscape": false,
-        "index": 3
+        "isLandscape": true,
+        "index": 5
       },
       "metaData": {
         "description": "Demonstrates how to create mail merge envelopes for employee details using the SSRS List report item with the Angular Bold Report Viewer."
@@ -89,8 +90,8 @@
       "basePath": "report-viewer",
       "directoryName": "territory-sales",
       "imageDetails": {
-        "isLandscape": true,
-        "index": 5
+        "isLandscape": false,
+        "index": 3
       },
       "metaData": {
         "description": "This demonstration highlights an SSRS matrix report with drilldown capabilities, focusing on the presentation of sales territories and their total sales in Angular Bold Report Viewer."
@@ -244,8 +245,8 @@
       "basePath": "report-viewer",
       "directoryName": "product-catalog",
       "imageDetails": {
-        "isLandscape": true,
-        "index": 6
+        "isLandscape": false,
+        "index": 15
       },
       "metaData": {
         "description": "This demos allows you to view the product catalog RDLC that exist on the local file system with JSON array and custom business object data collection in Angular Bold Report Viewer."
@@ -329,7 +330,7 @@
       "directoryName": "paystub",
       "imageDetails": {
         "isLandscape": true,
-        "index": 7
+        "index": 6
       },
       "metaData": {
         "description": "The demo features a Paystub report that meticulously showcases the company's payslip, encompassing all crucial details and information in Angular Bold Report Viewer."
@@ -343,7 +344,7 @@
       "directoryName": "dynamic-chart-series",
       "imageDetails": {
         "isLandscape": true,
-        "index": 8
+        "index": 7
       },
       "metaData": {
         "description": "This demo offers dynamic control over chart series selection, enhancing the interactive reporting experience in Angular Bold Report Viewer."
@@ -357,7 +358,7 @@
       "directoryName": "data-bar",
       "imageDetails": {
         "isLandscape": true,
-        "index": 9
+        "index": 8
       },
       "metaData": {
         "description": "This demo portrays company sales against years in a tabular format, incorporating a data bar report item for visual clarity in the Angular Bold Report Viewer."
@@ -371,7 +372,7 @@
       "directoryName": "spark-line",
       "imageDetails": {
         "isLandscape": true,
-        "index": 10
+        "index": 9
       },
       "metaData": {
         "description": "This demo effectively displays company sales data using a sparkline report item, offering a clear and insightful representation of the sales trend in Angular Bold Report Viewer."
@@ -432,6 +433,36 @@
       "metaData": {
         "description": "This demo grants the capability to embed an additional report within the body of the main report, enriching the content and interactivity of the report in the Angular Bold Report Viewer."
       }
-    }
+    },
+    {
+      "routerPath": "powerpoint-report",
+      "className": "PowerpointReportComponent",
+      "sampleName": "PowerPoint Report",
+      "status": "New",
+      "basePath": "report-viewer",
+      "directoryName": "powerpoint-report",
+      "imageDetails": {
+        "isLandscape": true,
+        "index": 10
+      },
+      "metaData": {
+        "description": "This demos visualizes the online food ordering details with various data representations and is presented as a PowerPoint Report using page break in Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "transcript-report",
+      "className": "TranscriptReportComponent",
+      "sampleName": "Transcript Report",
+      "status": "New",
+      "basePath": "report-viewer",
+      "directoryName": "transcript-report",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 16
+      },
+      "metaData": {
+        "description": "This demo showcases a Transcript Report that effectively presents school student details, including their grades and performance, in the Angular Bold Report Viewer."
+      }
+    } 
   ]
 }

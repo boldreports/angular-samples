@@ -24,13 +24,16 @@ export class RDLCComponent implements AfterViewInit {
   public serviceUrl = Globals.DESIGNER_SERVICE_URL;
   public reportPath: string;
   public isServerReport = false;
+  public reportControlId = Globals.REPORT_CONTROL_ID;
   public toolbarSettings: ej.ReportDesigner.ToolbarSettings = {
-    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.Save & ~ej.ReportDesigner.ToolbarItems.Open
+    items: ej.ReportDesigner.ToolbarItems.All & ~ej.ReportDesigner.ToolbarItems.New & ~ej.ReportDesigner.ToolbarItems.Save & ~ej.ReportDesigner.ToolbarItems.Open
   };
-  public permissionSettings: ej.ReportDesigner.PermissionSettings = { dataSource: ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create};
+  public permissionSettings: ej.ReportDesigner.PermissionSettings;
   public itemExtensions: any;
 
   constructor(private router: Router) {
+    var url = window.location.host;
+    this.permissionSettings = url.indexOf("demos.boldreports.com") !== -1 ? { dataSource: ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create } : { dataSource: ej.ReportDesigner.Permission.All };
     const params: Params = this.router.parseUrl(this.router.url).queryParams;
     const paramName = 'report-name';
     this.reportPath = params[paramName];
@@ -50,11 +53,33 @@ export class RDLCComponent implements AfterViewInit {
   }
 
   public toolbarRendering(args): void {
-    if ($(args.target).hasClass('e-rptdesigner-toolbarcontainer')) {
-      const saveButton = ej.buildTag('li.e-rptdesigner-toolbarli e-designer-toolbar-align e-tooltxt', '', {}, {});
-      const saveIcon = ej.buildTag('span.e-rptdesigner-toolbar-icon e-toolbarfonticonbasic e-rptdesigner-toolbar-save e-li-item',
-        '', {}, { title: 'Save' });
-      args.target.find('ul:first').append(saveButton.append(saveIcon));
+    if (args?.target && $(args.target)?.hasClass('e-rptdesigner-toolbarcontainer')) {
+      if (args.action === 'beforeCreate') {
+        args.items.splice(0, 0, {
+          GroupName: 'customfileactionitems',
+          GroupId: this.reportControlId + '_custom_fileaction_group',
+          Items: [
+            {
+              prefixIcon: 'b-toolbar-item e-rptdesigner-toolbar-icon e-toolbarfonticonbasic e-rptdesigner-toolbar-new',
+              tooltipText: 'New',
+              id: this.reportControlId + '_custom_toolbar_btn_new',
+              htmlAttributes: {
+                id: this.reportControlId + '_custom_toolbar_new',
+                'aria-label': 'New'
+              }
+            },
+            {
+              prefixIcon: 'b-toolbar-item e-toolbarfonticonbasic e-rptdesigner-toolbar-save',
+              tooltipText: 'Save',
+              id: this.reportControlId + '_custom_toolbar_btn_save',
+              htmlAttributes: {
+                id: this.reportControlId + '_custom_toolbar_save',
+                'aria-label': 'Save'
+              }
+            }
+          ]
+        });
+      }
     }
   }
 

@@ -18,9 +18,8 @@ export class PreviewComponent implements OnInit {
   public homePageUrl = '/';
   public productDetailURL = '';
   constructor(private routerService: RouterService, private router: Router, private titleService: Title, private meta: Meta) { }
-  ngOnInit(): void {
-    const baseUrl: string = location.origin.indexOf('demos.boldreports.com') !== -1 ? '/' : '/demos/';
-    this.homePageUrl = baseUrl + 'angular/#/';
+  ngOnInit(): void {    
+    this.homePageUrl = '/angular/#/';
     this.subscriptions.add(this.routerService.previewUrl.subscribe((url) => {
       let sampleData;
       const isReportDesigner = url.indexOf('/report-designer') !== -1;
