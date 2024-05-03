@@ -22,8 +22,9 @@
 }
 
 #r-w-property-container {
-  height: 100%;
+  height: auto;
   width: 30%;
+  position: relative;
 }
 
 #r-w-property-name-category{
@@ -70,7 +71,7 @@
 #r-w-property-category,#r-w-property-subcategory,#r-w-property-startdate,#r-w-property-enddate {
   display: inline-flex;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 0px;
 }
 
 #r-w-property-name-category, #r-w-property-name {
@@ -109,3 +110,9 @@
   }
   
 } 
+
+@media screen and (max-width: 1262px) {
+  #r-w-property-value-subcategory{
+    right: 10px;
+  }
+}

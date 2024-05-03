@@ -7,14 +7,15 @@
         </bold-reportviewer>
     </div>
     <div id="r-w-property-container">
-        <div id="r-w-property-title">Parameters</div>
-        <div id="r-w-property-category">
+        <div id='spinner-container'></div>
+        <div id="r-w-property-title" style="display: none;">Parameters</div>
+        <div id="r-w-property-category" class="r-w-property" style="display: none;">
             <div id="r-w-property-name-category"> Category</div>
             <div id="r-w-property-value-category">
                 <input type="text" id="category" />
             </div>
         </div>
-        <div id="r-w-property-subcategory">
+        <div id="r-w-property-subcategory" class="r-w-property" style="display: none;">
             <div id="r-w-property-name">
                 Sub Category
             </div>
@@ -22,7 +23,7 @@
                 <input type="text" id="subcategory" />
             </div>
         </div>
-        <div id="r-w-property-startdate">
+        <div id="r-w-property-startdate" class="r-w-property" style="display: none;">
             <div id="r-w-property-name">
                 Start Date
             </div>
@@ -30,7 +31,7 @@
                 <input id="startdate" />
             </div>
         </div>
-        <div id="r-w-property-enddate">
+        <div id="r-w-property-enddate" class="r-w-property" style="display: none;">
             <div id="r-w-property-name">
                 End Date
             </div>
@@ -39,7 +40,7 @@
             </div>
         </div>
         <input type="button" class="r-w-genearte e-control e-btn e-lib e-primary"
-            id="update" (click)="loadReport()" value="View Report" />
+            id="update" (click)="loadReport()" value="View Report" style="display: none;" />
     </div>
 </div>
 

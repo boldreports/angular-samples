@@ -1,6 +1,7 @@
 export const Globals = {
-    SERVICE_URL: 'https://demos.boldreports.com/demos/services/api/ReportViewerWebApi',
-    DESIGNER_SERVICE_URL: 'https://demos.boldreports.com/demos/services/api/ReportDesignerWebApi',
+    SERVICE_URL: '/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: '/services/api/ReportDesignerWebApi',
+    REPORT_CONTROL_ID: 'reportdesigner',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
         items: ej.ReportViewer.ToolbarItems.All & ~ej.ReportViewer.ToolbarItems.Find,
@@ -19,6 +20,9 @@ export const Globals = {
             // Need to remove the css (e-reportviewer-toolbarcontainer ul.e-ul:nth-child(4)) once the group index issue resolved
             cssClass: 'e-show'
         }]
+    },
+    EXPORT_OPTIONS: {
+        exportOptions: ej.ReportViewer.ExportOptions.PPT
     },
     DESTROY_REPORT: true,
     EXPORT_ITEM_CLICK: () => {

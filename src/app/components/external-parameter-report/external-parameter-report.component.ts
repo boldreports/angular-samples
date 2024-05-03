@@ -7,6 +7,7 @@ import { forkJoin } from 'rxjs';
 import { DatePicker } from '@syncfusion/ej2-angular-calendars';
 import { DropDownList, MultiSelect, CheckBoxSelection } from '@syncfusion/ej2-angular-dropdowns';
 MultiSelect.Inject(CheckBoxSelection)
+import { createSpinner, showSpinner, hideSpinner } from "@syncfusion/ej2-angular-popups";
 import { Globals } from '../globals';
 
 @Component({
@@ -51,6 +52,9 @@ export class ExternalParameterReportComponent {
     if (wheelEvent && !isMobile) {
       window.addEventListener(wheelEvent, function () { }, { passive: false });
     }
+    createSpinner({target: document.getElementById("spinner-container")});
+    showSpinner(document.getElementById("spinner-container"));
+    $(".e-spinner-pane").css("background-color", "rgba(0, 0, 0, 0.4)");
     const observableCollection = this.http.get(Globals.SERVICE_URL + '/GetExternalParameterData', { responseType: 'json' });
     forkJoin(observableCollection).subscribe(
       (parameterDataCollection: object) => {
@@ -93,6 +97,10 @@ export class ExternalParameterReportComponent {
         endDate.appendTo('#enddate');
         category.appendTo('#category');
         subCategory.appendTo('#subcategory');
+        hideSpinner(document.getElementById("spinner-container"));
+        $("#r-w-property-title").css("display", "block");
+        $(".r-w-property").css("display", "inline-flex");
+        $(".r-w-genearte").css("display", "block");
       });
   }
 }
