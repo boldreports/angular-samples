@@ -438,8 +438,8 @@
       "routerPath": "powerpoint-report",
       "className": "PowerpointReportComponent",
       "sampleName": "PowerPoint Report",
-      "status": "New",
       "basePath": "report-viewer",
+      "status": "Updated",
       "directoryName": "powerpoint-report",
       "imageDetails": {
         "isLandscape": true,
@@ -453,7 +453,6 @@
       "routerPath": "transcript-report",
       "className": "TranscriptReportComponent",
       "sampleName": "Transcript Report",
-      "status": "New",
       "basePath": "report-viewer",
       "directoryName": "transcript-report",
       "imageDetails": {
