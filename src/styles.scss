@@ -130,6 +130,11 @@ bold-reportviewer {
 
 #description a{
   color: #ff5f23;
+  text-decoration: none;
+}
+
+#description a:hover {
+  text-decoration: underline;
 }
 
 #parameter-customization_param_block_table .switchstyle {

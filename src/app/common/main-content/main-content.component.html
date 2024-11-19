@@ -5,17 +5,17 @@
     <div id="parentTabContainer">
       <ul class="nav ej-nav-header" id="parentTab" role="tablist">
         <li class="ej-nav-item" #demoTab>
-          <a href="#demo" data-toggle="tab" role="tab" aria-selected="true">
+          <a href="#demo" data-bs-toggle="tab" role="tab" aria-selected="true">
             <Span class="ej-sb-icons ej-demo-icon"></Span><Span>DEMO</Span>
           </a>
         </li>
         <li class="ej-nav-item" #sourceTab>
-          <a href="#source" data-toggle="tab" role="tab" aria-selected="false">
+          <a href="#source" data-bs-toggle="tab" role="tab" aria-selected="false">
             <Span class="ej-sb-icons ej-source-icon"></Span><Span>SOURCE</Span>
           </a>
         </li>
         <!-- <li class="ej-nav-item" #descTab>
-          <a href="#ej-description" data-toggle="tab" role="tab" aria-selected="false">
+          <a href="#ej-description" data-bs-toggle="tab" role="tab" aria-selected="false">
             <Span class="ej-sb-icons ej-description-icon"></Span><Span>Description</Span>
           </a>
         </li>
@@ -40,7 +40,7 @@
             </div>
             <ul class="nav ej-nav-header" id="childtTab" role="tablist">
               <li *ngFor="let data of sourceData; let first = first;" class="ej-nav-item">
-                <a [ngClass]="first ? 'active' : ''" href="#{{data.id}}" data-toggle="tab" role="tab"
+                <a [ngClass]="first ? 'active' : ''" href="#{{data.id}}" data-bs-toggle="tab" role="tab"
                   aria-selected="first">{{data.name}}</a>
               </li>
             </ul>
