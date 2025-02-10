@@ -1,6 +1,6 @@
 {
   "name": "angular-samples",
-  "version": "6.3.16",
+  "version": "7.1.9",
   "scripts": {
     "test": "gulp test",
     "postinstall": "gulp copy",
@@ -22,6 +22,7 @@
     "@syncfusion/ej2-angular-buttons": "22.2.5",
     "@syncfusion/ej2-angular-calendars": "22.2.5",
     "@syncfusion/ej2-angular-dropdowns": "22.2.5",
+    "@syncfusion/ej2-angular-popups": "22.2.5",
     "bootstrap": "5.3.3",
     "codemirror": "5.58.2",
     "core-js": "2.5.4",
