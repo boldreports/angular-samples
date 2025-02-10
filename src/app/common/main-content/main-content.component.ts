@@ -45,6 +45,7 @@ export class MainContentComponent implements AfterViewInit {
   @ViewChild('features[1]', { static: true }) feature2;
   @ViewChild('features[2]', { static: true }) feature3;
   @ViewChild('freeTrialUrl', { static: true }) freeTrialUrl;
+  @ViewChild('copyrightYear', { static: true }) copyrightYear;
   constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2) { }
 
   public loadSourceCode(sampleData: sampleInfo['samples'][0]): void {
@@ -55,6 +56,7 @@ export class MainContentComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.updateTab();
     jQuery(this.demoTab.nativeElement.firstElementChild).on('shown.bs.tab', this.resizeReportViewer);
+    this.copyrightYear.nativeElement.innerText = `Copyright © 2001 - ${data.copyrightYear} Syncfusion Inc.`;
   }
 
   updateSampleDetails(sampleData): void {

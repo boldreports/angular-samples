@@ -5,6 +5,8 @@
 @import './../node_modules/@boldreports/javascript-reporting-controls/Content/v2.0/tailwind-light/bold.report-viewer.min.css';
 @import './../node_modules/@boldreports/javascript-reporting-controls/Content/v2.0/tailwind-light/bold.report-designer.min.css';
 @import './app/components/extensions/report-item-extensions/barcode.reportitem.css';
+@import './app/components/extensions/report-item-extensions/signature.reportitem.css';
+@import './app/components/extensions/report-item-extensions/signature.dialog.css';
 
 // code-mirror
 @import './../node_modules/codemirror/lib/codemirror.css';

@@ -6,12 +6,19 @@ import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
 import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
 import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.reportitem';
+import { EJSignature } from './../extensions/report-item-extensions/signature.reportitem';
+import { SignatureDialog } from './../extensions/report-item-extensions/signature.dialog';
 import { rdlcData } from '../rdlcData';
 
 const barcode = 'EJBarcode';
 const qrBarcode = 'EJQRBarcode';
 window[barcode] = EJBarcode;
 window[qrBarcode] = EJQRBarcode;
+
+const signature = 'EJSignature';
+const signatureDialog = 'SignatureDialog';
+window[signature] = EJSignature;
+window[signatureDialog] = SignatureDialog;
 
 @Component({
   selector: 'ej-sample',
@@ -49,6 +56,12 @@ export class RDLCComponent implements AfterViewInit {
       imageClass: 'customitem-qrbarcode',
       displayName: '2D Barcode',
       category: 'Barcodes'
+    }, {
+      name: 'ESignature',
+      className: 'EJSignature',
+      imageClass: 'customitem-signature',
+      displayName: 'Electronic',
+      category: 'Signature'
     }];
   }
 
