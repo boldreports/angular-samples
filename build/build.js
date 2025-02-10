@@ -5,8 +5,8 @@ const runSequence = require('gulp4-run-sequence');
 
 const ngCli = "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng";
 
-gulp.task('build', (done) => {
-  runSequence('update-barcode', 'generate-router', () => {
+gulp.task('production-build', (done) => {
+  runSequence('update-extensions-export', 'generate-router', () => {
     if (argv.prefix) {
       exec(`${ngCli} build -c production --base-href ${argv.prefix}`);
     } else {
