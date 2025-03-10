@@ -28,7 +28,7 @@
     "core-js": "2.5.4",
     "gulp4-run-sequence": "^1.0.1",
     "jquery": "3.6.0",
-    "prismjs": "1.27.0",
+    "prismjs": "1.30.0",
     "rxjs": "6.6.0",
     "shelljs": "0.8.5",
     "tslib": "2.0.0",
