@@ -1,6 +1,6 @@
 {
   "name": "angular-samples",
-  "version": "7.1.9",
+  "version": "9.1.7",
   "scripts": {
     "test": "gulp test",
     "postinstall": "gulp copy",

@@ -8,6 +8,8 @@ import { EJBarcode } from './../extensions/report-item-extensions/barcode.report
 import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.reportitem';
 import { EJSignature } from './../extensions/report-item-extensions/signature.reportitem';
 import { SignatureDialog } from './../extensions/report-item-extensions/signature.dialog';
+import { EJShape } from './../extensions/report-item-extensions/shape.reportitem';
+
 import { rdlcData } from '../rdlcData';
 
 const barcode = 'EJBarcode';
@@ -20,6 +22,8 @@ const signatureDialog = 'SignatureDialog';
 window[signature] = EJSignature;
 window[signatureDialog] = SignatureDialog;
 
+const shape = 'EJShape';
+window[shape] = EJShape;
 @Component({
   selector: 'ej-sample',
   templateUrl: './rdlc.component.html',
@@ -62,6 +66,12 @@ export class RDLCComponent implements AfterViewInit {
       imageClass: 'customitem-signature',
       displayName: 'Electronic',
       category: 'Signature'
+    }, {
+      name: 'Shape',
+      className: 'EJShape',
+      imageClass: 'customitem-shape',
+      displayName: 'Shape',
+      category: 'Shapes'
     }];
   }
 
