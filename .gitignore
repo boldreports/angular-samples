@@ -54,3 +54,4 @@ src/app/common/app.routing.module.ts
 src/demos/*
 !src/demos/common/
 !src/demos/designer/
+.angular
