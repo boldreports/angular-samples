@@ -6,7 +6,10 @@ const scripts = {
     common: ['common/ej2-base.min.js', 'common/ej2-data.min.js', 'common/ej2-pdf-export.min.js', 'common/ej2-svg-base.min.js'],
     control: ['data-visualization/ej2-circulargauge.min.js', 'data-visualization/ej2-lineargauge.min.js', 'data-visualization/ej2-maps.min.js'],
     barcode: ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js'],
-    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js']
+    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js'],
+    shape: ['shape.reportitem.css','shape.reportitem.js'],
+    pdf: ['document.reportitem.css', 'pdfdocument.reportitem.js'],
+    html: ['htmldocument.reportitem.js']
 };
 
 const srcDir = 'node_modules/@boldreports/javascript-reporting-controls/Scripts/';
@@ -17,7 +20,10 @@ const extensionsExportTemp = {
     '1D': 'export { EJBarcode };',
     '2D': 'export { EJQRBarcode };',
     'signature': 'export { EJSignature }',
-    'signatureDialog': 'export { SignatureDialog }'
+    'signatureDialog': 'export { SignatureDialog }',
+    'shape': 'export { EJShape }',
+    'pdfDocument': 'export { EJPdfDocument };',
+    'htmlDocument': 'export { EJHtmlDocument };'
 }
 
 gulp.task('copy', (done) => {
@@ -25,6 +31,9 @@ gulp.task('copy', (done) => {
     copyFiles(scripts.control, srcDir, destDir + 'data-visualization');
     copyFiles(scripts.barcode, extensionsItemSrcDir, extensionsItemDir);
     copyFiles(scripts.signature, extensionsItemSrcDir, extensionsItemDir);
+    copyFiles(scripts.shape, extensionsItemSrcDir, extensionsItemDir);
+    copyFiles(scripts.html, extensionsItemSrcDir, extensionsItemDir);
+    copyFiles(scripts.pdf, extensionsItemSrcDir, extensionsItemDir);
     done();
 });
 
@@ -41,6 +50,9 @@ gulp.task('update-extensions-export', (done) => {
         'qrbarcode': ['qrbarcode.reportitem.js', '2D'],
         'signature': ['signature.reportitem.js', 'signature'],
         'signatureDialog': ['signature.dialog.js', 'signatureDialog'],
+        'pdfDocument': ['pdfdocument.reportitem.js', 'pdfDocument'],
+        'htmlDocument': ['htmldocument.reportitem.js', 'htmlDocument'],
+        'shape': ['shape.reportitem.js', 'shape']
     };
     const updateFile = (key, [filename, exportKey]) => {
         const filePath = `${extensionsItemDir}${filename}`;

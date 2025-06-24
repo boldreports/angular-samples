@@ -11,6 +11,8 @@
     "cmr",
     "infographics",
     "pdf",
+    "pdfdocument",
+    "htmldocument",
     "shape"
   ],
   "otherPlatforms": {
