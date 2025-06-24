@@ -9,6 +9,8 @@ import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.re
 import { EJSignature } from './../extensions/report-item-extensions/signature.reportitem';
 import { SignatureDialog } from './../extensions/report-item-extensions/signature.dialog';
 import { EJShape } from './../extensions/report-item-extensions/shape.reportitem';
+import { EJPdfDocument } from './../extensions/report-item-extensions/pdfdocument.reportitem';
+import { EJHtmlDocument } from './../extensions/report-item-extensions/htmldocument.reportitem';
 
 import { rdlcData } from '../rdlcData';
 
@@ -24,6 +26,12 @@ window[signatureDialog] = SignatureDialog;
 
 const shape = 'EJShape';
 window[shape] = EJShape;
+
+const pdfDocument = 'EJPdfDocument';
+const htmlDocument = 'EJHtmlDocument';
+window[pdfDocument] = EJPdfDocument;
+window[htmlDocument] = EJHtmlDocument;
+
 @Component({
   selector: 'ej-sample',
   templateUrl: './rdlc.component.html',
@@ -72,6 +80,19 @@ export class RDLCComponent implements AfterViewInit {
       imageClass: 'customitem-shape',
       displayName: 'Shape',
       category: 'Shapes'
+    },{
+      name: 'pdfdocument',
+      className: 'EJPdfDocument',
+      imageClass: 'customitem-pdfdocument',
+      displayName: 'PDF',
+      category: 'Documents',
+      allowHeaderFooter: false
+    }, {
+      name: 'htmldocument',
+      className: 'EJHtmlDocument',
+      imageClass: 'customitem-htmldocument',
+      displayName: 'Html',
+      category: 'Documents',
     }];
   }
 
