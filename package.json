@@ -4,7 +4,8 @@
   "scripts": {
     "test": "gulp test",
     "postinstall": "gulp copy",
-    "build": "gulp production-build"
+    "build": "gulp production-build",
+    "serve": "gulp serve"
   },
   "dependencies": {
     "@angular/animations": "^16.1.0",
