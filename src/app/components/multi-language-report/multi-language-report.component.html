@@ -1,0 +1,34 @@
+<div id="r-w-container">
+    <div id="r-w-sample-container">
+        <bold-reportviewer #multilanguagereport id="multi-language-report" [reportServiceUrl]="serviceUrl"
+            [reportPath]="reportPath" (toolBarItemClick)="onToolbarItemClick($event)"
+            (exportItemClick)="onExportItemClick()" [toolbarSettings]="toolbarSettings"
+            [parameterSettings]="parameterSettings">
+        </bold-reportviewer>
+    </div>
+    <div id="r-w-property-container">
+        <div id='spinner-container'></div>
+        <div id="r-w-property-title" style="display: none;">Parameters</div>
+        <div id="r-w-property-languages" class="r-w-property" style="display: none;">
+            <div id="r-w-property-name-languages">Languages</div>
+            <div id="r-w-property-value-languages">
+                <input type="text" id="languages" />
+            </div>
+        </div>
+        <input type="button" class="r-w-genearte e-control e-btn e-lib e-primary"
+            id="update" (click)="loadReport()" value="View Report" style="display: none;" />
+    </div>
+</div>
+
+<div id="description">
+    <p>
+        This demo showcases a Multi Language Report that allows users to view report in various languages using the Angular Bold Report Viewer. Select a language from the dropdown and click "View Report" to see the report content in the selected language.
+    </p>
+    <p>
+        Ensure that the report is designed to support multiple languages and that the necessary localization resources are available.
+    </p>
+    <p>
+        For detailed guidance on implementing localization, refer to the <a href="https://help.boldreports.com/embedded-reporting/angular-reporting/report-viewer/localization/"
+                                                                                                                        target="_blank" rel="noreferrer">documentation</a>.
+    </p>
+</div>

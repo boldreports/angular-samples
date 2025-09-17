@@ -81,6 +81,7 @@
       "sampleName": "Sales Report",
       "basePath": "report-viewer",
       "directoryName": "sales-report",
+      "status": "Updated",
       "imageDetails": {
         "isLandscape": false,
         "index": 9
@@ -495,6 +496,36 @@
       "metaData": {
         "description": "This demo visualizes an Infographics Report that effectively presents student demographics, course interests, achievements, and study preferences in the Angular Bold Report Viewer."
       }
-    } 
+    },
+    {
+      "routerPath": "dynamic-logos",
+      "className": "DynamicLogosComponent",
+      "sampleName": "Dynamic Logos",
+      "basePath": "report-viewer",
+      "directoryName": "dynamic-logos",
+      "status": "New",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 19
+      },
+      "metaData": {
+        "description": "This demo showcases a dynamic business report, where company-specific logos and content are updated automatically based on parameter selections in the Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "multi-language-report",
+      "className": "MultiLanguageReportComponent",
+      "sampleName": "Multi Language Report",
+      "basePath": "report-viewer",
+      "directoryName": "multi-language-report",
+      "status": "New",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 5
+      },
+      "metaData": {
+        "description": "This demo showcases a Multi Language Report that allows users to view report in various languages using the Angular Bold Report Viewer."
+      }
+    }
   ]
 }
