@@ -3,6 +3,15 @@ import '@boldreports/javascript-reporting-controls/Scripts/v2.0/common/bold.repo
 import '@boldreports/javascript-reporting-controls/Scripts/v2.0/common/bold.reports.widgets.min';
 import '@boldreports/javascript-reporting-controls/Scripts/v2.0/bold.report-viewer.min';
 import '@boldreports/javascript-reporting-controls/Scripts/v2.0/bold.report-designer.min';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.en-US.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.fr-CA.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.de-DE.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.hi-IN.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.es-ES.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.nl-NL.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.ko-KR.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.he-IL.min.js';
+import '@boldreports/javascript-reporting-controls/Scripts/v2.0/localization/l10n/ej.localetexts.ru-RU.min.js';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, } from '@angular/core';
