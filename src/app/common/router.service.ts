@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class RouterService {
@@ -15,6 +16,17 @@ export class RouterService {
         routerData.reportRouterPath = spilttedUrl[routerPathIndex] ? spilttedUrl[routerPathIndex] : '';
         routerData.spilttedUrl = spilttedUrl;
         return routerData;
+    }
+
+    constructor(private router: Router) { }
+    public addTrailingSlash(url: string): boolean {
+        const qIndex = url.indexOf('?');
+        const pathPart = url.slice(0, qIndex !== -1 ? qIndex : url.length);
+        if (pathPart && pathPart !== '/' && !pathPart.endsWith('/')) {
+            this.router.navigateByUrl(url.replace(pathPart, `${pathPart}/`));
+            return false;
+        }
+        return true;
     }
 }
 
