@@ -3,10 +3,8 @@ const { cp, mkdir } = require('shelljs');
 const fs = require('fs');
 
 const scripts = {
-    common: ['common/ej2-base.min.js', 'common/ej2-data.min.js', 'common/ej2-pdf-export.min.js', 'common/ej2-svg-base.min.js'],
-    control: ['data-visualization/ej2-circulargauge.min.js', 'data-visualization/ej2-lineargauge.min.js', 'data-visualization/ej2-maps.min.js'],
     barcode: ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js'],
-    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js'],
+    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js', 'pdf.signature.reportitem.css', 'pdf.signature.reportitem.js'],
     shape: ['shape.reportitem.css','shape.reportitem.js'],
     pdf: ['document.reportitem.css', 'pdfdocument.reportitem.js'],
     html: ['htmldocument.reportitem.js']
@@ -27,8 +25,6 @@ const extensionsExportTemp = {
 }
 
 gulp.task('copy', (done) => {
-    copyFiles(scripts.common, srcDir, destDir + 'common');
-    copyFiles(scripts.control, srcDir, destDir + 'data-visualization');
     copyFiles(scripts.barcode, extensionsItemSrcDir, extensionsItemDir);
     copyFiles(scripts.signature, extensionsItemSrcDir, extensionsItemDir);
     copyFiles(scripts.shape, extensionsItemSrcDir, extensionsItemDir);
