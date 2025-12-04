@@ -7,6 +7,7 @@ import { Router, Params } from '@angular/router';
 import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
 import { EJQRBarcode } from './../extensions/report-item-extensions/qrbarcode.reportitem';
 import { EJSignature } from './../extensions/report-item-extensions/signature.reportitem';
+import { EJPDFSignature } from './../extensions/report-item-extensions/pdf.signature.reportitem';
 import { SignatureDialog } from './../extensions/report-item-extensions/signature.dialog';
 import { EJShape } from './../extensions/report-item-extensions/shape.reportitem';
 import { EJPdfDocument } from './../extensions/report-item-extensions/pdfdocument.reportitem';
@@ -29,6 +30,9 @@ const pdfDocument = 'EJPdfDocument';
 const htmlDocument = 'EJHtmlDocument';
 window[pdfDocument] = EJPdfDocument;
 window[htmlDocument] = EJHtmlDocument;
+
+const pdfSignature = 'EJPDFSignature';
+window[pdfSignature] = EJPDFSignature;
 
 @Component({
   selector: 'ej-sample',
@@ -70,7 +74,7 @@ export class DesignerComponent implements AfterViewInit {
       className: 'EJSignature',
       imageClass: 'customitem-signature',
       displayName: 'Electronic',
-      category: 'Signature'
+      category: 'Signatures'
     }, {
       name: 'Shape',
       className: 'EJShape',
@@ -90,6 +94,12 @@ export class DesignerComponent implements AfterViewInit {
       imageClass: 'customitem-htmldocument',
       displayName: 'Html',
       category: 'Documents',
+    }, {
+      name: 'PDFSignature',
+      className: 'EJPDFSignature',
+      imageClass: 'customitem-pdfsignature',
+      displayName: 'PDF',
+      category: 'Signatures'
     }];
   }
 
