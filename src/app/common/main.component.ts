@@ -10,7 +10,6 @@ export class MainComponent {
     this.router.events.subscribe((event: Event) => {
 
       if (event instanceof NavigationStart) {
-        this.routerService.addTrailingSlash(event.url);
         if (event.url.indexOf('/preview') === -1 && event.url.indexOf('/report-designer') === -1) {
           this.routerService.sampleUrl.next(event.url);
         } else {

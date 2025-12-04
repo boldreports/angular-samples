@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
       width: 100% !important;
     }
 
-    #external-parameter-report, #external-parameter-report {
+    #external-parameter-report, #multi-language-report {
       height: auto !important;
     }`;
   }

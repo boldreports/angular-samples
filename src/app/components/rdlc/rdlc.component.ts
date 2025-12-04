@@ -11,7 +11,6 @@ import { SignatureDialog } from './../extensions/report-item-extensions/signatur
 import { EJShape } from './../extensions/report-item-extensions/shape.reportitem';
 import { EJPdfDocument } from './../extensions/report-item-extensions/pdfdocument.reportitem';
 import { EJHtmlDocument } from './../extensions/report-item-extensions/htmldocument.reportitem';
-import { EJPDFSignature } from './../extensions/report-item-extensions/pdf.signature.reportitem';
 
 import { rdlcData } from '../rdlcData';
 
@@ -32,9 +31,6 @@ const pdfDocument = 'EJPdfDocument';
 const htmlDocument = 'EJHtmlDocument';
 window[pdfDocument] = EJPdfDocument;
 window[htmlDocument] = EJHtmlDocument;
-
-const pdfSignature = 'EJPDFSignature';
-window[pdfSignature] = EJPDFSignature;
 
 @Component({
   selector: 'ej-sample',
@@ -77,7 +73,7 @@ export class RDLCComponent implements AfterViewInit {
       className: 'EJSignature',
       imageClass: 'customitem-signature',
       displayName: 'Electronic',
-      category: 'Signatures'
+      category: 'Signature'
     }, {
       name: 'Shape',
       className: 'EJShape',
@@ -97,12 +93,6 @@ export class RDLCComponent implements AfterViewInit {
       imageClass: 'customitem-htmldocument',
       displayName: 'Html',
       category: 'Documents',
-    }, {
-      name: 'PDFSignature',
-      className: 'EJPDFSignature',
-      imageClass: 'customitem-pdfsignature',
-      displayName: 'PDF',
-      category: 'Signatures'
     }];
   }
 
