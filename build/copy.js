@@ -4,10 +4,11 @@ const fs = require('fs');
 
 const scripts = {
     barcode: ['images', 'barcode.reportitem.css', 'barcode.reportitem.js', 'qrbarcode.reportitem.js'],
-    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js', 'pdf.signature.reportitem.css', 'pdf.signature.reportitem.js'],
+    signature: ['signature.reportitem.css', 'signature.dialog.css', 'signature.reportitem.js', 'signature.dialog.js'],
     shape: ['shape.reportitem.css','shape.reportitem.js'],
     pdf: ['document.reportitem.css', 'pdfdocument.reportitem.js'],
-    html: ['htmldocument.reportitem.js']
+    html: ['htmldocument.reportitem.js'],
+    pdfSignature: ['pdf.signature.reportitem.css', 'pdf.signature.reportitem.js']
 };
 
 const srcDir = 'node_modules/@boldreports/javascript-reporting-controls/Scripts/';
@@ -21,7 +22,8 @@ const extensionsExportTemp = {
     'signatureDialog': 'export { SignatureDialog }',
     'shape': 'export { EJShape }',
     'pdfDocument': 'export { EJPdfDocument };',
-    'htmlDocument': 'export { EJHtmlDocument };'
+    'htmlDocument': 'export { EJHtmlDocument };',
+    'pdfSignature': 'export { EJPDFSignature  }'
 }
 
 gulp.task('copy', (done) => {
@@ -30,6 +32,7 @@ gulp.task('copy', (done) => {
     copyFiles(scripts.shape, extensionsItemSrcDir, extensionsItemDir);
     copyFiles(scripts.html, extensionsItemSrcDir, extensionsItemDir);
     copyFiles(scripts.pdf, extensionsItemSrcDir, extensionsItemDir);
+    copyFiles(scripts.pdfSignature, extensionsItemSrcDir, extensionsItemDir);
     done();
 });
 
@@ -48,7 +51,8 @@ gulp.task('update-extensions-export', (done) => {
         'signatureDialog': ['signature.dialog.js', 'signatureDialog'],
         'pdfDocument': ['pdfdocument.reportitem.js', 'pdfDocument'],
         'htmlDocument': ['htmldocument.reportitem.js', 'htmlDocument'],
-        'shape': ['shape.reportitem.js', 'shape']
+        'shape': ['shape.reportitem.js', 'shape'],
+        'pdfSignature': ['pdf.signature.reportitem.js', 'pdfSignature']
     };
     const updateFile = (key, [filename, exportKey]) => {
         const filePath = `${extensionsItemDir}${filename}`;
