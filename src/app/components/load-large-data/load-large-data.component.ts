@@ -7,7 +7,8 @@ import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
   templateUrl: './load-large-data.component.html',
-  styleUrls: ['./load-large-data.component.css']
+  styleUrls: ['./load-large-data.component.css'],
+  standalone: false
 })
 export class LoadLargeDataComponent {
   @ViewChild('viewer') viewerInst;

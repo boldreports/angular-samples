@@ -8,7 +8,8 @@ const data = samples;
 @Component({
   selector: 'ej-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  standalone: false
 })
 export class SidebarComponent {
   samples: sampleInfo['samples'] = data.samples;

@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './barcode.component.html',
-  styleUrls: ['./barcode.component.css']
+  styleUrls: ['./barcode.component.css'],
+  standalone: false
 })
 export class BarcodeComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

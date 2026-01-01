@@ -6,21 +6,16 @@
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "resolveJsonModule": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/@boldreports/types"
-    ],
+    "esModuleInterop": true,
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
-    ],
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    ]
   }
 }

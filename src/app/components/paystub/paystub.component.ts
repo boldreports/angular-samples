@@ -7,7 +7,8 @@ import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
   templateUrl: './paystub.component.html',
-  styleUrls: ['./paystub.component.css']
+  styleUrls: ['./paystub.component.css'],
+  standalone: false
 })
 export class PaystubComponent {
   @ViewChild('viewer') viewerInst;

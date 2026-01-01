@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output, Renderer2 } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output, Renderer2, ChangeDetectorRef } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
@@ -26,7 +26,8 @@ interface CurData {
 @Component({
   selector: 'ej-main-content',
   templateUrl: './main-content.component.html',
-  styleUrls: ['./main-content.component.scss']
+  styleUrls: ['./main-content.component.scss'],
+  standalone: false
 })
 
 export class MainContentComponent implements AfterViewInit {
@@ -46,7 +47,7 @@ export class MainContentComponent implements AfterViewInit {
   @ViewChild('features[2]', { static: true }) feature3;
   @ViewChild('freeTrialUrl', { static: true }) freeTrialUrl;
   @ViewChild('copyrightYear', { static: true }) copyrightYear;
-  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2) { }
+  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
 
   public loadSourceCode(sampleData: sampleInfo['samples'][0]): void {
     (jQuery('#parentTab li:first-child a') as any).tab('show');
@@ -93,6 +94,7 @@ export class MainContentComponent implements AfterViewInit {
           name: `${sampleData.routerPath}.component.html`,
           body: Prism.highlight(this.getStringWithOutDescription(resultCollection[0], /(\'|\")description/g), Prism.languages.html), id: 'html'
         });
+        this.cdr.detectChanges();
       });
   }
 

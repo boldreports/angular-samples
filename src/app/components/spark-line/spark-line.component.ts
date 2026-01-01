@@ -7,7 +7,8 @@ import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
   templateUrl: './spark-line.component.html',
-  styleUrls: ['./spark-line.component.css']
+  styleUrls: ['./spark-line.component.css'],
+  standalone: false
 })
 export class SparkLine {
   @ViewChild('viewer') viewerInst;
