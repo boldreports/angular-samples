@@ -9,6 +9,7 @@ import { DateTimePicker } from '@syncfusion/ej2-angular-calendars';
     selector: 'ej-sample',
     templateUrl: './parameter-customization.component.html',
     styleUrls: ['./parameter-customization.component.css'],
+  standalone: false
 })
 export class ParameterCustomizationComponent {
     // Specifies the report Web API service URL. It is used to process the reports.

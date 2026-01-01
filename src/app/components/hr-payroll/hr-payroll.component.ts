@@ -6,7 +6,8 @@
  @Component({
    selector: 'ej-sample',
    templateUrl: './hr-payroll.component.html',
-   styleUrls: ['./hr-payroll.component.css']
+   styleUrls: ['./hr-payroll.component.css'],
+  standalone: false
  })
  export class HRPayrollComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

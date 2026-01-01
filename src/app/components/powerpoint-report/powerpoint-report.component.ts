@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './powerpoint-report.component.html',
-  styleUrls: ['./powerpoint-report.component.css']
+  styleUrls: ['./powerpoint-report.component.css'],
+  standalone: false
 })
 export class PowerpointReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

@@ -7,7 +7,8 @@ import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
   templateUrl: './product-catalog.component.html',
-  styleUrls: ['./product-catalog.component.css']
+  styleUrls: ['./product-catalog.component.css'],
+  standalone: false
 })
 export class ProductCatalogComponent {
   @ViewChild('viewer') viewerInst;

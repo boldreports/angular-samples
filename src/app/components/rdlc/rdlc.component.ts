@@ -39,7 +39,8 @@ window[pdfSignature] = EJPDFSignature;
 @Component({
   selector: 'ej-sample',
   templateUrl: './rdlc.component.html',
-  styleUrls: ['./rdlc.component.css']
+  styleUrls: ['./rdlc.component.css'],
+  standalone: false
 })
 export class RDLCComponent implements AfterViewInit {
   @ViewChild('designer') designerInst;

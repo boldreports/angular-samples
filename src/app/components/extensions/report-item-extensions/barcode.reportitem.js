@@ -17,10 +17,12 @@ var EJBarcode = (function () {
         args.renderCallback = $.proxy(this.renderData, this);
         args.loadingCallback = $.proxy(this.showIndicator, this);
     };
-    EJBarcode.prototype.renderItem = function (customJson, target) {
-        this.customJSON = customJson;
-        this.rootElement = target;
-        this.renderBarcode();
+    EJBarcode.prototype.renderItem = function (customJson, target, eventData) {
+        if (eventData.eventName === 'begin') {
+            this.customJSON = customJson;
+            this.rootElement = target;
+            this.renderBarcode();
+        }
     };
     EJBarcode.prototype.renderBarcode = function () {
         this.customItemDiv = ej.buildTag('div.customitem', '', {
@@ -82,7 +84,13 @@ var EJBarcode = (function () {
                 break;
             case 'DisplayBarcodeText':
                 this.updatePropertyVal(name, (newValue === true) ? 'true' : 'false');
+                break;
+            case 'BarcodeRotation':
+                this.updatePropertyVal(name, newValue ? newValue : 'None');
+                break;
         }
+    };
+    EJBarcode.prototype.updatePropertyUIValue = function (name, value) {
     };
     EJBarcode.prototype.onPositionChanged = function (top, left) {
     };
@@ -104,49 +112,58 @@ var EJBarcode = (function () {
             });
         }
     };
-    EJBarcode.prototype.getPropertyGridItems = function () {
-        var propertyItems = {
-            'HeaderText': this.customJSON.Name,
-            'PropertyType': 'barcode',
-            'SubType': 'barcode',
-            'IsEditHeader': true,
-            'Items': [{
-                    'CategoryId': 'basicsettings',
-                    'DisplayName': this.getLocale('categoryBasicSettings'),
-                    'IsExpand': true,
-                    'Items': [
-                        {
-                            'ItemId': 'barcodetype',
-                            'Name': 'BarcodeType',
-                            'DisplayName': this.getLocale('BarcodeType'),
-                            'Value': this.getPropertyVal('BarcodeType'),
-                            'ItemType': 'DropDown',
-                            'EnableExpression': false,
-                            'ValueList': ['Code39', 'Code39Extended', 'Code11', 'Codabar', 'Code93', 'Code128A', 'Code128B',
-                                'Code128C', 'UpcBarcode', 'EAN-13', 'EAN-8', 'Code39 Mod 43', 'Interleaved 2 of 5',
-                                'Standard 2 of 5', 'Pharmacode']
-                        },
-                        {
-                            'ItemId': 'barcodevalue',
-                            'Name': 'BarcodeValue',
-                            'DisplayName': this.getLocale('barcodeValue'),
-                            'EnableExpression': true,
-                            'Value': this.getPropertyVal('BarcodeValue'),
-                            'ItemType': 'TextBox'
-                        },
-                        {
-                            'ItemId': 'displaybarcodetext',
-                            'Name': 'DisplayBarcodeText',
-                            'DisplayName': this.getLocale('displayText'),
-                            'Value': this.isDisplayText() ? true : false,
-                            'ItemType': 'Bool',
-                            'EnableExpression': false
-                        }
-                    ]
-                }
-            ]
-        };
-        return propertyItems;
+    EJBarcode.prototype.getPropertyGridItems = function (baseProperties) {
+        var barCodeType = this.getPropertyVal('BarcodeType');
+        var itemProperties = [{
+                'CategoryId': 'basicsettings',
+                'DisplayName': 'categoryBasicSettings',
+                'IsExpand': true,
+                'Items': [
+                    {
+                        'ItemId': 'barcodetype',
+                        'Name': 'BarcodeType',
+                        'DisplayName': 'BarcodeType',
+                        'Value': barCodeType,
+                        'ItemType': 'DropDown',
+                        'EnableExpression': false,
+                        'ValueList': ['Code39', 'Code39Extended', 'Code11', 'Codabar', 'Code93', 'Code128A', 'Code128B',
+                            'Code128C', 'GS1-128', 'UpcBarcode', 'EAN-13', 'EAN-8', 'Code39 Mod 43', 'Interleaved 2 of 5',
+                            'Standard 2 of 5', 'Pharmacode']
+                    },
+                    {
+                        'ItemId': 'barcodevalue',
+                        'Name': 'BarcodeValue',
+                        'DisplayName': 'barcodeValue',
+                        'EnableExpression': true,
+                        'Value': this.getPropertyVal('BarcodeValue'),
+                        'ItemType': 'TextBox'
+                    },
+                    {
+                        'ItemId': 'displaybarcodetext',
+                        'Name': 'DisplayBarcodeText',
+                        'DisplayName': 'displayText',
+                        'Value': this.isDisplayText() ? true : false,
+                        'ItemType': 'Bool',
+                        'EnableExpression': false
+                    },
+                    {
+                        'ItemId': 'barcoderotation',
+                        'Name': 'BarcodeRotation',
+                        'DisplayName': 'barcodeRotationLabel',
+                        'Value': this.getBarcodeRotation(this.getPropertyVal('BarcodeRotation')),
+                        'ItemType': 'DropDown',
+                        'EnableExpression': false,
+                        'ValueList': this.getRotationLevel()
+                    }
+                ]
+            }
+        ];
+        baseProperties.HeaderText = this.customJSON.Name;
+        baseProperties.PropertyType = 'barcode';
+        baseProperties.SubType = 'barcode';
+        baseProperties.IsEditHeader = true;
+        baseProperties.Items = $.merge(itemProperties, baseProperties.Items);
+        return baseProperties;
     };
     EJBarcode.prototype.getPropertyVal = function (name) {
         if (this.customJSON.CustomProperties && this.customJSON.CustomProperties.length > 0) {
@@ -165,12 +182,18 @@ var EJBarcode = (function () {
         this.customJSON.CustomProperties.push(new ej.ReportModel.CustomProperty(name, val));
     };
     EJBarcode.prototype.updatePropertyVal = function (propertyName, value) {
+        var isUpdated = false;
         if (this.customJSON.CustomProperties && this.customJSON.CustomProperties.length > 0) {
             for (var index = 0; index < this.customJSON.CustomProperties.length; index++) {
                 if (this.customJSON.CustomProperties[index].Name === propertyName) {
                     this.customJSON.CustomProperties[index].Value = value;
+                    isUpdated = true;
+                    break;
                 }
             }
+        }
+        if (!isUpdated) {
+            this.setPropertyVal(propertyName, value);
         }
     };
     EJBarcode.prototype.getReportItemJson = function () {
@@ -179,13 +202,42 @@ var EJBarcode = (function () {
             this.setPropertyVal('BarcodeValue', '00000');
             this.setPropertyVal('BarcodeType', 'Code39');
             this.setPropertyVal('DisplayBarcodeText', 'true');
+            this.setPropertyVal('BarcodeRotation', 'None');
         }
         return this.customJSON;
+    };
+    EJBarcode.prototype.getRotationLevel = function () {
+        return [
+            {
+                text: 'rotationnone', value: 'None'
+            },
+            {
+                text: 'rotate90degrees', value: 'Rotate90Degrees'
+            },
+            {
+                text: 'rotate180degrees', value: 'Rotate180Degrees'
+            },
+            {
+                text: 'rotate270degrees', value: 'Rotate270Degrees'
+            }
+        ];
+    };
+    EJBarcode.prototype.getBarcodeRotation = function (rotation) {
+        var rotationVal = rotation ? rotation.toLowerCase() : '';
+        switch (rotationVal) {
+            case 'none': return 'None';
+            case 'rotate90degrees': return 'Rotate90Degrees';
+            case 'rotate180degrees': return 'Rotate180Degrees';
+            case 'rotate270degrees': return 'Rotate270Degrees';
+        }
+        return 'None';
     };
     EJBarcode.prototype.setReportItemJson = function (reportItem) {
         this.customJSON = reportItem;
     };
     EJBarcode.prototype.dispose = function () {
+    };
+    EJBarcode.prototype.undoRedoAction = function (args) {
     };
     EJBarcode.prototype.isDisplayText = function () {
         return (this.getPropertyVal('DisplayBarcodeText').toLowerCase()) === 'true';
@@ -221,6 +273,31 @@ var EJBarcode = (function () {
                     return barcodeLocale.categoryBasicSettings;
                 }
                 return defaultLocale.categoryBasicSettings;
+            case 'barcoderotationlabel':
+                if (barcodeLocale && barcodeLocale.barcodeRotationLabel) {
+                    return barcodeLocale.barcodeRotationLabel;
+                }
+                return defaultLocale.barcodeRotationLabel;
+            case 'rotationnone':
+                if (barcodeLocale && barcodeLocale.barcodeRotation.rotationNone) {
+                    return barcodeLocale.barcodeRotation.rotationNone;
+                }
+                return defaultLocale.barcodeRotation.rotationNone;
+            case 'rotate90degrees':
+                if (barcodeLocale && barcodeLocale.barcodeRotation.rotate90degrees) {
+                    return barcodeLocale.barcodeRotation.rotate90degrees;
+                }
+                return defaultLocale.barcodeRotation.rotate90degrees;
+            case 'rotate180degrees':
+                if (barcodeLocale && barcodeLocale.barcodeRotation.rotate180degrees) {
+                    return barcodeLocale.barcodeRotation.rotate180degrees;
+                }
+                return defaultLocale.barcodeRotation.rotate180degrees;
+            case 'rotate270degrees':
+                if (barcodeLocale && barcodeLocale.barcodeRotation.rotate270degrees) {
+                    return barcodeLocale.barcodeRotation.rotate270degrees;
+                }
+                return defaultLocale.barcodeRotation.rotate270degrees;
         }
         return text;
     };
@@ -234,7 +311,7 @@ var EJBarcode = (function () {
             this.errMsgDiv.css('display', 'none');
             this.customItemDiv.css({
                 'background-image': 'url(data:image/BMP;base64,' + args.data + ')',
-                'background-size': 'auto 100%',
+                'background-size': '100% 100%',
                 'background-repeat': 'no-repeat',
                 'background-position': 'left top'
             });
@@ -249,13 +326,37 @@ var EJBarcode = (function () {
     };
     return EJBarcode;
 }());
-export { EJBarcode };
 EJBarcode.Locale = {};
+EJBarcode.Locale['en-NZ'] = {
+    barcodeValue: 'Text',
+    barcodeType: 'Symbology Type',
+    textVisibility: 'Text Visibility',
+    categoryBasicSettings: 'Basic Settings',
+    barcodeRotationLabel: 'Rotation',
+    barcodeRotation: {
+        rotationNone: 'None',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    toolTip: {
+        requirements: 'Display any barcode type.',
+        description: 'Displays the barcodes.',
+        title: 'Barcode'
+    }
+};
 EJBarcode.Locale['en-US'] = {
     barcodeValue: 'Text',
     barcodeType: 'Symbology Type',
     textVisibility: 'Text Visibility',
     categoryBasicSettings: 'Basic Settings',
+    barcodeRotationLabel: 'Rotation',
+    barcodeRotation: {
+        rotationNone: 'None',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
     toolTip: {
         requirements: 'Display any barcode type.',
         description: 'Displays the barcodes.',
@@ -266,6 +367,13 @@ EJBarcode.Locale['fr-FR'] = {
     barcodeValue: 'Texte',
     barcodeType: 'Type de symbologie',
     textVisibility: 'Visibilite du texte',
+    barcodeRotationLabel: 'Rotation',
+    barcodeRotation: {
+        rotationNone: 'Aucun',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
     categoryBasicSettings: 'Paramètres de base',
     toolTip: {
         requirements: 'Afficher n\'importe quel type de code à barres.',
@@ -273,3 +381,113 @@ EJBarcode.Locale['fr-FR'] = {
         title: 'code à barre'
     }
 };
+EJBarcode.Locale['he-IL'] = {
+    barcodeValue: 'טקסט',
+    barcodeType: 'סוג סימנים',
+    textVisibility: 'הצגת טקסט',
+    barcodeRotationLabel: 'סיבוב',
+    barcodeRotation: {
+        rotationNone: 'ללא',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: 'הגדרות בסיסיות',
+    toolTip: {
+        requirements: 'הצג כל סוג של ברקוד.',
+        description: 'מציג ברקודים.',
+        title: 'ברקוד'
+    }
+};
+EJBarcode.Locale['ja-JP'] = {
+    barcodeValue: 'テキスト',
+    barcodeType: 'シンボロジータイプ',
+    textVisibility: 'テキストの表示',
+    barcodeRotationLabel: '回転',
+    barcodeRotation: {
+        rotationNone: 'なし',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: '基本設定',
+    toolTip: {
+        requirements: 'すべてのバーコードタイプを表示します。',
+        description: 'バーコードを表示します。',
+        title: 'バーコード'
+    }
+};
+EJBarcode.Locale['pt-PT'] = {
+    barcodeValue: 'Texto',
+    barcodeType: 'Tipo de simbologia',
+    textVisibility: 'Visibilidade do texto',
+    barcodeRotationLabel: 'Rotação',
+    barcodeRotation: {
+        rotationNone: 'Nenhuma',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: 'Configurações básicas',
+    toolTip: {
+        requirements: 'Exibe qualquer tipo de código de barras.',
+        description: 'Exibe os códigos de barras.',
+        title: 'Código de barras'
+    }
+};
+EJBarcode.Locale['ru-RU'] = {
+    barcodeValue: 'Текст',
+    barcodeType: 'Тип символики',
+    textVisibility: 'Отображение текста',
+    barcodeRotationLabel: 'Вращение',
+    barcodeRotation: {
+        rotationNone: 'Нет',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: 'Основные настройки',
+    toolTip: {
+        requirements: 'Отображает любой тип штрихкода.',
+        description: 'Отображает штрихкоды.',
+        title: 'Штрихкод'
+    }
+};
+EJBarcode.Locale['zh-Hans'] = {
+    barcodeValue: '文本',
+    barcodeType: '符号类型',
+    textVisibility: '文本可见性',
+    barcodeRotationLabel: '旋转',
+    barcodeRotation: {
+        rotationNone: '无',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: '基本设置',
+    toolTip: {
+        requirements: '显示任何条码类型。',
+        description: '显示条码。',
+        title: '条码'
+    }
+};
+EJBarcode.Locale['zh-Hant'] = {
+    barcodeValue: '文字',
+    barcodeType: '符號類型',
+    textVisibility: '文字可見性',
+    barcodeRotationLabel: '旋轉',
+    barcodeRotation: {
+        rotationNone: '無',
+        rotate90degrees: '90',
+        rotate180degrees: '180',
+        rotate270degrees: '270'
+    },
+    categoryBasicSettings: '基本設定',
+    toolTip: {
+        requirements: '顯示任何條碼類型。',
+        description: '顯示條碼。',
+        title: '條碼'
+    }
+};
+
+export { EJBarcode };

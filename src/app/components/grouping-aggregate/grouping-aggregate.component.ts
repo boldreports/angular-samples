@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './grouping-aggregate.component.html',
-  styleUrls: ['./grouping-aggregate.component.css']
+  styleUrls: ['./grouping-aggregate.component.css'],
+  standalone: false
 })
 export class GroupingAggregateComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

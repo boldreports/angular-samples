@@ -37,7 +37,8 @@ window[pdfSignature] = EJPDFSignature;
 @Component({
   selector: 'ej-sample',
   templateUrl: './designer.component.html',
-  styleUrls: ['./designer.component.css']
+  styleUrls: ['./designer.component.css'],
+  standalone: false
 })
 export class DesignerComponent implements AfterViewInit {
   @ViewChild('designer') designerInst;

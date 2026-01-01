@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './northwind-products-suppliers-report.component.html',
-  styleUrls: ['./northwind-products-suppliers-report.component.css']
+  styleUrls: ['./northwind-products-suppliers-report.component.css'],
+  standalone: false
 })
 export class NorthwindProductsSuppliersReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

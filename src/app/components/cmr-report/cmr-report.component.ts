@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
     selector: 'ej-sample',
     templateUrl: './cmr-report.component.html',
-    styleUrls: ['./cmr-report.component.css']
+    styleUrls: ['./cmr-report.component.css'],
+  standalone: false
 })
 export class CMRReportComponent {
     // Specifies the report Web API service URL. It is used to process the reports.

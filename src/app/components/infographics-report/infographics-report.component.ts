@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './infographics-report.component.html',
-  styleUrls: ['./infographics-report.component.css']
+  styleUrls: ['./infographics-report.component.css'],
+  standalone: false
 })
 export class InfographicsReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

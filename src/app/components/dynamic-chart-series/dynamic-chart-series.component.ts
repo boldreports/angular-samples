@@ -6,7 +6,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './dynamic-chart-series.component.html',
-  styleUrls: ['./dynamic-chart-series.component.css']
+  styleUrls: ['./dynamic-chart-series.component.css'],
+  standalone: false
 })
 export class DynamicChartSeriesComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

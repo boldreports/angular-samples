@@ -13,7 +13,8 @@ type sampleInfo = typeof data;
 @Component({
   selector: 'ej-main',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: false
 })
 export class AppComponent implements OnInit {
   tocSlideLeft = false;
@@ -63,7 +64,7 @@ export class AppComponent implements OnInit {
     this.meta.updateTag({ name: 'description', property: 'og:description', content: sampleData.metaData.description });
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize')
   onResize(): void {
     let sampleData: sampleInfo['samples'][0];
     this.subscriptions.add(this.routerService.sampleUrl.subscribe((url) => {

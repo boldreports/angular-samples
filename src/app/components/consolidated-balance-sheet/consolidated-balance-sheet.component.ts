@@ -7,7 +7,8 @@ import { rdlcData } from '../rdlcData';
 @Component({
   selector: 'ej-sample',
   templateUrl: './consolidated-balance-sheet.component.html',
-  styleUrls: ['./consolidated-balance-sheet.component.css']
+  styleUrls: ['./consolidated-balance-sheet.component.css'],
+  standalone: false
 })
 export class ConsolidatedBalanceSheetComponent {
   @ViewChild('viewer') viewerInst;
