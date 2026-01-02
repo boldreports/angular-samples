@@ -6,7 +6,7 @@ const runSequence = require('gulp4-run-sequence');
 
 gulp.task('serve', (done) => {
   runSequence('update-extensions-export', 'generate-router', () => {
-    exec(`${ngCli} serve --open --port ${argv.port || ''}`);
+    exec(`${ngCli} serve --open --port ${argv?.port || ''}`);
     done();
   });
 });
