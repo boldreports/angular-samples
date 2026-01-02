@@ -1,6 +1,6 @@
 export const Globals = {
-    SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportViewerWebApi',
-    DESIGNER_SERVICE_URL: 'https://demos.boldreports.com/services/api/ReportDesignerWebApi',
+    SERVICE_URL: '/services/api/ReportViewerWebApi',
+    DESIGNER_SERVICE_URL: '/services/api/ReportDesignerWebApi',
     REPORT_CONTROL_ID: 'reportdesigner',
     TOOLBAR_OPTIONS: {
         showToolbar: true,
