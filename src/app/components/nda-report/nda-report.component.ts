@@ -1,14 +1,14 @@
 /**
- * HR Payroll - This demo showcases an HR Payroll report showing salaries, deductions, demographics, and performance insights in the Angular Bold Report Viewer.
+ * NDA Reort - This demo showcases the integration of PDF digital signature in a Non-Disclosure Agreement (NDA) report.
  */
  import { Component } from '@angular/core';
  import { Globals } from '../globals';
  @Component({
    selector: 'ej-sample',
-   templateUrl: './hr-payroll.component.html',
-   styleUrls: ['./hr-payroll.component.css']
+   templateUrl: './nda-report.component.html',
+   styleUrls: ['./nda-report.component.css']
  })
- export class HRPayrollComponent {
+ export class NDAReportComponent {
    // Specifies the report Web API service URL. It is used to process the reports.
    public serviceUrl = Globals.SERVICE_URL;
    // Specifies the path of the RDL report file
@@ -18,7 +18,7 @@
    public onExportItemClick = Globals.EXPORT_ITEM_CLICK;
  
    constructor() {
-     this.reportPath = 'hr-payroll.rdl';
+     this.reportPath = 'nda-report.rdl';
    }
  }
  

@@ -13,8 +13,7 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './external-parameter-report.component.html',
-  styleUrls: ['./external-parameter-report.component.css'],
-  standalone: false
+  styleUrls: ['./external-parameter-report.component.css']
 })
 export class ExternalParameterReportComponent {
   @ViewChild('externalparameterreport', { static: false }) externalParameterReport;

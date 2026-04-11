@@ -6,8 +6,7 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './data-bar.component.html',
-  styleUrls: ['./data-bar.component.css'],
-  standalone: false
+  styleUrls: ['./data-bar.component.css']
 })
 export class DataBar {
   // Specifies the report Web API service URL. It is used to process the reports.

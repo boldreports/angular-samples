@@ -6,8 +6,7 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './conditional-row-formatting.component.html',
-  styleUrls: ['./conditional-row-formatting.component.css'],
-  standalone: false
+  styleUrls: ['./conditional-row-formatting.component.css']
 })
 export class ConditionalRowFormattingComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

@@ -6,8 +6,7 @@
  @Component({
    selector: 'ej-sample',
    templateUrl: './dynamic-logos.component.html',
-   styleUrls: ['./dynamic-logos.component.css'],
-  standalone: false
+   styleUrls: ['./dynamic-logos.component.css']
  })
  export class DynamicLogosComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

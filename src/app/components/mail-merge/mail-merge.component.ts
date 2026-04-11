@@ -6,8 +6,7 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './mail-merge.component.html',
-  styleUrls: ['./mail-merge.component.css'],
-  standalone: false
+  styleUrls: ['./mail-merge.component.css']
 })
 export class MailMergeComponent {
   // Specifies the report Web API service URL. It is used to process the reports.
