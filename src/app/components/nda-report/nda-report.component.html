@@ -1,0 +1,18 @@
+<bold-reportviewer id="nda-report" [reportServiceUrl]="serviceUrl" [reportPath]="reportPath"
+    (toolBarItemClick)="onToolbarItemClick($event)" (exportItemClick)="onExportItemClick()" [toolbarSettings]="toolbarSettings">
+</bold-reportviewer>
+
+<div id="description">
+    <p>The report demonstrates the PDF digital signature functionality in a Non-Disclosure Agreement (NDA) document. It
+        highlights secure signing and verification features for professional agreements.</p>
+    <ul>
+        <li>Illustrates PDF digital signature integration within reports.</li>
+        <li>Uses a real-world NDA template for practical demonstration.</li>
+        <li>Shows how signatures, names, dates, and locations are captured in the report item.</li>
+    </ul>
+    <p>
+        More information about the PDF signature report item can be found in this <a
+            href="https://help.boldreports.com/enterprise-reporting/designer-guide/report-designer/report-items/signature/design-report-with-pdf-signature/"
+            target="_blank" rel="noreferrer">documentation</a> section.
+    </p>
+</div>

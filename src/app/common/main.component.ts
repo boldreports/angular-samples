@@ -3,8 +3,7 @@ import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
 import { RouterService } from './router.service';
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
-  standalone: false
+  template: '<router-outlet></router-outlet>'
 })
 export class MainComponent {
   constructor(private router: Router, private routerService: RouterService) {

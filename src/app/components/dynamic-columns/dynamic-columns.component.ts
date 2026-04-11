@@ -6,8 +6,7 @@
  @Component({
    selector: 'ej-sample',
    templateUrl: './dynamic-columns.component.html',
-   styleUrls: ['./dynamic-columns.component.css'],
-  standalone: false
+   styleUrls: ['./dynamic-columns.component.css']
  })
  export class DynamicColumnsComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

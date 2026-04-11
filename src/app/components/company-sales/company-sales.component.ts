@@ -6,8 +6,7 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './company-sales.component.html',
-  styleUrls: ['./company-sales.component.css'],
-  standalone: false
+  styleUrls: ['./company-sales.component.css']
 })
 export class CompanySalesComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

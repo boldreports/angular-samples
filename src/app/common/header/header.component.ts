@@ -9,8 +9,7 @@ const data = samples;
 @Component({
   selector: 'ej-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: false
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   platforms: string[];

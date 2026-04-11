@@ -10,8 +10,7 @@ const data = samples;
 @Component({
   selector: 'ej-preview',
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss'],
-  standalone: false
+  styleUrls: ['./preview.component.scss']
 
 })
 export class PreviewComponent implements OnInit {
@@ -53,7 +52,7 @@ export class PreviewComponent implements OnInit {
     }));
   }
 
-  @HostListener('window:resize')
+  @HostListener('window:resize', ['$event'])
   onResize(): void {
     this.setReportsHeight();
   }
