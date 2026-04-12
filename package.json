@@ -1,6 +1,6 @@
 {
   "name": "angular-samples",
-  "version": "12.1.12",
+  "version": "13.1.26",
   "scripts": {
     "test": "gulp test",
     "postinstall": "gulp copy",
@@ -16,10 +16,10 @@
     "@angular/platform-browser": "21.1.0",
     "@angular/platform-browser-dynamic": "21.1.0",
     "@angular/router": "21.1.0",
-    "@boldreports/angular-reporting-components": "12.1.12",
-    "@boldreports/javascript-reporting-controls": "12.1.12",
-    "@boldreports/javascript-reporting-extensions": "12.1.12",
-    "@boldreports/types": "12.1.12",
+    "@boldreports/angular-reporting-components": "13.1.26",
+    "@boldreports/javascript-reporting-controls": "13.1.26",
+    "@boldreports/javascript-reporting-extensions": "13.1.26",
+    "@boldreports/types": "13.1.26",
     "@syncfusion/ej2-angular-buttons": "22.2.5",
     "@syncfusion/ej2-angular-calendars": "22.2.5",
     "@syncfusion/ej2-angular-dropdowns": "22.2.5",
