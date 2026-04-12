@@ -13,7 +13,8 @@
     "pdf",
     "pdfdocument",
     "htmldocument",
-    "shape"
+    "shape",
+    "nda"
   ],
   "otherPlatforms": {
     "JavaScript": "javascript/#/",
@@ -31,7 +32,7 @@
     ],
     "freeTrialUrl": "https://app.boldid.net/register/reports/enterprise?evaluation=v2&leadsource=demos.boldreports.com&gclid=&referrerroriginurl=https://demos.boldreports.com/pricing&secondaryreferraloriginurl=https://demos.boldreports.com/&host=server&quantity=1"
   },
-  "copyrightYear": "2025",
+  "copyrightYear": "2026",
   "samples": [
     {
       "routerPath": "product-line-sales",
@@ -530,13 +531,26 @@
       "sampleName": "HR Payroll",
       "basePath": "report-viewer",
       "directoryName": "hr-payroll",
-      "status": "New",
       "imageDetails": {
         "isLandscape": false,
         "index": 20
       },
       "metaData": {
         "description": "This demo showcases an HR Payroll report showing salaries, deductions, demographics, and performance insights in the Angular Bold Report Viewer."
+      }
+    },
+    {
+      "routerPath": "nda-report",
+      "className": "NDAReportComponent",
+      "sampleName": "NDA Report",
+      "basePath": "report-viewer",
+      "directoryName": "nda-report",
+      "imageDetails": {
+        "isLandscape": false,
+        "index": 21
+      },
+      "metaData": {
+        "description": "This demo showcases the PDF digital signature functionality in a Non-Disclosure Agreement (NDA) document in Angular Bold Report Viewer."
       }
     }
   ]
