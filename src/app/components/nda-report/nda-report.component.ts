@@ -6,7 +6,8 @@
  @Component({
    selector: 'ej-sample',
    templateUrl: './nda-report.component.html',
-   styleUrls: ['./nda-report.component.css']
+   styleUrls: ['./nda-report.component.css'],
+   standalone: false
  })
  export class NDAReportComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

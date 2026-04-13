@@ -10,7 +10,8 @@ import { Globals } from '../globals';
 @Component({
   selector: 'ej-sample',
   templateUrl: './multi-language-report.component.html',
-  styleUrls: ['./multi-language-report.component.css']
+  styleUrls: ['./multi-language-report.component.css'],
+  standalone: false
 })
 export class MultiLanguageReportComponent {
     @ViewChild('multilanguagereport', { static: false }) multiLanguageReport;
