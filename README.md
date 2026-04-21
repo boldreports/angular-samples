@@ -40,7 +40,7 @@ npm run build
 To run the samples, use the below command
 
 ```bash
-npm run serve
+ng serve
 ```
 
 ## Online Demos
