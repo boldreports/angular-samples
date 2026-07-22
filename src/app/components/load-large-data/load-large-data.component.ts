@@ -1,17 +1,19 @@
 /**
  * Load Large Data - This report demonstrates the complete details of sales orders in Adventure Works
  */
-import { Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 import { rdlcData } from '../rdlcData';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './load-large-data.component.html',
-  styleUrls: ['./load-large-data.component.css'],
-  standalone: false
+  styleUrls: ['./load-large-data.component.css']
 })
 export class LoadLargeDataComponent {
-  @ViewChild('viewer') viewerInst;
+  @ViewChild('viewer') viewerInst: any;
   // Specifies the report Web API service URL. It is used to process the reports.
   public serviceUrl = Globals.SERVICE_URL;
   // Specifies the path of the RDL report file
@@ -25,7 +27,7 @@ export class LoadLargeDataComponent {
     this.toolbarSettings = {
       showToolbar: true,
       items: ~ej.ReportViewer.ToolbarItems.Export & ~ej.ReportViewer.ToolbarItems.Print,
-      toolbars: ej.ReportViewer.Toolbars.All & ~ej.ReportViewer.Toolbars.Vertical,
+      toolbars: (ej as any).ReportViewer.Toolbars.All & ~(ej as any).ReportViewer.Toolbars.Vertical,
       customGroups: [{
         items: [{
           type: 'Default',

@@ -1,12 +1,15 @@
-const gulp = require("gulp");
-const { exec } = require('shelljs');
-var argv = require('yargs').argv;
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import gulp from 'gulp';
+import shelljs from 'shelljs';
+import runSequence from 'gulp4-run-sequence';
+const argv = yargs(hideBin(process.argv)).parse();
+const { exec } = shelljs;
 const ngCli = "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng";
-const runSequence = require('gulp4-run-sequence');
-
 gulp.task('serve', (done) => {
   runSequence('update-extensions-export', 'generate-router', () => {
-    exec(`${ngCli} serve --open --port ${argv?.port || ''}`);
+    const portArg = argv.port ? `--port ${argv.port}` : '';
+    exec(`${ngCli} serve --open ${portArg}`);
     done();
   });
 });

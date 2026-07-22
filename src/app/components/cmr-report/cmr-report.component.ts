@@ -1,13 +1,15 @@
 /**
     * CMR report sample - This sample analyzes the legal document standardizing international road freight transport with random data.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
     selector: 'ej-sample',
     templateUrl: './cmr-report.component.html',
-    styleUrls: ['./cmr-report.component.css'],
-  standalone: false
+    styleUrls: ['./cmr-report.component.css']
 })
 export class CMRReportComponent {
     // Specifies the report Web API service URL. It is used to process the reports.

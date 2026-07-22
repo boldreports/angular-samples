@@ -1,13 +1,15 @@
 /**
  * Product Details - The sample demonstrates the product details information based on barcode report item.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css'],
-  standalone: false
+  styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

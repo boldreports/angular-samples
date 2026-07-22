@@ -1,13 +1,15 @@
 /**
  * Sales Report - This report demonstrates the complete details of sales orders in Adventure Works
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './sales-report.component.html',
-  styleUrls: ['./sales-report.component.css'],
-  standalone: false
+  styleUrls: ['./sales-report.component.css']
 })
 export class SalesReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

@@ -1,13 +1,15 @@
 /**
  * Mail Merge - This sample demonstrates the complete employee details in List report item.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './mail-merge.component.html',
-  styleUrls: ['./mail-merge.component.css'],
-  standalone: false
+  styleUrls: ['./mail-merge.component.css']
 })
 export class MailMergeComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

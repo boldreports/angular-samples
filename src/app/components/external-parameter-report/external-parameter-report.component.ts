@@ -1,7 +1,8 @@
 /**
  * Product Line Sales - The sample demonstrates the product details information based on barcode report item.
  */
-import { Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { DatePicker } from '@syncfusion/ej2-angular-calendars';
@@ -11,13 +12,14 @@ import { createSpinner, showSpinner, hideSpinner } from "@syncfusion/ej2-angular
 import { Globals } from '../globals';
 
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './external-parameter-report.component.html',
-  styleUrls: ['./external-parameter-report.component.css'],
-  standalone: false
+  styleUrls: ['./external-parameter-report.component.css']
 })
 export class ExternalParameterReportComponent {
-  @ViewChild('externalparameterreport', { static: false }) externalParameterReport;
+  @ViewChild('externalparameterreport', { static: false }) externalParameterReport: any;
   // Specifies the report Web API service URL. It is used to process the reports.
   public serviceUrl = Globals.SERVICE_URL;
   // Specifies the path of the RDL report file
@@ -53,17 +55,20 @@ export class ExternalParameterReportComponent {
     if (wheelEvent && !isMobile) {
       window.addEventListener(wheelEvent, function () { }, { passive: false });
     }
-    createSpinner({target: document.getElementById("spinner-container")});
-    showSpinner(document.getElementById("spinner-container"));
+    const spinnerContainer = document.getElementById("spinner-container");
+    if (spinnerContainer) {
+      createSpinner({target: spinnerContainer});
+      showSpinner(spinnerContainer);
+    }
     $(".e-spinner-pane").css("background-color", "rgba(0, 0, 0, 0.4)");
     const observableCollection = this.http.get(Globals.SERVICE_URL + '/GetExternalParameterData', { responseType: 'json' });
     forkJoin(observableCollection).subscribe(
-      (parameterDataCollection: object) => {
+      (parameterDataCollection: any) => {
         var startDate: DatePicker = new DatePicker({ value: new Date("1/1/2003"), width: "180px" });
         var endDate: DatePicker = new DatePicker({ value: new Date("12/31/2003"), width: "180px" });
         let catogoryList = JSON.parse(parameterDataCollection[0].productCategoryDetail);
         let subCategoryList = JSON.parse(parameterDataCollection[0].productSubCategoryDetail);
-        var subCategoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == 1);
+        var subCategoryDropDownList = subCategoryList.filter(({ ProductCategoryID }: any) => ProductCategoryID == 1);
         var category: DropDownList = new DropDownList({
           dataSource: catogoryList,
           fields: {
@@ -72,9 +77,9 @@ export class ExternalParameterReportComponent {
           },
           index: 1,
           width: "180px",
-          change: function (e) {
+          change: function (e: any) {
             var categoryID = e.value;
-            var categoryDropDownList = subCategoryList.filter(({ ProductCategoryID }) => ProductCategoryID == categoryID);
+            var categoryDropDownList = subCategoryList.filter(({ ProductCategoryID }: any) => ProductCategoryID == categoryID);
             if (subCategory.value != null)
               subCategory.clear();
             subCategory.dataSource = categoryDropDownList;
@@ -94,7 +99,7 @@ export class ExternalParameterReportComponent {
           width: "180px",
           value: [2],
           placeholder: "Select Option",
-          change: function(args) {
+          change: function(args: any) {
             $('#update').prop('disabled', !args.value.length);
           }
         });
@@ -102,7 +107,8 @@ export class ExternalParameterReportComponent {
         endDate.appendTo('#enddate');
         category.appendTo('#category');
         subCategory.appendTo('#subcategory');
-        hideSpinner(document.getElementById("spinner-container"));
+        const spinnerHide = document.getElementById("spinner-container");
+        spinnerHide && hideSpinner(spinnerHide);
         $("#r-w-property-title").css("display", "block");
         $(".r-w-property").css("display", "inline-flex");
         $(".r-w-genearte").css("display", "block");

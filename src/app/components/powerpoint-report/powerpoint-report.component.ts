@@ -1,13 +1,15 @@
 /**
  * Powerpoint Report - This sample demonstrates the online food ordering details which is presented as a power point report using page break.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './powerpoint-report.component.html',
-  styleUrls: ['./powerpoint-report.component.css'],
-  standalone: false
+  styleUrls: ['./powerpoint-report.component.css']
 })
 export class PowerpointReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

@@ -1,13 +1,15 @@
 /**
  * Northwind Products and Suppliers Report - This sample demonstrates the sales performance of different products.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './northwind-products-suppliers-report.component.html',
-  styleUrls: ['./northwind-products-suppliers-report.component.css'],
-  standalone: false
+  styleUrls: ['./northwind-products-suppliers-report.component.css']
 })
 export class NorthwindProductsSuppliersReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

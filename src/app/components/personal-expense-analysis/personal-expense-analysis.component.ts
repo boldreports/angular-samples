@@ -1,13 +1,15 @@
 /**
  * Personal Expense Analysis - The sample demonstrates the spending patterns of an individual with random data.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './personal-expense-analysis.component.html',
-  styleUrls: ['./personal-expense-analysis.component.css'],
-  standalone: false
+  styleUrls: ['./personal-expense-analysis.component.css']
 })
 export class PersonalExpenseAnalysisComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

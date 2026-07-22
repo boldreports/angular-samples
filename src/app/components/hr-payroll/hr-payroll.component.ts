@@ -1,13 +1,15 @@
 /**
  * HR Payroll - This demo showcases an HR Payroll report showing salaries, deductions, demographics, and performance insights in the Angular Bold Report Viewer.
  */
- import { Component } from '@angular/core';
+ import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
  import { Globals } from '../globals';
  @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
    selector: 'ej-sample',
    templateUrl: './hr-payroll.component.html',
-   styleUrls: ['./hr-payroll.component.css'],
-  standalone: false
+   styleUrls: ['./hr-payroll.component.css']
  })
  export class HRPayrollComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

@@ -1,13 +1,15 @@
 /**
  * Territory Sales - This sample demonstrates the Tablix with Row Grouping by sales region and drill down the group details.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './territory-sales.component.html',
-  styleUrls: ['./territory-sales.component.css'],
-  standalone: false
+  styleUrls: ['./territory-sales.component.css']
 })
 export class TerritorySalesComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

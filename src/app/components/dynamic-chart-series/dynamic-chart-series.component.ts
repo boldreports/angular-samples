@@ -1,13 +1,15 @@
 /**
  * Dynamic Chart Series - This sample demonstrates the dynamic chart series.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './dynamic-chart-series.component.html',
-  styleUrls: ['./dynamic-chart-series.component.css'],
-  standalone: false
+  styleUrls: ['./dynamic-chart-series.component.css']
 })
 export class DynamicChartSeriesComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

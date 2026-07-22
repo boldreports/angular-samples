@@ -1,13 +1,15 @@
 /**
  * Website Visitor Analysis - This sample analyze the user behavior for a fictitious e-commerce website with random data.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './website-visitor-analysis.component.html',
-  styleUrls: ['./website-visitor-analysis.component.css'],
-  standalone: false
+  styleUrls: ['./website-visitor-analysis.component.css']
 })
 export class WebsiteVisitorAnalysisComponent {
   // Specifies the report Web API service URL. It is used to process the reports.
