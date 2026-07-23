@@ -1,13 +1,15 @@
 /**
  * Infographics Report - Visualize student demographics, course interests, achievements, and study preferences.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './infographics-report.component.html',
-  styleUrls: ['./infographics-report.component.css'],
-  standalone: false
+  styleUrls: ['./infographics-report.component.css']
 })
 export class InfographicsReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

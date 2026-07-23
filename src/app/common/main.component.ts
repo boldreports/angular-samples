@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { Router, NavigationStart, Event, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, Event, NavigationEnd, RouterOutlet } from '@angular/router';
 import { RouterService } from './router.service';
+
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
-  standalone: false
+  standalone: true,
+  imports: [RouterOutlet],
+  providers: [RouterService],
+  template: '<router-outlet></router-outlet>'
 })
 export class MainComponent {
   constructor(private router: Router, private routerService: RouterService) {

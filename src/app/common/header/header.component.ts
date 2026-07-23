@@ -1,22 +1,23 @@
 import { Component, Output, EventEmitter, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import samples from '../../components/samples.json';
 import { Router } from '@angular/router';
-import { DOCUMENT } from '@angular/common';
 import { RouterService } from '../router.service';
 
 const data = samples;
 
 @Component({
   selector: 'ej-header',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: false
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   platforms: string[];
   platformName = data.platform;
-  document;
-  constructor(private routerService: RouterService, private router: Router, @Inject(DOCUMENT) document) {
+  document: Document;
+  constructor(private routerService: RouterService, private router: Router, @Inject(DOCUMENT) document: Document) {
     this.document = document;
     this.platforms = Object.keys(data.otherPlatforms);
   }
@@ -40,7 +41,7 @@ export class HeaderComponent {
     }
     platformSamplePath = this.getRouterPath(this.platformName, platform, sampleName);
     const reportPath = routerData.reportRouterPath ? (platformBasePath + '/' + platformSamplePath) : platformSamplePath;
-    window.open(this.document.location.origin + "/" + data.otherPlatforms[platform] + reportPath, '_self');
+    window.open(this.document.location.origin + "/" + (data.otherPlatforms as Record<string, string>)[platform] + reportPath, '_self');
   }
 
   private getRouterPath(curPlatform: string, targetplatform: string, sampleName: string): string {

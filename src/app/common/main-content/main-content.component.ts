@@ -1,8 +1,8 @@
-import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output, Renderer2, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input, EventEmitter, Output, ElementRef, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, Renderer2 } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { Router, RouterOutlet } from '@angular/router';
 import Prism from 'prismjs';
 import { RouterService } from '../router.service';
 import 'prismjs/components/prism-typescript';
@@ -18,36 +18,38 @@ interface SourceDataCollection {
 }
 
 interface CurData {
-  curIndex: number;
-  isFirst: boolean;
-  isLast: boolean;
+  curIndex: number | undefined;
+  isFirst: boolean | undefined;
+  isLast: boolean | undefined;
 }
 
 @Component({
   selector: 'ej-main-content',
+  standalone: true,
+  imports: [CommonModule, HttpClientModule, RouterOutlet],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './main-content.component.html',
-  styleUrls: ['./main-content.component.scss'],
-  standalone: false
+  styleUrls: ['./main-content.component.scss']
 })
 
 export class MainContentComponent implements AfterViewInit {
-  @Input() enableOverlay: boolean;
+  protected readonly data: sampleInfo = samples;
+  @Input() enableOverlay!: boolean;
   @Output() enableOverlayChange = new EventEmitter<boolean>();
   sourceData: SourceDataCollection[] = [];
-  @ViewChild('title', { static: true }) title;
-  @ViewChild('metaDescription', { static: true }) metaDescription;
-  @ViewChild('tabContent', { static: true }) tabContent;
-  @ViewChild('demoTab', { static: true }) demoTab;
-  @ViewChild('sourceTab', { static: true }) sourceTab;
-  @ViewChild('descTab', { static: true }) descTab;
-  @ViewChild('description', { static: true }) description;
-  @ViewChild('text', { static: true }) text;
-  @ViewChild('features[0]', { static: true }) feature1;
-  @ViewChild('features[1]', { static: true }) feature2;
-  @ViewChild('features[2]', { static: true }) feature3;
-  @ViewChild('freeTrialUrl', { static: true }) freeTrialUrl;
-  @ViewChild('copyrightYear', { static: true }) copyrightYear;
-  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2, private cdr: ChangeDetectorRef) { }
+  @ViewChild('title', { static: true }) title!: ElementRef<HTMLElement>;
+  @ViewChild('metaDescription', { static: true }) metaDescription!: ElementRef<HTMLElement>;
+  @ViewChild('tabContent', { static: true }) tabContent!: ElementRef<HTMLElement>;
+  @ViewChild('demoTab', { static: true }) demoTab!: ElementRef<HTMLElement>;
+  @ViewChild('sourceTab', { static: true }) sourceTab!: ElementRef<HTMLElement>;
+  @ViewChild('descTab', { static: true }) descTab!: ElementRef<HTMLElement>;
+  @ViewChild('description', { static: true }) description!: ElementRef<HTMLElement>;
+  @ViewChild('text', { static: true }) text!: ElementRef<HTMLElement>;
+  @ViewChild('features[0]', { static: true }) feature1!: ElementRef<HTMLElement>;
+  @ViewChild('features[1]', { static: true }) feature2!: ElementRef<HTMLElement>;
+  @ViewChild('features[2]', { static: true }) feature3!: ElementRef<HTMLElement>;
+  @ViewChild('copyrightYear', { static: true }) copyrightYear!: ElementRef<HTMLElement>;
+  constructor(private routerService: RouterService, private http: HttpClient, private router: Router, private location: Location, private renderer: Renderer2, private cdRef: ChangeDetectorRef) { }
 
   public loadSourceCode(sampleData: sampleInfo['samples'][0]): void {
     (jQuery('#parentTab li:first-child a') as any).tab('show');
@@ -56,25 +58,27 @@ export class MainContentComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.updateTab();
-    jQuery(this.demoTab.nativeElement.firstElementChild).on('shown.bs.tab', this.resizeReportViewer);
+    const tab = this.demoTab.nativeElement.firstElementChild;
+    tab && (jQuery as any)(tab).on('shown.bs.tab', this.resizeReportViewer);
     this.copyrightYear.nativeElement.innerText = `Copyright © 2001 - ${data.copyrightYear} Syncfusion Inc.`;
+    document.dispatchEvent(new Event('DOMContentLoaded'));
   }
 
-  updateSampleDetails(sampleData): void {
+  updateSampleDetails(sampleData: sampleInfo['samples'][0]): void {
     this.title.nativeElement.innerText = sampleData.sampleName;
     this.metaDescription.nativeElement.innerText = sampleData.metaData.description;
     this.description.nativeElement.innerHTML = '';
     setTimeout(() => {
-    this.description.nativeElement.appendChild(this.tabContent.nativeElement.querySelector('#description'));
+      const descriptionNode = this.tabContent.nativeElement.querySelector('#description');
+      descriptionNode && this.description.nativeElement.appendChild(descriptionNode);
     }, 0)
   }
 
-  updateBannerDetails(bannerData): void {
+  updateBannerDetails(bannerData: any): void {
     this.text.nativeElement.innerText = bannerData.text;
     this.feature1.nativeElement.innerText = bannerData.features[0];
     this.feature2.nativeElement.innerText = bannerData.features[1];
     this.feature3.nativeElement.innerText = bannerData.features[2];
-    this.renderer.setProperty(this.freeTrialUrl.nativeElement, 'href', bannerData.freeTrialUrl)
   }
 
   getFiles(sampleData: sampleInfo['samples'][0]): void {
@@ -83,25 +87,27 @@ export class MainContentComponent implements AfterViewInit {
     const basePath = `app/components/${reportComponentPath}`;
     const observableCollection: Observable<string>[] = [this.http.get(basePath + '.component.html', { responseType: 'text' }),
     this.http.get(basePath + '.component.ts', { responseType: 'text' })];
-    forkJoin(observableCollection).subscribe(
-      (resultCollection: string[]) => {
+    forkJoin(observableCollection).subscribe({
+      next: (resultCollection: string[]) => {
         this.sourceData = [];
         this.sourceData.push({
           name: `${sampleData.routerPath}.component.ts`,
-          body: Prism.highlight(resultCollection[1], Prism.languages.ts), id: 'ts'
+          body: Prism.highlight(resultCollection[1], Prism.languages.ts, 'ts'), id: 'ts'
         });
         this.sourceData.push({
           name: `${sampleData.routerPath}.component.html`,
-          body: Prism.highlight(this.getStringWithOutDescription(resultCollection[0], /(\'|\")description/g), Prism.languages.html), id: 'html'
+          body: Prism.highlight(this.getStringWithOutDescription(resultCollection[0], /(\'|\")description/g), Prism.languages.html, 'html'), id: 'html'
         });
-        this.cdr.detectChanges();
-      });
+        this.cdRef.detectChanges();
+      },
+      error: (err) => console.error('Failed to load source files:', err)
+    });
   }
 
   getStringWithOutDescription(code: string, descRegex: RegExp): string {
     const lines: string[] = code.split('\n');
-    let desStartLine: number = null;
-    let desEndLine: number = null;
+    let desStartLine: number | null = null;
+    let desEndLine: number | null = null;
     let desInsideDivCnt = 0;
     for (let i = 0; i < lines.length; i++) {
       const curLine: string = lines[i];
@@ -134,7 +140,7 @@ export class MainContentComponent implements AfterViewInit {
   onTabNext(): void {
     this.togglePopup();
     const curRouterData: CurData = this.getCurRouterData();
-    const curRouterIndex: number = curRouterData.curIndex;
+    const curRouterIndex: number = curRouterData.curIndex ?? 0;
     const sampleData: sampleInfo['samples'][0] = curRouterData.isLast ? data.samples[0] : data.samples[curRouterIndex + 1];
     const reportPath = sampleData.routerPath ? (sampleData.basePath + '/' + sampleData.routerPath) : sampleData.basePath;
     this.router.navigate([reportPath]);
@@ -155,7 +161,7 @@ export class MainContentComponent implements AfterViewInit {
   onTabPrev(): void {
     this.togglePopup();
     const curRouterData: CurData = this.getCurRouterData();
-    const curRouterIndex: number = curRouterData.curIndex;
+    const curRouterIndex: number = curRouterData.curIndex ?? 0;
     const sampleData: sampleInfo['samples'][0] = curRouterData.isFirst ?
       data.samples[data.samples.length - 1] : data.samples[curRouterIndex - 1];
     const reportPath = sampleData.routerPath ? (sampleData.basePath + '/' + sampleData.routerPath) : sampleData.basePath;

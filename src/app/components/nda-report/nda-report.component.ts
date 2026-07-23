@@ -1,13 +1,15 @@
 /**
  * NDA Reort - This demo showcases the integration of PDF digital signature in a Non-Disclosure Agreement (NDA) report.
  */
- import { Component } from '@angular/core';
+ import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
  import { Globals } from '../globals';
  @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
    selector: 'ej-sample',
    templateUrl: './nda-report.component.html',
-   styleUrls: ['./nda-report.component.css'],
-   standalone: false
+   styleUrls: ['./nda-report.component.css']
  })
  export class NDAReportComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

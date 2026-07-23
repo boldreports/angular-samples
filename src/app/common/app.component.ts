@@ -1,10 +1,12 @@
-import { Component, ViewChild, OnInit, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, OnInit, HostListener } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import 'bootstrap';
 import { RouterService } from './router.service';
 import samples from '../components/samples.json';
 import { MainContentComponent } from './main-content/main-content.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { HeaderComponent } from './header/header.component';
 import { Title, Meta } from '@angular/platform-browser';
 
 const data = samples;
@@ -12,20 +14,21 @@ type sampleInfo = typeof data;
 
 @Component({
   selector: 'ej-main',
+  standalone: true,
+  imports: [CommonModule, HeaderComponent, SidebarComponent, MainContentComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  standalone: false
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   tocSlideLeft = false;
   enableOverlay = false;
   tocMobileSlideLeft = false;
   private subscriptions = new Subscription();
-  @ViewChild('body', { static: true }) body: MainContentComponent;
-  @ViewChild('sidebar', { static: true }) sidebar: SidebarComponent;
-  constructor(private routerService: RouterService, private titleService: Title, private meta: Meta) { }
+  @ViewChild('body', { static: true }) body!: MainContentComponent;
+  @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
+  constructor(private routerService: RouterService, private titleService: Title, private meta: Meta, private cdr: ChangeDetectorRef) { }
   ngOnInit(): void {
-    let sampleData: sampleInfo['samples'][0];
+    let sampleData!: sampleInfo['samples'][0];
     this.subscriptions.add(this.routerService.sampleUrl.subscribe((url) => {
       if (url === '/') {
         sampleData = data.samples[0];
@@ -37,9 +40,9 @@ export class AppComponent implements OnInit {
       if (!sampleData) {
         sampleData = data.samples[0];
       }
-      this.sidebar.selectedPath = sampleData.routerPath;
       this.body.loadSourceCode(sampleData);
       this.updateMetaData(sampleData);
+      this.cdr.markForCheck();
     }));
     let bannerData = data.banner;
     this.subscriptions.add(this.routerService.navEnd.subscribe(() => {
@@ -64,9 +67,9 @@ export class AppComponent implements OnInit {
     this.meta.updateTag({ name: 'description', property: 'og:description', content: sampleData.metaData.description });
   }
 
-  @HostListener('window:resize')
-  onResize(): void {
-    let sampleData: sampleInfo['samples'][0];
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: Event): void {
+    let sampleData!: sampleInfo['samples'][0];
     this.subscriptions.add(this.routerService.sampleUrl.subscribe((url) => {
       if (url === '/') {
         sampleData = data.samples[0];
@@ -91,7 +94,7 @@ export class AppComponent implements OnInit {
   }
 
   private setReportsHeight(sampleData: sampleInfo['samples'][0]): void {
-    let style: HTMLElement = document.getElementById('reports-style');
+    let style: HTMLElement | null = document.getElementById('reports-style');
     if (!style) {
       style = document.createElement('style');
       style.id = 'reports-style';

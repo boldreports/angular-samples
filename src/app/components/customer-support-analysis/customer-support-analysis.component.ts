@@ -1,13 +1,15 @@
 /**
  * Customer Support Analysis - This sample analyze the efficiency of customer support with random data.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './customer-support-analysis.component.html',
-  styleUrls: ['./customer-support-analysis.component.css'],
-  standalone: false
+  styleUrls: ['./customer-support-analysis.component.css']
 })
 export class CustomerSupportAnalysisComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

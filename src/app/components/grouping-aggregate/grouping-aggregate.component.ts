@@ -1,13 +1,15 @@
 /**
  * Grouping Aggregate - This sample demonstrates the sorting, group total support in Tablix report item.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './grouping-aggregate.component.html',
-  styleUrls: ['./grouping-aggregate.component.css'],
-  standalone: false
+  styleUrls: ['./grouping-aggregate.component.css']
 })
 export class GroupingAggregateComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

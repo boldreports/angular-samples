@@ -1,13 +1,15 @@
 /**
  * Invoice - This sample demonstrates the Report Parameters, Expressions, Textbox and Tablix Report Item capabilities of the ReportViewer.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.css'],
-  standalone: false
+  styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

@@ -28,7 +28,7 @@ export const Globals = {
     EXPORT_ITEM_CLICK: () => {
         Globals.DESTROY_REPORT = false;
     },
-    EDIT_REPORT: (args) => {
+    EDIT_REPORT: (args: any) => {
         if (args.value === 'edit-report') {
             const path = location.href.split('#');
             const reportPath = location.href.lastIndexOf('external-parameter-report') !== -1 ? 'external-parameter-report' :

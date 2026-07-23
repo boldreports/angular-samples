@@ -1,13 +1,15 @@
 /**
  * Dynamic Logos - This demo showcases a dynamic business report, where company-specific logos and content are updated automatically based on parameter selections.
  */
- import { Component } from '@angular/core';
+ import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
  import { Globals } from '../globals';
  @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
    selector: 'ej-sample',
    templateUrl: './dynamic-logos.component.html',
-   styleUrls: ['./dynamic-logos.component.css'],
-  standalone: false
+   styleUrls: ['./dynamic-logos.component.css']
  })
  export class DynamicLogosComponent {
    // Specifies the report Web API service URL. It is used to process the reports.

@@ -1,7 +1,8 @@
 /**
  * Report designer control
  */
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import {  Component, ViewChild, AfterViewInit  } from '@angular/core';
+import { BoldReportDesignerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
 import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
@@ -17,33 +18,34 @@ import { rdlcData } from '../rdlcData';
 
 const barcode = 'EJBarcode';
 const qrBarcode = 'EJQRBarcode';
-window[barcode] = EJBarcode;
-window[qrBarcode] = EJQRBarcode;
+(window as any)[barcode] = EJBarcode;
+(window as any)[qrBarcode] = EJQRBarcode;
 
 const signature = 'EJSignature';
 const signatureDialog = 'SignatureDialog';
-window[signature] = EJSignature;
-window[signatureDialog] = SignatureDialog;
+(window as any)[signature] = EJSignature;
+(window as any)[signatureDialog] = SignatureDialog;
 
 const shape = 'EJShape';
-window[shape] = EJShape;
+(window as any)[shape] = EJShape;
 
 const pdfDocument = 'EJPdfDocument';
 const htmlDocument = 'EJHtmlDocument';
-window[pdfDocument] = EJPdfDocument;
-window[htmlDocument] = EJHtmlDocument;
+(window as any)[pdfDocument] = EJPdfDocument;
+(window as any)[htmlDocument] = EJHtmlDocument;
 
 const pdfSignature = 'EJPDFSignature';
-window[pdfSignature] = EJPDFSignature;
+(window as any)[pdfSignature] = EJPDFSignature;
 
 @Component({
+  standalone: true,
+  imports: [BoldReportDesignerModule],
   selector: 'ej-sample',
   templateUrl: './rdlc.component.html',
-  styleUrls: ['./rdlc.component.css'],
-  standalone: false
+  styleUrls: ['./rdlc.component.css']
 })
 export class RDLCComponent implements AfterViewInit {
-  @ViewChild('designer') designerInst;
+  @ViewChild('designer') designerInst: any;
   // Specifies the URL of the WebAPI service. It will be used for processing the report.
   public serviceUrl = Globals.DESIGNER_SERVICE_URL;
   public reportPath: string;
@@ -107,7 +109,7 @@ export class RDLCComponent implements AfterViewInit {
     }];
   }
 
-  public toolbarRendering(args): void {
+  public toolbarRendering(args: any): void {
     if (args?.target && $(args.target)?.hasClass('e-rptdesigner-toolbarcontainer')) {
       if (args.action === 'beforeCreate') {
         args.items.splice(0, 0, {
@@ -138,27 +140,27 @@ export class RDLCComponent implements AfterViewInit {
     }
   }
 
-  public toolbarClick(args): void {
+  public toolbarClick(args: any): void {
     if (args.event.click === 'Save') {
       args.event.cancel = true;
       args.designerInst.widget.saveToDevice();
     }
   }
 
-  public onAjaxBeforeLoad(args): void {
+  public onAjaxBeforeLoad(args: any): void {
     args.data = JSON.stringify({ reportType: 'RDLC' });
   }
 
-  public onReportOpened(args): void {
+  public onReportOpened(args: any): void {
     this.isServerReport = args.isServerReport;
   }
 
-  public previewReport(args): void {
+  public previewReport(args: any): void {
     if (this.isServerReport) {
       let reportPath = args.model.reportPath;
       reportPath = reportPath.indexOf('//') !== -1 ? reportPath.substring(2) : reportPath;
       const reportNameWithoutExt = reportPath.split('.rdlc')[0];
-      const datasource = rdlcData[reportNameWithoutExt];
+      const datasource = (rdlcData as Record<string, unknown>)[reportNameWithoutExt];
       args.dataSets = datasource;
       args.cancelDataInputDialog = true;
     }

@@ -1,13 +1,15 @@
 /**
     * Transcript report sample - This sample analyze the student's performance in a fictitious school with random data.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
     selector: 'ej-sample',
     templateUrl: './transcript-report.component.html',
-    styleUrls: ['./transcript-report.component.css'],
-    standalone: false
+    styleUrls: ['./transcript-report.component.css']
 })
 export class TranscriptReportComponent {
     // Specifies the report Web API service URL. It is used to process the reports.

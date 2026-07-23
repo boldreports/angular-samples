@@ -1,13 +1,15 @@
 /**
  * Company sales - This sample demonstrates the Sales data by year with grouping.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './company-sales.component.html',
-  styleUrls: ['./company-sales.component.css'],
-  standalone: false
+  styleUrls: ['./company-sales.component.css']
 })
 export class CompanySalesComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

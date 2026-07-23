@@ -1,13 +1,15 @@
 /**
  * Sub Report - This report demonstrates the complete details of sales order details by order number in Adventure Works
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './sub-report.component.html',
-  styleUrls: ['./sub-report.component.css'],
-  standalone: false
+  styleUrls: ['./sub-report.component.css']
 })
 export class SubReportComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

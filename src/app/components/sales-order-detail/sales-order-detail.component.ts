@@ -1,13 +1,15 @@
 /**
  * Sales Order Detail - This sample demonstrates the sales order information based on order id.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './sales-order-detail.component.html',
-  styleUrls: ['./sales-order-detail.component.css'],
-  standalone: false
+  styleUrls: ['./sales-order-detail.component.css']
 })
 export class SalesOrderDetailComponent {
   // Specifies the report Web API service URL. It is used to process the reports.

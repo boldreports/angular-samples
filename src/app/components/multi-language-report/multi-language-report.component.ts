@@ -1,20 +1,22 @@
 /**
  * Multi Language Report - This demo showcases a Multi Language Report that allows users to view report in various languages.
  */
-import { Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { HttpClient } from '@angular/common/http';
 import { DropDownList } from '@syncfusion/ej2-angular-dropdowns';
 import { createSpinner, showSpinner, hideSpinner } from "@syncfusion/ej2-angular-popups";
 import { Globals } from '../globals';
 
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './multi-language-report.component.html',
-  styleUrls: ['./multi-language-report.component.css'],
-  standalone: false
+  styleUrls: ['./multi-language-report.component.css']
 })
 export class MultiLanguageReportComponent {
-    @ViewChild('multilanguagereport', { static: false }) multiLanguageReport;
+    @ViewChild('multilanguagereport', { static: false }) multiLanguageReport: any;
     // Specifies the report Web API service URL. It is used to process the reports.
     public serviceUrl = Globals.SERVICE_URL;
     // Specifies the path of the RDL report file
@@ -47,7 +49,7 @@ export class MultiLanguageReportComponent {
         const reportViewer = this.multiLanguageReport;
         const selectedLanguageId = (<any>jQuery("#languages"))[0].ej2_instances[0].value;
         const tooltipData = this.tooltipLocales[selectedLanguageId];
-        const selectedLanguage = this.languagesList.find(lang => lang.languageId === selectedLanguageId);
+        const selectedLanguage = this.languagesList.find((lang: any) => lang.languageId === selectedLanguageId);
         const parameters = [{ name: 'Language', labels: [selectedLanguage.Name], values: [selectedLanguage.Name] }];
         reportViewer.widget.model.parameters = parameters;
         reportViewer.widget.reload();
@@ -59,8 +61,11 @@ export class MultiLanguageReportComponent {
         };
     }
     ngAfterViewInit(): void {
-        createSpinner({target: document.getElementById("spinner-container")});
-        showSpinner(document.getElementById("spinner-container"));
+        const spinnerContainer = document.getElementById("spinner-container");
+        if (spinnerContainer) {
+            createSpinner({target: spinnerContainer});
+            showSpinner(spinnerContainer);
+        }
         $(".e-spinner-pane").css("background-color", "rgba(0, 0, 0, 0.4)");
         const languages: DropDownList = new DropDownList({
             dataSource: this.languagesList,
@@ -73,7 +78,8 @@ export class MultiLanguageReportComponent {
             showClearButton: false
         });
         languages.appendTo('#languages');
-        hideSpinner(document.getElementById("spinner-container"));
+        const spinnerHide = document.getElementById("spinner-container");
+        spinnerHide && hideSpinner(spinnerHide);
         $("#r-w-property-title").css("display", "block");
         $(".r-w-property").css("display", "inline-flex");
         $(".r-w-genearte").css("display", "block");

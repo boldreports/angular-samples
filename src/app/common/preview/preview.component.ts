@@ -1,17 +1,21 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import samples from '../../components/samples.json';
-import { Router, Params } from '@angular/router';
+import { Router, Params, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RouterService } from '../router.service';
 
 const data = samples;
+type sampleInfo = typeof data;
+type SampleMeta = { metaData: { title?: string }; sampleName?: string };
 
 @Component({
   selector: 'ej-preview',
+  standalone: true,
+  imports: [RouterOutlet],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss'],
-  standalone: false
+  styleUrls: ['./preview.component.scss']
 
 })
 export class PreviewComponent implements OnInit {
@@ -53,15 +57,15 @@ export class PreviewComponent implements OnInit {
     }));
   }
 
-  @HostListener('window:resize')
-  onResize(): void {
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: Event): void {
     this.setReportsHeight();
   }
 
-  public updateMetaData(sampleData, reportBasePath): void {
-    let title: string = sampleData.metaData.title;
+  public updateMetaData(sampleData: SampleMeta, reportBasePath: string): void {
+    let title: string = sampleData.metaData.title ?? '';
     if (!title) {
-      title = sampleData.sampleName;
+      title = sampleData.sampleName ?? '';
     }
     let metaContent: string;
     switch (reportBasePath) {
@@ -88,7 +92,7 @@ export class PreviewComponent implements OnInit {
   }
 
   private setReportsHeight(): void {
-    let style: HTMLElement = document.getElementById('reports-style');
+    let style: HTMLElement | null = document.getElementById('reports-style');
     if (!style) {
       style = document.createElement('style');
       style.id = 'reports-style';

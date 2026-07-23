@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RouterService {
     public sampleUrl: BehaviorSubject<string> = new BehaviorSubject('');
     public previewUrl: BehaviorSubject<string> = new BehaviorSubject('');
     public navEnd: BehaviorSubject<string> = new BehaviorSubject('');
 
-    public getRouterData(path, basePathIndex = 1, routerPathIndex = 2): RouterData {
+    public getRouterData(path: string, basePathIndex = 1, routerPathIndex = 2): RouterData {
         const routerData: RouterData = { reportBasePath: '', reportRouterPath: '', spilttedUrl: [] };
         const modifiedUrl = path.indexOf('?') !== -1 ? path.substring(0, path.indexOf('?')) : path;
         const spilttedUrl = modifiedUrl.split('/');

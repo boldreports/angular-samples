@@ -1,15 +1,17 @@
 /**
  * Parameter Customization - This sample demonstrates the parameter customization for product sales details information based on category and sub category of products report parameters.
  */
-import { Component } from '@angular/core';
+import {  Component  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 import { Switch } from '@syncfusion/ej2-buttons';
 import { DateTimePicker } from '@syncfusion/ej2-angular-calendars';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
     selector: 'ej-sample',
     templateUrl: './parameter-customization.component.html',
     styleUrls: ['./parameter-customization.component.css'],
-  standalone: false
 })
 export class ParameterCustomizationComponent {
     // Specifies the report Web API service URL. It is used to process the reports.
@@ -24,7 +26,7 @@ export class ParameterCustomizationComponent {
     constructor() {
         this.reportPath = 'product-line-sales.rdl';
     }
-    onBeforeParameterAdd(args) {
+    onBeforeParameterAdd(args: any) {
         args.parameterSettings.dateTimePickerType = "DateTime";
         args.parameterSettings.dateTimeFormat = "MM/dd/yyyy hh:mm tt";
         args.parameterSettings.timeDisplayFormat = "HH:mm";
@@ -36,17 +38,17 @@ export class ParameterCustomizationComponent {
             $targetTag.append($dateTime);
             var datetimepicker: DateTimePicker = new DateTimePicker({
                 value: args.parameterModel._dateValue,
-                open: function (args) {
+                open: function (args: any) {
                     var btn = ej.buildTag("div.e-dt-button e-btn e-dt-button e-btn e-select e-flate-flat mr-1", "NULL", "", { id: "null-btn-v2" });
                     if (args.popup.element.className.includes('null')) {
                         args.popup.element.firstChild.lastChild.prepend(btn[0]);
                     }
                     btn[0].addEventListener('click', function () {
-                        datetimepicker.value = null;
+                        datetimepicker.value = null as any;
                         datetimepicker.placeholder = 'Null';
                     });
                 },
-                change: function (args) {
+                change: function (args: any) {
                     var data = datetimepicker.value;
                     var updateParam = {
                         name: name,
@@ -58,12 +60,12 @@ export class ParameterCustomizationComponent {
             });
             datetimepicker.appendTo($dateTime[0])
             var endDateInst = (<any>document.querySelector('[name="EndDate"]')).ej2_instances[0];
-            var switchBaseTag = ej.buildTag("input", null, null, { 'id': endDateInst.element.id + '_parameter_disable_switch', 'type': 'checkbox', 'name': 'chkDateTime', 'value': args.parameterModel.ControlId, 'style': 'margin-top:8px' });
+            var switchBaseTag = ej.buildTag("input", null as any, null as any, { 'id': endDateInst.element.id + '_parameter_disable_switch', 'type': 'checkbox', 'name': 'chkDateTime', 'value': args.parameterModel.ControlId, 'style': 'margin-top:8px' });
             if (document.querySelectorAll("#" + endDateInst.element.id + '_parameter_disable_switch').length == 0) {
                 $("#" + endDateInst.element.id + "_div").append(switchBaseTag);
                 var switchObj: Switch = new Switch({ checked: false, cssClass: "switchstyle" });
                 switchObj.appendTo($('#' + endDateInst.element.id + '_parameter_disable_switch')[0]);
-                switchObj.addEventListener('change', function (args) {
+                switchObj.addEventListener('change', function (args: any) {
                     endDateInst.enabled = !switchObj.checked;
                 })
             }

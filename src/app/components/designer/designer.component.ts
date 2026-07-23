@@ -1,7 +1,8 @@
 /**
  * Report designer control
  */
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import {  Component, ViewChild, AfterViewInit  } from '@angular/core';
+import { BoldReportDesignerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 import { Router, Params } from '@angular/router';
 import { EJBarcode } from './../extensions/report-item-extensions/barcode.reportitem';
@@ -15,33 +16,34 @@ import { EJHtmlDocument } from './../extensions/report-item-extensions/htmldocum
 
 const barcode = 'EJBarcode';
 const qrBarcode = 'EJQRBarcode';
-window[barcode] = EJBarcode;
-window[qrBarcode] = EJQRBarcode;
+(window as any)[barcode] = EJBarcode;
+(window as any)[qrBarcode] = EJQRBarcode;
 
 const signature = 'EJSignature';
 const signatureDialog = 'SignatureDialog';
-window[signature] = EJSignature;
-window[signatureDialog] = SignatureDialog;
+(window as any)[signature] = EJSignature;
+(window as any)[signatureDialog] = SignatureDialog;
 
 const shape = 'EJShape';
-window[shape] = EJShape;
+(window as any)[shape] = EJShape;
 
 const pdfDocument = 'EJPdfDocument';
 const htmlDocument = 'EJHtmlDocument';
-window[pdfDocument] = EJPdfDocument;
-window[htmlDocument] = EJHtmlDocument;
+(window as any)[pdfDocument] = EJPdfDocument;
+(window as any)[htmlDocument] = EJHtmlDocument;
 
 const pdfSignature = 'EJPDFSignature';
-window[pdfSignature] = EJPDFSignature;
+(window as any)[pdfSignature] = EJPDFSignature;
 
 @Component({
   selector: 'ej-sample',
   templateUrl: './designer.component.html',
-  styleUrls: ['./designer.component.css'],
-  standalone: false
+  standalone: true,
+  imports: [BoldReportDesignerModule],
+  styleUrls: ['./designer.component.css']
 })
 export class DesignerComponent implements AfterViewInit {
-  @ViewChild('designer') designerInst;
+  @ViewChild('designer') designerInst: any;
   // Specifies the URL of the WebAPI service. It will be used for processing the report.
   public serviceUrl = Globals.DESIGNER_SERVICE_URL;
   public reportPath: string;
@@ -104,12 +106,12 @@ export class DesignerComponent implements AfterViewInit {
     }];
   }
 
-  public onAjaxBeforeLoad(args): void {
+  public onAjaxBeforeLoad(args: any): void {
     args.data = JSON.stringify({ reportType: 'RDL' });
   }
 
 
-  public toolbarRendering(args): void {
+  public toolbarRendering(args: any): void {
     if (args?.target && $(args.target)?.hasClass('e-rptdesigner-toolbarcontainer')) {
       if (args.action === 'beforeCreate') {
         args.items.splice(0, 0, {
@@ -140,7 +142,7 @@ export class DesignerComponent implements AfterViewInit {
     }
   }
 
-  public toolbarClick(args): void {
+  public toolbarClick(args: any): void {
     if (args.event.click === 'Save') {
       args.event.cancel = true;
       args.designerInst.widget.saveToDevice();

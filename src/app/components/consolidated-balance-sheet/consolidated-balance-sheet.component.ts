@@ -1,17 +1,19 @@
 /**
  * Consolidated Balance Sheet - This RDLC report demonstrates the financial balance records rendered in Bold Report Viewer.
  */
-import { Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild  } from '@angular/core';
+import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { Globals } from '../globals';
 import { rdlcData } from '../rdlcData';
 @Component({
+  standalone: true,
+  imports: [BoldReportViewerModule],
   selector: 'ej-sample',
   templateUrl: './consolidated-balance-sheet.component.html',
-  styleUrls: ['./consolidated-balance-sheet.component.css'],
-  standalone: false
+  styleUrls: ['./consolidated-balance-sheet.component.css']
 })
 export class ConsolidatedBalanceSheetComponent {
-  @ViewChild('viewer') viewerInst;
+  @ViewChild('viewer') viewerInst: any;
   // Specifies the report Web API service URL. It is used to process the reports.
   public serviceUrl = Globals.SERVICE_URL;
   // Specifies the path of the RDLC report file
@@ -24,9 +26,9 @@ export class ConsolidatedBalanceSheetComponent {
     this.reportPath = 'consolidated-balance-sheet.rdlc';
   }
 
-  public onReportLoaded(args): void {
-    const reportNameWithoutExt = args.model.reportPath.split('.')[0];
-    this.viewerInst.widget.model.dataSources = rdlcData[reportNameWithoutExt];
+  public onReportLoaded(args: any): void {
+    const reportNameWithoutExt: string = args.model.reportPath.split('.')[0];
+    (this.viewerInst.widget.model as any).dataSources = (rdlcData as any)[reportNameWithoutExt];
   }
 
 }
