@@ -1,5 +1,5 @@
 {
-  "name": "@boldreports/angular-samples",
+  "name": "angular-samples",
   "version": "14.1.12",
   "scripts": {
     "test": "gulp test",
