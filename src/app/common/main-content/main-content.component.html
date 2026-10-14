@@ -1,31 +1,36 @@
 <div class="ej-main-body-content">
-  <div>
-    <h1 class="ej-title" #title></h1>
+  <div class="ej-header-wrapper">
+    <div class="ej-header-title-container">
+      <h1 class="ej-title" #title></h1>
+    </div>
     <p class="ej-meta-description" #metaDescription></p>
+  </div>
+  <div>
     <div id="parentTabContainer">
       <ul class="nav ej-nav-header" id="parentTab" role="tablist">
         <li class="ej-nav-item" #demoTab>
           <a href="#demo" data-bs-toggle="tab" role="tab" aria-selected="true">
-            <Span class="ej-sb-icons ej-demo-icon"></Span><Span>DEMO</Span>
+            <Span class="ej-sb-icons ej-demo-icon"></Span><Span>Demo</Span>
           </a>
         </li>
         <li class="ej-nav-item" #sourceTab>
           <a href="#source" data-bs-toggle="tab" role="tab" aria-selected="false">
-            <Span class="ej-sb-icons ej-source-icon"></Span><Span>SOURCE</Span>
+            <Span class="ej-sb-icons ej-source-icon"></Span><Span>Source Code</Span>
           </a>
         </li>
-        <!-- <li class="ej-nav-item" #descTab>
-          <a href="#ej-description" data-bs-toggle="tab" role="tab" aria-selected="false">
-            <Span class="ej-sb-icons ej-description-icon"></Span><Span>Description</Span>
-          </a>
-        </li>
-        -->
-        <li class="ej-nav ej-nav-item ej-sb-icons">
-          <div class="new-tab ej-nav-sub-item">
-            <div class="ej-nav-new" title="Open in New Window" (click)="onTabBtnClick()" tabindex="0"></div>
+        <li class="ej-nav ej-nav-item ej-nav-actions" role="presentation">
+          <div class="ej-nav-prev-next">
+            <button type="button" class="ej-nav-btn ej-nav-prev" title="Previous Sample" aria-label="Previous Sample" (click)="onTabPrev()">
+              <img class="ej-nav-icon" src="assets/nav-icons/prev.svg" alt="" width="18" height="18" />
+            </button>
+            <span class="ej-nav-divider" aria-hidden="true"></span>
+            <button type="button" class="ej-nav-btn ej-nav-next" title="Next Sample" aria-label="Next Sample" (click)="onTabNext()">
+              <img class="ej-nav-icon" src="assets/nav-icons/next.svg" alt="" width="18" height="18" />
+            </button>
           </div>
-          <div class="ej-nav-prev ej-nav-sub-item" title="Previous Sample" (click)="onTabPrev()" tabindex="0"></div>
-          <div class="ej-nav-next ej-nav-sub-item" title="Next Sample" (click)="onTabNext()" tabindex="0"></div>
+          <button type="button" class="ej-nav-btn ej-nav-new" title="Open in New Window" aria-label="Open in New Window" (click)="onTabBtnClick()">
+            <img class="ej-nav-icon" src="assets/nav-icons/open-new.svg" alt="" width="20" height="20" />
+          </button>
         </li>
       </ul>
       <div class="tab-content ej-tab-content" #tabContent id="parentTabContent">
@@ -59,50 +64,54 @@
   </div>
 
   <!--Banner section-->
-  <div id="footer-banner">
-    <div id="banner-head" class="header" #text></div>
-    <div class="content-area" style="display: flex; flex-wrap: wrap;">
-      <div class="cnt-pt">
-        <!-- <div class="cnt-icon click-icon sb-icons sb-icon-icon-selection"></div> -->
-        <span class="tick-mark"></span>
-        <div class="cnt-text cnt-text-1" #features[0]></div>
+  <div id="footer-banner" class="new-banner-container">
+    <div class="banner-content">
+      <h2 class="banner-title" #text></h2>
+      <div class="banner-features">
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text" #features[0]></span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text" #features[1]></span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✓</span>
+          <span class="feature-text" #features[2]></span>
+        </div>
       </div>
-      <div class="cnt-pt">
-        <!-- <div class="cnt-icon click-icon sb-icons sb-icon-icon-selection"></div> -->
-        <span class="tick-mark"></span>
-        <div class="cnt-text cnt-text-2" #features[1]></div>
-      </div>
-      <div class="cnt-pt">
-        <!-- <div class="cnt-icon click-icon sb-icons sb-icon-icon-selection"></div> -->
-        <span class="tick-mark"></span>
-        <div class="cnt-text cnt-text-3" #features[2]></div>
+      <div class="banner-action">
+        <a class="free-trial-btn" target="_blank" [href]="data.banner.freeTrialUrl">
+          Start Your Free Trial
+        </a>
       </div>
     </div>
-    <a class="free-trial-url" target="_blank" rel="noreferrer" [href]="data.banner.freeTrialUrl">
-      <div class="free-trial">TRY IT FOR FREE</div>
-    </a>
   </div>
 
   <!--Footer section-->
   <div class="ej-lp-footer">
     <div class="ej-lp-footer-links">
-      <a href="https://help.boldreports.com/embedded-reporting/angular-reporting/" target="_blank" rel="noreferrer">
+      <a href="https://help.boldreports.com/embedded-reporting/angular-reporting/" target="_blank">
         Documentation
       </a>
-      <a href="https://www.boldreports.com/blog" target="_blank" rel="noreferrer">
+      <a href="https://www.boldreports.com/blog" target="_blank">
         Blog
       </a>
-      <a href="https://support.boldreports.com/support/tickets/create" target="_blank" rel="noreferrer">
+      <a href="https://support.boldreports.com/support/tickets/create" target="_blank">
         Support
       </a>
-      <a href="https://www.boldreports.com/feedback" target="_blank" rel="noreferrer">
+      <a href="https://www.boldreports.com/feedback" target="_blank">
           Feedback
       </a>
-      <a href="https://support.boldreports.com/" target="_blank" rel="noreferrer">
+      <a href="https://support.boldreports.com/" target="_blank">
         Knowledge Base
       </a>
-      <a href="https://www.boldreports.com/learn" target="_blank" rel="noreferrer">
+      <a href="https://www.boldreports.com/learn" target="_blank">
         Learning Center
+      </a>
+      <a href="https://www.boldreports.com/free-tools/" target="_blank">
+        Free Tools
       </a>
     </div>
     <div class="ej-lp-footer-copyright" #copyrightYear></div>

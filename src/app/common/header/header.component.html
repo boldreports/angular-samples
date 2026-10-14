@@ -1,25 +1,26 @@
 <!--Header portion-->
-<div class="ej-sb-header">
-  <div class="ej-sb-left-side">
+<div class="ej-sb-header br-navbar">
+  <div class="ej-sb-left-side br-nav-left">
     <div class="ej-sb-hamburger-icon ej-sb-icons" (click)="onClick()"></div>
-    <div class="ej-sb-platform-name">Bold Reports<sup>®</sup> for Angular</div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item active">{{platformName}}</a>
-        <a *ngFor="let platform of platforms" class="dropdown-item"
-          (click)="platformSwitcher(platform)">{{platform}}</a>
+    <div class="ej-sb-logo-title-group">
+      <a href="https://www.boldreports.com/" target="_blank" class="ej-sb-logo-link">
+        <div class="ej-sb-logo"></div>
+      </a>
+    </div>
+    <span class="ej-sb-divider"></span>
+    <div class="ej-sb-framework-group">
+      <span class="ej-sb-framework-label">Frameworks</span>
+      <div class="ej-sb-framework-switcher">
+        <a class="br-header-nav-link" [href]="aspNetUrl" >ASP.NET Core</a>
+        <a class="br-header-nav-link" [href]="blazorUrl" >Blazor</a>
+        <a class="br-header-nav-link active" [href]="angularUrl" >Angular</a>
+        <a class="br-header-nav-link" [href]="reactUrl" >React</a>
+        <a class="br-header-nav-link" [href]="javascriptUrl" >JavaScript</a>
       </div>
     </div>
-
   </div>
-  <div class="ej-sb-right-side">
-    <!-- We hided this element as per management instruction -->
-    <!-- <a class="ej-sb-button nav-link bold-schedule-demo" href="https://www.boldreports.com/schedule-free-demo" target="_blank" rel="noreferrer">Schedule
-      Free Demo</a> -->
-      <a class="ej-sb-button nav-link product-detail" href="https://www.boldreports.com/embedded-reporting/angular-report-viewer" target="_blank" rel="noreferrer">Product Detail</a>
-    <a class="ej-sb-button nav-link try-it-free" href="https://www.boldreports.com/register/reports?evaluation=v2" rel="noreferrer">Try it Free</a>
+  <div class="ej-sb-right-side br-nav-right">
+    <a class="ej-sb-button br-btn br-btn-xs br-btn-secondary product-detail" href="https://www.boldreports.com/embedded-reporting/angular-report-viewer" target="_blank">Product Details</a>
+    <a class="ej-sb-button br-btn br-btn-xs br-btn-primary try-it-free" href="https://www.boldreports.com/register/reports?evaluation=v2">Try it Free</a>
   </div>
 </div>

@@ -1,5 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'prismjs/themes/prism.css';
+@import 'prismjs/themes/prism-dark.css';
+@import './assets/css/variable.css';
 
 // Reports
 @import './../node_modules/@boldreports/javascript-reporting-controls/Content/v2.0/tailwind-light/bold.report-viewer.min.css';
@@ -15,12 +16,11 @@
 @import './../node_modules/codemirror/lib/codemirror.css';
 @import './../node_modules/codemirror/addon/hint/show-hint.css';
 
-
 body {
-  color: #2b3a5c;
+  color: var(--neutral-600);
   margin: 0;
-  background-color: #F2F2F2;
-  font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+  background-color: var(--neutral-50);
+  font-family: var(--font-family);
 }
 
 :focus {
@@ -134,11 +134,12 @@ bold-reportviewer {
 }
 
 #description a{
-  color: #ff5f23;
+  color: var(--blue-600);
   text-decoration: none;
 }
 
 #description a:hover {
+  color: var(--blue-700);
   text-decoration: underline;
 }
 

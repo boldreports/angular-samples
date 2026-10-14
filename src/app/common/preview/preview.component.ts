@@ -1,9 +1,11 @@
 import { Component, HostListener, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
 import samples from '../../components/samples.json';
 import { Router, Params, RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RouterService } from '../router.service';
+import { NavigationHelper } from '../navigation/navigation-helper';
 
 const data = samples;
 type sampleInfo = typeof data;
@@ -12,7 +14,7 @@ type SampleMeta = { metaData: { title?: string }; sampleName?: string };
 @Component({
   selector: 'ej-preview',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './preview.component.html',
   styleUrls: ['./preview.component.scss']
@@ -22,8 +24,16 @@ export class PreviewComponent implements OnInit {
   private subscriptions = new Subscription();
   public homePageUrl = '/';
   public productDetailURL = '';
-  constructor(private routerService: RouterService, private router: Router, private titleService: Title, private meta: Meta) { }
-  ngOnInit(): void {    
+  constructor(private routerService: RouterService, private router: Router, private titleService: Title, private meta: Meta) {
+  }
+
+  get aspNetUrl(): string { return NavigationHelper.getHref(''); }
+  get blazorUrl(): string { return NavigationHelper.getHref('blazor'); }
+  get angularUrl(): string { return NavigationHelper.getHref('angular'); }
+  get reactUrl(): string { return NavigationHelper.getHref('react'); }
+  get javascriptUrl(): string { return NavigationHelper.getHref('javascript'); }
+
+  ngOnInit(): void {
     this.homePageUrl = '/angular/#/';
     this.subscriptions.add(this.routerService.previewUrl.subscribe((url) => {
       let sampleData;

@@ -24,11 +24,11 @@
   },
   "platform": "Angular",
   "banner": {
-    "text": "Start embedding powerful business intelligence reporting inside your modern web apps today",
+    "text": "Turn your data into production-ready reports instantly",
     "features" : [
-      "User-friendly Report Server",
+      "Native RDL & RDLC Compatibility",
       "Intuitive drag-and-drop widgets",
-      "Hassle-free licensing"
+      "Modern Web-Based Reporting"
     ],
     "freeTrialUrl": "https://www.boldreports.com/register/reports?evaluation=v2"
   },
